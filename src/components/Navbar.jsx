@@ -3,8 +3,8 @@ import {NavLink, Link} from 'react-router-dom'
 const navItems = [
     {to: '/', label: 'Home'},
     {to: '/about', label: 'About'},
-    {to: '/contact', label: 'Contact'},
     {to: '/services', label: 'Services'},
+    {to: '/contact', label: 'Contact'},
 ];
 
 const Navbar = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
                         </NavLink>
                     ))}
                     <Link
-                        to='\enroll'
+                        to='/enroll'
                         className='bg-red text-white px-4 py-1.5 rounded-full text-xs font-medium
                         hover:opacity-90 transition-opacity'
                     >

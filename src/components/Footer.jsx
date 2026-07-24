@@ -64,7 +64,7 @@ const Footer = () => {
                         <div className="text-[10px] tracking-kicker text-white/50 mb-4">SUBJECTS</div>
                         <ul className="space-y-2">
                             {subjects.map((subject) => (
-                                <li className="text-sm text-white/80">{subject}</li>
+                                <li key={subject} className="text-sm text-white/80">{subject}</li>
                             ))}
                         </ul>
                     </div>
@@ -75,7 +75,7 @@ const Footer = () => {
                         <address className="not-italic text-sm text-white/80 space-y-2">
                             <div>43 Oil Avenue <br/>Freedom Park</div>
                             <div>Unisko.co@gmail.com</div>
-                            <div>0618117116</div>
+                            <div>061 811 7116</div>
                         </address>
                     </div>
                 </div>
