@@ -9,7 +9,7 @@ const Placeholder = ({label, aspectRatio='4/3', dark=false}) => {
                 backgroundImage: `repeating-linear-gradient(135deg, transparent 0 8px, ${stripeColor} 8px 9px`,
             }}/>
             {label && (
-                <div className={`absolute bottom-4 left-4 text-[9px] tracking-kicker ${stripeColor}`}>
+                <div className={`absolute bottom-4 left-4 text-[9px] tracking-kicker ${textColor}`}>
                     {label}
                 </div>
             )}
