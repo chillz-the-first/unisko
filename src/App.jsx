@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout.jsx";
 
 function Placeholder({ name }) {
     return (
@@ -12,13 +13,15 @@ function Placeholder({ name }) {
 export default function App() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Placeholder name="Home" />} />
-                <Route path="/about" element={<Placeholder name="About" />} />
-                <Route path="/services" element={<Placeholder name="Services" />} />
-                <Route path="/contact" element={<Placeholder name="Contact" />} />
-                <Route path="/enroll" element={<Placeholder name="Enroll" />} />
-            </Routes>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<Placeholder name="Home" />} />
+                    <Route path="/about" element={<Placeholder name="About" />} />
+                    <Route path="/services" element={<Placeholder name="Services" />} />
+                    <Route path="/contact" element={<Placeholder name="Contact" />} />
+                    <Route path="/enroll" element={<Placeholder name="Enroll" />} />
+                </Routes>
+            </Layout>
         </BrowserRouter>
     );
 }
