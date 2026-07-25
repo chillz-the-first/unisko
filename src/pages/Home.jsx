@@ -26,6 +26,42 @@ const testimonials = [
 const Home = () => {
     return (
         <div>
+            {/*Hero section*/}
+            <div className="grid grid-cols-[1.75fr_1fr]">
+                <div className="bg-cream flex justify-end">
+                    <div className="w-full max-w-2xl py-16 px-6">
+                        <SectionStart>SINCE 2020 · FREEDOM PARK</SectionStart>
+                        <h1 className="font-serif text-navy my-4 text-6xl font-semibold">
+                            Over five years <br/>of helping <br/>kids stop <br/>falling behind.
+                        </h1>
+                        <p className="my-2">
+                            A tutor who shows up. An open loop for parents. Progress you can see in twelve weeks
+                        </p>
+                        <div className="flex gap-6 my-4">
+                            <Link to='/enroll' className="bg-red text-white py-2 px-5 rounded-full">Enroll your child</Link>
+                            <Link to='/contact' className="bg-transparent py-2 px-5 border border-navy rounded-full text-navy">
+                                Book a free call
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bg-navy flex justify-start">
+                    <div className="w-full max-w-xs py-16 px-10">
+                        <SectionStart color='muted'>BY THE NUMBERS</SectionStart>
+                        <p className="font-serif text-white text-7xl">1:8</p>
+                        <p className="text-white text-xs">Tutor to student ratio</p>
+                        <hr className="h-[1px] bg-white/10 my-6 border-0"/>
+
+                        <p className="font-serif text-white text-5xl">12 wks</p>
+                        <p className="text-white text-xs">to a full level jump</p>
+                        <hr className="h-[1px] bg-white/10 my-6 border-0"/>
+                        <p className="font-serif text-white text-5xl">K-12</p>
+                        <p className="text-white text-xs">Every grade, no exceptions</p>
+                    </div>
+                </div>
+            </div>
+
             {/*About section*/}
             <div className="p-10 bg-white">
                 <div className="max-w-6xl mx-auto my-3 grid grid-cols-2 gap-12 items-center">
