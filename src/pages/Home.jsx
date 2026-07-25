@@ -27,9 +27,10 @@ const Home = () => {
     return (
         <div>
             {/*Hero section*/}
-            <div className="grid grid-cols-[1.75fr_1fr]">
-                <div className="bg-cream flex justify-end">
-                    <div className="w-full max-w-2xl py-16 px-6">
+            <div className="bg-cream">
+                {/*Hero section — TODO: full-bleed cream/navy backgrounds to screen edges*/}
+                <div className="max-w-6xl mx-auto grid grid-cols-[1.17fr_1fr] w-full">
+                    <div className="bg-cream py-16 px-6">
                         <SectionStart>SINCE 2020 · FREEDOM PARK</SectionStart>
                         <h1 className="font-serif text-navy my-4 text-6xl font-semibold">
                             Over five years <br/>of helping <br/>kids stop <br/>falling behind.
@@ -44,10 +45,8 @@ const Home = () => {
                             </Link>
                         </div>
                     </div>
-                </div>
 
-                <div className="bg-navy flex justify-start">
-                    <div className="w-full max-w-xs py-16 px-10">
+                    <div className="bg-navy py-16 px-10">
                         <SectionStart color='muted'>BY THE NUMBERS</SectionStart>
                         <p className="font-serif text-white text-7xl">1:8</p>
                         <p className="text-white text-xs">Tutor to student ratio</p>
