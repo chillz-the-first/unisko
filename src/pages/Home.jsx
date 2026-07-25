@@ -3,6 +3,24 @@ import SectionStart from "../components/SectionStart.jsx";
 const  subjects = ['Mathematics', 'English', 'Science', 'Reading & Writing', 'Algebra', 'Biology',
     'Chemistry', 'Physics', 'History', 'Geography', 'Afrikaans', 'IsiZulu'];
 
+const testimonials = [
+    {
+        'quote': 'Ntombi\'s grades jumped a full level, and she actually likes maths now.',
+        'name': 'Nomsa K.',
+        'grade': 'Grade 7',
+    },
+    {
+        'quote': 'The weekly emails are the difference. We finally know what\'s going on at school.',
+        'name': 'Pieter V.',
+        'grade': 'Grade 4',
+    },
+    {
+        'quote': 'Patient with my son. Strict about progress. Worth every rand.',
+        'name': 'Aisha M.',
+        'grade': 'Grade 10',
+    },
+];
+
 const Home = () => {
     return (
         <div>
@@ -12,7 +30,8 @@ const Home = () => {
                     <div className="flex justify-between items-baseline">
                         <div>
                             <SectionStart>WHAT WE COVER</SectionStart>
-                            <h2 className="text-4xl font-serif text-navy">Twelve subjects.<br/>Specialist tutors only.</h2>
+                            <h2 className="text-4xl font-serif text-navy">Twelve subjects.<br/>Specialist tutors only.
+                            </h2>
                         </div>
                         <p className="text-muted text-right max-w-xs">
                             K-12, taught by tutors who specialise, never by generalists trying to wing it.
@@ -23,9 +42,37 @@ const Home = () => {
                 <div className="max-w-6xl mx-auto my-3">
                     <ul className="flex gap-4 flex-wrap">
                         {subjects.map((subject) => (
-                            <li className="p-3 text-navy bg-white border border-navy/10 rounded-3xl" key={subject}>{subject}</li>
+                            <li className="p-3 text-navy bg-white border border-navy/10 rounded-3xl"
+                                key={subject}>{subject}</li>
                         ))}
                     </ul>
+                </div>
+            </div>
+
+            {/*Testimonials section*/}
+            <div className="p-10 bg-white">
+                <div className="max-w-6xl mx-auto my-10">
+                    <SectionStart>PARENT VOICES</SectionStart>
+                    <h2 className="text-4xl font-serif text-navy">What parents say.</h2>
+                </div>
+
+                <div className="max-w-6xl mx-auto my-4 grid grid-cols-[1.5fr_1fr] gap-4">
+                    <div className="bg-cream p-6 border-l-4 border-red rounded-lg">
+                        <p className="text-red">★★★★★</p>
+                        <blockquote className="font-serif text-navy text-2xl my-3">"{testimonials[0].quote}"
+                        </blockquote>
+                        <p className="text-navy">{testimonials[0].name}</p>
+                        <p className="text-muted">Parent of {testimonials[0].grade}</p>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                        {testimonials.slice(1).map((t) => (
+                            <div className="bg-cream p-6 rounded-lg" key={t.name}>
+                                <p className="text-red">★★★★★</p>
+                                <blockquote className="text-navy my-3">"{t.quote}"</blockquote>
+                                <p className="text-navy">{t.name} <span className="text-muted">· {t.grade}</span></p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
