@@ -1,4 +1,6 @@
 import SectionStart from "../components/SectionStart.jsx";
+import {Link} from "react-router-dom";
+import Placeholder from "../components/Placeholder.jsx";
 
 const  subjects = ['Mathematics', 'English', 'Science', 'Reading & Writing', 'Algebra', 'Biology',
     'Chemistry', 'Physics', 'History', 'Geography', 'Afrikaans', 'IsiZulu'];
@@ -24,6 +26,28 @@ const testimonials = [
 const Home = () => {
     return (
         <div>
+            {/*About section*/}
+            <div className="p-10 bg-white">
+                <div className="max-w-6xl mx-auto my-3 grid grid-cols-2 gap-8 items-center">
+                    <div>
+                        <SectionStart>ABOUT UNISKO</SectionStart>
+                        <h2 className="text-navy text-4xl font-serif my-2">We started with four students in a garage.</h2>
+                        <p className="text-muted my-2">
+                            Today we serve every grade from K to 12, and we still know every student's name. No
+                            franchise model. No rotating substitutes.
+                        </p>
+                        <Link to='/about' className='text-navy underline underline-offset-8'>Learn about us →</Link>
+                    </div>
+
+                    <div className="relative">
+                        <Placeholder aspectRatio='4/5' label='CLASSROOM'/>
+                        <blockquote className="absolute -bottom-9 -left-10 bg-navy font-serif text-white italic p-6 rounded-lg">
+                            "We know every student's name."
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+
             {/*Subjects section*/}
             <div className="p-10 bg-cream">
                 <div className="max-w-6xl mx-auto my-3">
