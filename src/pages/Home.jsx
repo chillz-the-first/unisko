@@ -28,7 +28,7 @@ const Home = () => {
         <div>
             {/*About section*/}
             <div className="p-10 bg-white">
-                <div className="max-w-6xl mx-auto my-3 grid grid-cols-2 gap-8 items-center">
+                <div className="max-w-6xl mx-auto my-3 grid grid-cols-2 gap-12 items-center">
                     <div>
                         <SectionStart>ABOUT UNISKO</SectionStart>
                         <h2 className="text-navy text-4xl font-serif my-2">We started with four students in a garage.</h2>
@@ -51,7 +51,7 @@ const Home = () => {
             {/*Subjects section*/}
             <div className="p-10 bg-cream">
                 <div className="max-w-6xl mx-auto my-3">
-                    <div className="flex justify-between items-baseline">
+                    <div className="flex justify-between items-baseline mb-8 gap-6">
                         <div>
                             <SectionStart>WHAT WE COVER</SectionStart>
                             <h2 className="text-4xl font-serif text-navy">Twelve subjects.<br/>Specialist tutors only.
