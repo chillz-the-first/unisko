@@ -83,6 +83,29 @@ const Home = () => {
                 </div>
             </div>
 
+            {/*Approach section*/}
+            <div className="px-10 py-16 bg-navy">
+                <div className="max-w-6xl mx-auto my-3">
+                    <SectionStart color='muted'>OUR APPROACH</SectionStart>
+                    <h2 className="text-white text-4xl font-serif mb-10">One tutor. One plan. Real progress.</h2>
+
+                    <div className="grid grid-cols-[1.4fr_1fr_1fr] gap-6">
+                        <p className="text-white/75">
+                            Every child gets a dedicated tutor matched to their grade, subjects, and pace.
+                            No rotating substitutes. No mystery curriculum. A plan you can read in plain language.
+                        </p>
+                        <div>
+                            <p className="text-white font-serif text-4xl">100%</p>
+                            <p className="text-white/75 text-xs">Background-checked tutors</p>
+                        </div>
+                        <div>
+                            <p className="text-white font-serif text-4xl">Weekly</p>
+                            <p className="text-white/75 text-xs">Parent progress emails</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {/*Subjects section*/}
             <div className="p-10 bg-cream">
                 <div className="max-w-6xl mx-auto my-3">
