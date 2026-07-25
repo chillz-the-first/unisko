@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
+import Home from "./pages/Home.jsx"
 
 function TempPlaceholder({ name }) {
     return (
@@ -15,7 +16,7 @@ export default function App() {
         <BrowserRouter>
             <Layout>
                 <Routes>
-                    <Route path="/" element={<TempPlaceholder name="Home" />} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/about" element={<TempPlaceholder name="About" />} />
                     <Route path="/services" element={<TempPlaceholder name="Services" />} />
                     <Route path="/contact" element={<TempPlaceholder name="Contact" />} />
