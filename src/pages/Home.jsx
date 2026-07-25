@@ -120,9 +120,7 @@ const Home = () => {
                             K-12, taught by tutors who specialise, never by generalists trying to wing it.
                         </p>
                     </div>
-                </div>
 
-                <div className="max-w-6xl mx-auto">
                     <ul className="flex gap-4 flex-wrap">
                         {subjects.map((subject) => (
                             <li className="p-3 text-navy bg-white border border-navy/10 rounded-3xl"
@@ -134,27 +132,29 @@ const Home = () => {
 
             {/*Testimonials section*/}
             <section className="py-16 px-10 bg-white">
-                <div className="max-w-6xl mx-auto mb-8">
-                    <SectionStart>PARENT VOICES</SectionStart>
-                    <h2 className="text-4xl font-serif text-navy">What parents say.</h2>
-                </div>
-
-                <div className="max-w-6xl mx-auto grid grid-cols-[1.5fr_1fr] gap-4">
-                    <div className="bg-cream p-6 border-l-4 border-red rounded-lg">
-                        <p className="text-red">★★★★★</p>
-                        <blockquote className="font-serif text-navy text-2xl my-3">"{testimonials[0].quote}"
-                        </blockquote>
-                        <p className="text-navy">{testimonials[0].name}</p>
-                        <p className="text-muted">Parent of {testimonials[0].grade}</p>
+                <div className="max-w-6xl mx-auto">
+                    <div className="mb-8">
+                        <SectionStart>PARENT VOICES</SectionStart>
+                        <h2 className="text-4xl font-serif text-navy">What parents say.</h2>
                     </div>
-                    <div className="flex flex-col gap-4">
-                        {testimonials.slice(1).map((t) => (
-                            <div className="bg-cream p-6 rounded-lg" key={t.name}>
-                                <p className="text-red">★★★★★</p>
-                                <blockquote className="text-navy my-3">"{t.quote}"</blockquote>
-                                <p className="text-navy">{t.name} <span className="text-muted">· {t.grade}</span></p>
-                            </div>
-                        ))}
+
+                    <div className="grid grid-cols-[1.5fr_1fr] gap-4">
+                        <div className="bg-cream p-6 border-l-4 border-red rounded-lg">
+                            <p className="text-red">★★★★★</p>
+                            <blockquote className="font-serif text-navy text-2xl my-3">"{testimonials[0].quote}"
+                            </blockquote>
+                            <p className="text-navy">{testimonials[0].name}</p>
+                            <p className="text-muted">Parent of {testimonials[0].grade}</p>
+                        </div>
+                        <div className="flex flex-col gap-4">
+                            {testimonials.slice(1).map((t) => (
+                                <div className="bg-cream p-6 rounded-lg" key={t.name}>
+                                    <p className="text-red">★★★★★</p>
+                                    <blockquote className="text-navy my-3">"{t.quote}"</blockquote>
+                                    <p className="text-navy">{t.name} <span className="text-muted">· {t.grade}</span></p>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>
