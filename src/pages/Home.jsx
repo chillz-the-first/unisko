@@ -1,6 +1,7 @@
 import SectionStart from "../components/SectionStart.jsx";
 import {Link} from "react-router-dom";
 import Placeholder from "../components/Placeholder.jsx";
+import CTASection from "../components/CTASection.jsx";
 
 const  subjects = ['Mathematics', 'English', 'Science', 'Reading & Writing', 'Algebra', 'Biology',
     'Chemistry', 'Physics', 'History', 'Geography', 'Afrikaans', 'IsiZulu'];
@@ -27,7 +28,7 @@ const Home = () => {
     return (
         <div>
             {/*Hero section*/}
-            <div className="bg-cream">
+            <section className="bg-cream">
                 {/*Hero section — TODO: full-bleed cream/navy backgrounds to screen edges*/}
                 <div className="max-w-6xl mx-auto grid grid-cols-[1.17fr_1fr] w-full">
                     <div className="bg-cream py-16 px-6">
@@ -59,11 +60,11 @@ const Home = () => {
                         <p className="text-white text-xs">Every grade, no exceptions</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/*About section*/}
-            <div className="p-10 bg-white">
-                <div className="max-w-6xl mx-auto my-3 grid grid-cols-2 gap-12 items-center">
+            <section className="py-16 px-10 bg-white">
+                <div className="max-w-6xl mx-auto grid grid-cols-2 gap-12 items-center">
                     <div>
                         <SectionStart>ABOUT UNISKO</SectionStart>
                         <h2 className="text-navy text-4xl font-serif my-2">We started with four students in a garage.</h2>
@@ -81,11 +82,11 @@ const Home = () => {
                         </blockquote>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/*Approach section*/}
-            <div className="px-10 py-16 bg-navy">
-                <div className="max-w-6xl mx-auto my-3">
+            <section className="py-16 px-10 bg-navy">
+                <div className="max-w-6xl mx-auto">
                     <SectionStart color='muted'>OUR APPROACH</SectionStart>
                     <h2 className="text-white text-4xl font-serif mb-10">One tutor. One plan. Real progress.</h2>
 
@@ -104,11 +105,11 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             {/*Subjects section*/}
-            <div className="p-10 bg-cream">
-                <div className="max-w-6xl mx-auto my-3">
+            <section className="py-16 px-10 bg-cream">
+                <div className="max-w-6xl mx-auto">
                     <div className="flex justify-between items-baseline mb-8 gap-6">
                         <div>
                             <SectionStart>WHAT WE COVER</SectionStart>
@@ -121,7 +122,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className="max-w-6xl mx-auto my-3">
+                <div className="max-w-6xl mx-auto">
                     <ul className="flex gap-4 flex-wrap">
                         {subjects.map((subject) => (
                             <li className="p-3 text-navy bg-white border border-navy/10 rounded-3xl"
@@ -129,16 +130,16 @@ const Home = () => {
                         ))}
                     </ul>
                 </div>
-            </div>
+            </section>
 
             {/*Testimonials section*/}
-            <div className="p-10 bg-white">
-                <div className="max-w-6xl mx-auto my-10">
+            <section className="py-16 px-10 bg-white">
+                <div className="max-w-6xl mx-auto mb-8">
                     <SectionStart>PARENT VOICES</SectionStart>
                     <h2 className="text-4xl font-serif text-navy">What parents say.</h2>
                 </div>
 
-                <div className="max-w-6xl mx-auto my-4 grid grid-cols-[1.5fr_1fr] gap-4">
+                <div className="max-w-6xl mx-auto grid grid-cols-[1.5fr_1fr] gap-4">
                     <div className="bg-cream p-6 border-l-4 border-red rounded-lg">
                         <p className="text-red">★★★★★</p>
                         <blockquote className="font-serif text-navy text-2xl my-3">"{testimonials[0].quote}"
@@ -156,7 +157,17 @@ const Home = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
+
+            {/*CTA section*/}
+            <CTASection
+                headline='Ready when you are.'
+                body='R150 to register. Free intro call. No long contracts.'
+                primaryLabel='Enroll your child'
+                primaryTo='/enroll'
+                secondaryLabel='Book a free call'
+                secondaryTo='/contact'
+            />
         </div>
     );
 }
