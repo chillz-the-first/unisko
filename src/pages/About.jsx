@@ -1,11 +1,12 @@
 import SectionStart from "../components/SectionStart.jsx";
+import PrincipleCard from "../components/PrincipleCard.jsx";
 
 const About = () => {
     return (
         <div>
             <div>
                 {/*Manifesto section*/}
-                <div className="bg-navy py-16 px-10">
+                <section className="bg-navy py-16 px-10">
                     <div className="max-w-6xl mx-auto relative">
                         <SectionStart color='muted'>OUR MANIFESTO</SectionStart>
                         <h1 className="text-white text-6xl font-semibold font-serif mb-4 max-w-2xl">
@@ -22,10 +23,10 @@ const About = () => {
                             <p className="text-white/30 text-xs tracking-kicker uppercase">students · since 2020</p>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 {/*Mission section*/}
-                <div className="bg-white py-16 px-10">
+                <section className="bg-white py-16 px-10">
                     <div className="max-w-6xl mx-auto grid grid-cols-[1fr_2fr] gap-20 items-start">
                         <div>
                             <SectionStart>MISSION</SectionStart>
@@ -43,10 +44,10 @@ const About = () => {
                             </p>
                         </div>
                     </div>
-                </div>
+                </section>
 
                 {/*Vision section*/}
-                <div className="bg-cream py-16 px-10">
+                <section className="bg-cream py-16 px-10">
                     <div className="max-w-6xl mx-auto grid grid-cols-[2fr_1fr] gap-20">
                         <div className="space-y-4">
                             <p>
@@ -64,7 +65,38 @@ const About = () => {
                             <h2 className="font-serif text-navy text-4xl font-semibold">A confident learner in every home.</h2>
                         </div>
                     </div>
-                </div>
+                </section>
+
+                {/*Principles section*/}
+                <section className="bg-white py-16 px-10">
+                    <div className="max-w-6xl mx-auto space-y-8">
+                        <div>
+                            <SectionStart>WHAT WE BELIEVE</SectionStart>
+                            <h2 className="font-serif font-semibold text-navy text-4xl">
+                                Four principles. No exceptions.
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-[1.6fr_1fr] gap-4">
+                            <PrincipleCard number='01' title='Patience first' variant='navy'
+                                body='No shame around struggle. Every kid moves at their own pace, and
+                                our tutors are trained to wait without rushing.'
+                            />
+                            <PrincipleCard number='02' title='Real progress' variant='cream'
+                                body="We track grades, not hours. If a student isn't improving,
+                                we change the plan, not the explanation."
+                            />
+                            <PrincipleCard number='03' title='Whole student' variant='cream'
+                                body='Confidence beats correctness. We celebrate the brave wrong answer
+                                because it gets us to the right one faster.'
+                            />
+                            <PrincipleCard number='04' title='Family loop' variant='red'
+                                body='Parents stay in the conversation. Weekly emails, monthly check-ins,
+                                and an open door always'
+                            />
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
 
