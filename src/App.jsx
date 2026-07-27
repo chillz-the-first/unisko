@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx"
 import About from "./pages/About.jsx";
+import Services from "./pages/Services.jsx";
 
 function TempPlaceholder({ name }) {
     return (
@@ -19,7 +20,7 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
-                    <Route path="/services" element={<TempPlaceholder name="Services" />} />
+                    <Route path="/services" element={<Services />} />
                     <Route path="/contact" element={<TempPlaceholder name="Contact" />} />
                     <Route path="/enroll" element={<TempPlaceholder name="Enroll" />} />
                 </Routes>
