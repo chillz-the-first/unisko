@@ -1,5 +1,32 @@
 import SectionStart from "../components/SectionStart.jsx";
 import PrincipleCard from "../components/PrincipleCard.jsx";
+import Placeholder from "../components/Placeholder.jsx";
+import CTASection from "../components/CTASection.jsx";
+
+const tutors = [
+    {
+        'name': 'Nkosinathi M.',
+        'subject': 'Mathematics',
+        'xp': '6 years',
+        'description': 'Specialises in catching kids who\'ve decided maths isn\'t for them',
+        'ratio': '4/5',
+        'margin': 'mt-0',
+    },
+    {
+        'name': 'Ayanda Z.',
+        'xp': '5 years',
+        'subject': 'English & Reading',
+        'ratio': '1/1',
+        'margin': 'mt-8',
+    },
+    {
+        'name': 'Lerato D.',
+        'xp': '4 years',
+        'subject': 'Science',
+        'ratio': '4/5',
+        'margin': 'mt-4',
+    },
+];
 
 const About = () => {
     return (
@@ -92,8 +119,31 @@ const About = () => {
                             />
                             <PrincipleCard number='04' title='Family loop' variant='red'
                                 body='Parents stay in the conversation. Weekly emails, monthly check-ins,
-                                and an open door always'
+                                and an open door always.'
                             />
+                        </div>
+                    </div>
+                </section>
+
+                {/*Team section*/}
+                <section className="bg-cream py-16 px-10">
+                    <div className="max-w-6xl mx-auto space-y-8">
+                        <div>
+                            <SectionStart>THE TEAM</SectionStart>
+                            <h2 className="font-serif text-navy text-4xl font-semibold">Meet the tutors.</h2>
+                        </div>
+
+                        <div className="grid grid-cols-[1.3fr_1fr_1fr] gap-4 items-start">
+                            {tutors.map((tutor) => (
+                                <div key={tutor.name} className={tutor.margin}>
+                                    <Placeholder aspectRatio={tutor.ratio} label={tutor.name} />
+                                    <div className="space-y-2">
+                                        <h3 className="text-navy font-serif text-2xl mt-3">{tutor.name}</h3>
+                                        <p className="text-muted text-sm">{tutor.subject} · {tutor.xp}</p>
+                                        {tutor.description && <p className='text-sm'>{tutor.description}</p>}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
