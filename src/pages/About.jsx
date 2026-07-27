@@ -147,10 +147,18 @@ const About = () => {
                         </div>
                     </div>
                 </section>
+
+                {/*CTA section*/}
+                <CTASection
+                    headline='Want to meet a tutor?'
+                    body='Book a free 20-minute intro call. No commitment.'
+                    primaryLabel='Book a call'
+                    primaryTo='/contact'
+                    secondaryLabel='Enroll now'
+                    secondaryTo='/enroll'
+                />
             </div>
         </div>
-
-
     );
 }
 
