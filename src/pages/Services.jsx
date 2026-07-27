@@ -9,6 +9,12 @@ const onlineFeatures = [
     'All subjects K-12', 'Same tutor weekly', 'Sessions recorded',
     'Homework support', 'Parent dashboard', 'Reschedule anytime'
 ];
+const groupFeatures = [
+    'Cohorts of 4-6', 'Peer learning', 'Lower per-hour rate', 'Termly progress reports'
+]
+const homeworkFeatures = [
+    'No booking needed', 'Any subject', 'Snack & water', 'Stay as long as needed'
+]
 
 const Services = () => {
     return (
@@ -44,6 +50,51 @@ const Services = () => {
                             featureGrid
                         />
                     </div>
+                </div>
+            </section>
+
+            {/*Online tutorial section*/}
+            <section className="bg-white py-16 px-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-[1.5fr_1fr] items-center gap-10">
+                    <ServiceBlock
+                        kicker='FLEXIBLE · 7 DAYS A WEEK'
+                        title='Online Tutorials'
+                        price='R200'
+                        duration='hour'
+                        body='1-on-1 video sessions, anywhere. Same dedicated tutor every week.
+                        Sessions are recorded so your child can rewatch tricky parts.'
+                        features={onlineFeatures}
+                        variant='white'
+                        featureGrid
+                    />
+                    <Placeholder aspectRatio='3/4' label='LAPTOP · ONLINE'/>
+                </div>
+            </section>
+
+            {/*Group & Homework section*/}
+            <section className="bg-cream py-16 px-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-2 justify-between items-center gap-10">
+                    <ServiceBlock
+                        kicker='TUE & THU · 4:00-5:30 PM'
+                        title='Group Classes'
+                        price='R250'
+                        duration='month'
+                        body='Small cohorts of 4-6 students. Peer learning at a lower price point.'
+                        features={groupFeatures}
+                        variant='white-sm'
+                        secondBtn={false}
+                    />
+                    <ServiceBlock
+                        kicker='MON-FRI · 3:00-6:00 PM'
+                        title='Homework Help'
+                        price='R250'
+                        duration='visit'
+                        body="Drop-in support, no booking needed. Walk in,
+                            a tutor sits with your child until it's sorted."
+                        features={homeworkFeatures}
+                        variant='white-sm'
+                        secondBtn={false}
+                    />
                 </div>
             </section>
         </div>

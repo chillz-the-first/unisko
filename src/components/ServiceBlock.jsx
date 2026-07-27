@@ -4,27 +4,31 @@ import {Link} from "react-router-dom";
 const ServiceBlock = ({kicker, title, price, duration, body, features, variant, secondBtn = true, featureGrid = false}) => {
     const styles = {
         'navy': {
-            'container': 'space-y-4 bg-navy',
             'title': 'font-serif text-white text-4xl font-semibold',
-            'price': 'text-red font-semibold text-xl',
             'body': 'text-white/75',
             'primaryBtn': 'bg-red text-white py-2 px-6 rounded-full text-center',
             'secondaryBtn': 'bg-transparent text-white text-center py-2 px-6 border border-white rounded-full',
         },
         'white': {
-            'container': 'space-y-4 bg-white',
+            'container': 'bg-white',
             'title': 'font-serif text-navy text-3xl font-semibold',
-            'price': 'text-red font-semibold text-xl',
             'body': 'text-body',
             'primaryBtn': 'bg-navy text-white py-2 px-6 rounded-full text-center',
             'secondaryBtn': 'bg-transparent text-navy text-center py-2 px-6 border border-navy rounded-full',
-        }
+        },
+        'white-sm': {
+            'container': 'bg-white p-8',
+            'title': 'font-serif text-navy text-2xl font-semibold',
+            'body': 'text-body',
+            'primaryBtn': 'bg-navy text-white py-2 px-6 rounded-full text-center',
+            'secondaryBtn': 'bg-transparent text-navy text-center py-2 px-6 border border-navy rounded-full',
+        },
     };
 
     const style = styles[variant];
 
     return (
-        <div className={style.container}>
+        <div className={`space-y-4 ${style.container}`}>
             <SectionStart>{kicker}</SectionStart>
             <h2 className={style.title}>{title}</h2>
             <p className={`text-sm ${style.body}`}>
