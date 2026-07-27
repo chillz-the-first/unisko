@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 const ServiceBlock = ({kicker, title, price, duration, body, features, variant, secondBtn = true, featureGrid = false}) => {
     const styles = {
         'navy': {
+            'container': '',
             'title': 'font-serif text-white text-4xl font-semibold',
             'body': 'text-white/75',
             'primaryBtn': 'bg-red text-white py-2 px-6 rounded-full text-center',
@@ -36,20 +37,11 @@ const ServiceBlock = ({kicker, title, price, duration, body, features, variant, 
             </p>
             <p className={style.body}>{body}</p>
 
-            {featureGrid && (
-                <div className="grid grid-cols-2">
-                    {features.map((feature) => (
-                        <p className={style.body} key={feature}>✓ {feature}</p>
-                    ))}
-                </div>
-            )}
-            {!featureGrid && (
-                <div>
-                    {features.map((feature) => (
-                        <p className={style.body} key={feature}>✓ {feature}</p>
-                    ))}
-                </div>
-            )}
+            <div className={featureGrid ? "grid grid-cols-2" : ""}>
+                {features.map((feature) => (
+                    <p className={style.body} key={feature}>✓ {feature}</p>
+                ))}
+            </div>
 
             <div className="flex gap-4 my-2">
                 <Link to='/enroll' className={style.primaryBtn}>Enroll</Link>
