@@ -25,7 +25,7 @@ const Services = () => {
                 <div className="max-w-6xl mx-auto">
                     <SectionStart>WHAT WE OFFER</SectionStart>
                     <div className="grid grid-cols-[2fr_1fr] items-end gap-6">
-                        <h1 className="font-serif text-navy text-6xl">Four ways <br/>to learn at <br/>Unisko.</h1>
+                        <h1 className="font-serif text-navy text-6xl font-semibold">Four ways <br/>to learn at <br/>Unisko.</h1>
                         <p className='text-muted'>
                             From daily after-school care to focused 1-on-1 sessions.
                             Pick the format that fits your child.
@@ -113,7 +113,7 @@ const Services = () => {
                     </div>
 
                     <div className="overflow-x-auto">
-                        <table className="w-full text-left border-collapse">
+                        <table className="w-full text-left border-collapse bg-white/5 rounded-lg">
                             <thead className="text-white/50 text-xs tracking-kicker uppercase">
                             <tr>
                                 <th className='px-5 py-4 border-b border-white/10'></th>
@@ -145,10 +145,10 @@ const Services = () => {
                             </tr>
 
                             <tr>
-                                <th className='px-5 py-4 border-b border-white/10 text-white/50'>Starting at</th>
-                                <td className='px-5 py-4 border-b border-white/10 text-white font-serif font-semibold'>R500/mo</td>
-                                <td className='px-5 py-4 border-b border-white/10 text-white font-serif font-semibold'>R200/hr</td>
-                                <td className='px-5 py-4 border-b border-white/10 text-white font-serif font-semibold'>R250/mo</td>
+                                <th className='px-5 py-4 text-white/50'>Starting at</th>
+                                <td className='px-5 py-4 text-white font-serif font-semibold'>R500/mo</td>
+                                <td className='px-5 py-4 text-white font-serif font-semibold'>R200/hr</td>
+                                <td className='px-5 py-4 text-white font-serif font-semibold'>R250/mo</td>
                             </tr>
                             </tbody>
                         </table>

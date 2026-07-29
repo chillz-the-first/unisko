@@ -3,6 +3,7 @@ import Layout from "./components/Layout.jsx";
 import Home from "./pages/Home.jsx"
 import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
+import Contact from "./pages/Contact.jsx";
 
 function TempPlaceholder({ name }) {
     return (
@@ -21,7 +22,7 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
-                    <Route path="/contact" element={<TempPlaceholder name="Contact" />} />
+                    <Route path="/contact" element={<Contact />} />
                     <Route path="/enroll" element={<TempPlaceholder name="Enroll" />} />
                 </Routes>
             </Layout>
