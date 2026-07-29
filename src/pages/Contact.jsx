@@ -52,7 +52,18 @@ const Contact = () => {
             {/*Visit us section*/}
             <section className="bg-white py-16 px-10">
                 <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.3fr] gap-8 items-center">
-                    <Placeholder aspectRatio='4/3'/>
+                    <div className="aspect-[4/3] w-full overflow-hidden rounded-md">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.3213950583005!2d27.940691081038324!3d-26.284840552228587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950937db80359b%3A0x10fb801b5f03214f!2sUnisko!5e0!3m2!1sen!2sza!4v1785339270253!5m2!1sen!2sza"
+                            className="w-full h-full"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            title="Unisko location on Google Maps"
+                        ></iframe>
+                    </div>
+
                     <div className="space-y-4">
                         <SectionStart>VISIT US</SectionStart>
                         <h2 className="text-navy text-4xl font-serif font-semibold">43 Oil Avenue, <br/>Freedom Park.</h2>
@@ -64,12 +75,6 @@ const Contact = () => {
                             <p className="text-navy text-sm">9:00 AM - 2:00 PM</p>
                             <p className="text-muted text-sm">Sunday</p>
                             <p className="text-navy text-sm">Closed</p>
-                        </div>
-
-                        <div>
-                            <a href="#" className="text-navy text-sm pb-1 border-b border-navy focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy">
-                                Get directions →
-                            </a>
                         </div>
                     </div>
                 </div>
