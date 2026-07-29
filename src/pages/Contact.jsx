@@ -1,6 +1,9 @@
 import SectionStart from "../components/SectionStart.jsx";
 import ChannelCard from "../components/ChannelCard.jsx";
-import Placeholder from "../components/Placeholder.jsx";
+
+const questions = [
+    'What grades do you tutor?', 'How much does it cost?', 'Can I cancel anytime?', 'Do you offer financial aid?'
+]
 
 const Contact = () => {
     return (
@@ -76,6 +79,23 @@ const Contact = () => {
                             <p className="text-muted text-sm">Sunday</p>
                             <p className="text-navy text-sm">Closed</p>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/*FAQ section*/}
+            <section className="bg-cream py-16 px-10">
+                <div className="max-w-6xl mx-auto">
+                    <SectionStart>BEFORE YOU WRITE</SectionStart>
+                    <h2 className="text-navy text-4xl font-serif font-semibold mb-8">FAQs</h2>
+
+                    <div className='rounded bg-white'>
+                        {questions.map((q) => (
+                            <div className="px-3 py-5 flex justify-between border-b-2 border-b-navy/15 last:border-b-0" key={q}>
+                                <p className="text-navy">{q}</p>
+                                <p className="text-navy">+</p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
