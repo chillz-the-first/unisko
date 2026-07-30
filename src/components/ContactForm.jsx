@@ -1,4 +1,3 @@
-import SectionStart from "./SectionStart.jsx";
 import {useState} from "react";
 
 const ContactForm = () => {
@@ -81,7 +80,6 @@ const ContactForm = () => {
                     <button type='submit' className="bg-navy text-white px-5 py-3 rounded-full">Send message →</button>
                 </div>
             </form>
-            <pre className="text-xs">{JSON.stringify(form, null, 2)}</pre>
         </div>
     );
 }
