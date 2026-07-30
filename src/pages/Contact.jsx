@@ -99,6 +99,85 @@ const Contact = () => {
                     </div>
                 </div>
             </section>
+
+            {/*Note section*/}
+            <section className="bg-white py-16 px-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.6fr] gap-6 items-start">
+                    <div className="space-y-4">
+                        <SectionStart>STILL HAVE QUESTIONS?</SectionStart>
+                        <h2 className="text-navy text-4xl font-serif font-semibold">Send us a note.</h2>
+                        <p className="text-body text-sm">
+                            Tell us what's going on. We reply within 48 hours.
+                        </p>
+                        <p className="text-muted text-sm border-l-2 border-red px-2">We never share your info.</p>
+                    </div>
+
+                    <form>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className='space-y-2'>
+                                <label htmlFor="name" className="text-navy text-sm font-semibold">
+                                    Parent name <span className="text-red">*</span>
+                                </label>
+                                <input type="text" id="name" name="name" placeholder='Your full name'
+                                       className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
+                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                       required aria-required="true"
+                                />
+                            </div>
+
+                            <div className='space-y-2'>
+                                <label htmlFor="email" className="text-navy text-sm font-semibold">
+                                    Email <span className="text-red">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" placeholder='you@example.com'
+                                       className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
+                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                       required aria-required="true"
+                                />
+                            </div>
+
+                            <div className='space-y-2'>
+                                <label htmlFor="phone" className="text-navy text-sm font-semibold">
+                                    Phone
+                                </label>
+                                <input type="tel" id="phone" name="phone" placeholder='081 234 5678'
+                                       className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
+                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                />
+                            </div>
+
+                            <div className='space-y-2'>
+                                <label htmlFor="time" className="text-navy text-sm font-semibold">
+                                    Best time to reach
+                                </label>
+                                <input type="text" id="time" name="time" placeholder='e.g. weekdays afternoons'
+                                       className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
+                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="w-full mt-4 space-y-2">
+                            <label htmlFor="query" className="text-navy text-sm font-semibold">
+                                What do you need help with? <span className="text-red">*</span>
+                            </label>
+                            <textarea name="query" id="query" rows="5"
+                                      placeholder="Tell us about your child and what you're hoping for ..."
+                                      className="w-full text-sm border border-muted/50 rounded px-3 py-2
+                                      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                      required aria-required="true"
+                            />
+                            <p className="text-xs text-body/80 m-0">
+                                Helper: grade, subject, current school, and what's been frustrating.
+                            </p>
+                        </div>
+
+                        <div className="mt-4 flex justify-end">
+                            <button type='submit' className="bg-navy text-white px-5 py-3 rounded-full">Send message →</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
         </div>
     );
 }
