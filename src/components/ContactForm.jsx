@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 const ContactForm = () => {
     const [form, setForm] = useState({
@@ -8,6 +8,10 @@ const ContactForm = () => {
     const [errors, setErrors] = useState({
         name: '', email: '', query: '',
     });
+
+    const nameRef = useRef(null);
+    const emailRef = useRef(null);
+    const queryRef = useRef(null);
 
     function handleChange(e) {
         setForm({
@@ -35,6 +39,17 @@ const ContactForm = () => {
 
         if (Object.keys(newErrors).length > 0) {    // Object.keys(newErrors) returns an array of the object's keys
             setErrors(newErrors);
+
+            if (newErrors.name) {
+                nameRef.current.focus();
+            }
+            else if (newErrors.email) {
+                emailRef.current.focus();
+            }
+            else if (newErrors.query) {
+                queryRef.current.focus();
+            }
+
             return;
         }
 
@@ -54,7 +69,7 @@ const ContactForm = () => {
                                className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required="true" value={form.name} onChange={handleChange}
-                               aria-invalid={!!errors.name} aria-describedby="name-err"
+                               aria-invalid={!!errors.name} aria-describedby="name-err" ref={nameRef}
                         />
                         {errors.name && (<p id='name-err' role='alert' className="text-xs text-red">{errors.name}</p>)}
                     </div>
@@ -67,7 +82,7 @@ const ContactForm = () => {
                                className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required="true" value={form.email} onChange={handleChange}
-                               aria-invalid={!!errors.email} aria-describedby="email-err"
+                               aria-invalid={!!errors.email} aria-describedby="email-err" ref={emailRef}
                         />
                         {errors.email && (<p id='email-err' role='alert' className="text-xs text-red">{errors.email}</p>)}
                     </div>
@@ -104,7 +119,7 @@ const ContactForm = () => {
                               className="w-full text-sm border border-muted/50 rounded px-3 py-2
                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                               aria-required="true" value={form.query} onChange={handleChange}
-                              aria-invalid={!!errors.query} aria-describedby="query-err"
+                              aria-invalid={!!errors.query} aria-describedby="query-err" ref={queryRef}
                     />
                     {errors.query && (<p id='query-err' role='alert' className="text-xs text-red">{errors.query}</p>)}
                     <p className="text-xs text-body/80 m-0">
