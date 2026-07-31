@@ -47,15 +47,15 @@ const Step1 = ({step, form, change, next}) => {
                         <div>
                             <label htmlFor="title" className="text-navy text-sm font-semibold">Title</label>
                             <select name="title" id="title" value={form.title}
-                                    className="text-sm boder border-muted/50 rounded px-3 py-2 w-full
+                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                     onChange={change}
                             >
-                                <option value={form.title}>Mr.</option>
-                                <option value={form.title}>Mrs.</option>
-                                <option value={form.title}>Miss</option>
-                                <option value={form.title}>Dr.</option>
-                                <option value={form.title}>Prof.</option>
+                                <option value='Mr.'>Mr.</option>
+                                <option value='Mrs.'>Mrs.</option>
+                                <option value='Miss'>Miss</option>
+                                <option value='Dr.'>Dr.</option>
+                                <option value='Prof.'>Prof.</option>
                             </select>
                         </div>
                         <div>
@@ -63,14 +63,14 @@ const Step1 = ({step, form, change, next}) => {
                                 Surname <span className="text-red">*</span>
                             </label>
                             <input type="text" id="surname" name="surname" value={form.surname}
-                                   placeholder="Mokoena"
+                                   placeholder="Mokoena" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
                         <div>
                             <label htmlFor="initials" className="text-navy text-sm font-semibold">Initials</label>
                             <input type="text" id="initials" name="initials" value={form.initials}
-                                   placeholder="T.M"
+                                   placeholder="T.M" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
@@ -82,7 +82,7 @@ const Step1 = ({step, form, change, next}) => {
                                 First name <span className="text-red">*</span>
                             </label>
                             <input type="text" id="firstName" name="firstName" value={form.firstName}
-                                   placeholder="Thabo"
+                                   placeholder="Thabo" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
@@ -91,7 +91,7 @@ const Step1 = ({step, form, change, next}) => {
                                 ID / Passport number <span className="text-red">*</span>
                             </label>
                             <input type="text" id="idNumber" name="idNumber" value={form.idNumber}
-                                   placeholder="13 digit ID or passport"
+                                   placeholder="13 digit ID or passport" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
@@ -106,7 +106,7 @@ const Step1 = ({step, form, change, next}) => {
                             Street address <span className="text-red">*</span>
                         </label>
                         <input type="text" id="address" name="address" value={form.address}
-                               placeholder="House number and street"
+                               placeholder="House number and street" onChange={change}
                                className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                     </div>
@@ -114,7 +114,7 @@ const Step1 = ({step, form, change, next}) => {
                         <div>
                             <label htmlFor="town" className="text-navy text-sm font-semibold">Town</label>
                             <input type="text" id="town" name="town" value={form.town}
-                                   placeholder="Town"
+                                   placeholder="Town" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
@@ -123,7 +123,7 @@ const Step1 = ({step, form, change, next}) => {
                                 City <span className="text-red">*</span>
                             </label>
                             <input type="text" id="city" name="city" value={form.city}
-                                   placeholder="City"
+                                   placeholder="City" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
@@ -132,17 +132,17 @@ const Step1 = ({step, form, change, next}) => {
                                 Cell phone <span className="text-red">*</span>
                             </label>
                             <input type="text" id="cellPhone" name="cellPhone" value={form.cellPhone}
-                                   placeholder="081 234 5678"
+                                   placeholder="081 234 5678" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
                     </div>
                     <p className="text-navy text-sm p-2 bg-cream">
-                        <span className="bg-navy text-center rounded-full w-5 h-5">i</span>
+                        <span className="bg-navy inline-flex items-center justify-center w-5 h-5 rounded-full text-white mr-2">i</span>
                         This is the parent or guardian's information. You'll add the student's detail in the next step.
                     </p>
                     <div className="flex justify-end">
-                        <buttton className="bg-navy text-white py-2 px-4 rounded-full" onClick={next}>Next:Applicant</buttton>
+                        <button type='button' className="bg-navy text-white py-2 px-4 rounded-full" onClick={next}>Next:Applicant</button>
                     </div>
                 </form>
             </div>

@@ -41,6 +41,8 @@ const EnrollWizard = () => {
                 <p>current step: {step}</p>
                 {step === 1 && <Step1 step={step} form={form} change={handleChange} next={next}/>}
                 {/*{step === 2 && <Step2 form={form} onChange={handleChange} onNext={next} onBack={back}/>}*/}
+
+                <p>{JSON.stringify(form)}</p>
             </div>
         </section>
     );
