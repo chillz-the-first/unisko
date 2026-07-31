@@ -5,6 +5,10 @@ const ContactForm = () => {
         name: '', email: '', phone: '', time: '', query: '',
     });
 
+    const [errors, setErrors] = useState({
+        name: '', email: '', query: '',
+    });
+
     function handleChange(e) {
         setForm({
             ...form,        // keeps the other fields as they were
@@ -12,9 +16,35 @@ const ContactForm = () => {
         });
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        const newErrors = {};
+
+        if (!form.name) {
+            newErrors.name = 'Please enter your name';
+        }
+        if (!form.query) {
+            newErrors.query = 'Please enter your query, so we\'ll be able to assist you';
+        }
+        if (!form.email) {
+            newErrors.email = 'Please enter your email';
+        }
+        else if (!form.email.includes('@')) {
+            newErrors.email = 'Email must include @';
+        }
+
+        if (Object.keys(newErrors).length > 0) {    // Object.keys(newErrors) returns an array of the object's keys
+            setErrors(newErrors);
+            return;
+        }
+
+        setErrors({});
+        console.log("Sending data...");
+    }
+
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit} noValidate>
                 <div className="grid grid-cols-2 gap-4">
                     <div className='space-y-2'>
                         <label htmlFor="name" className="text-navy text-sm font-semibold">
@@ -23,8 +53,10 @@ const ContactForm = () => {
                         <input type="text" id="name" name="name" placeholder='Your full name'
                                className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
-                               required aria-required="true" value={form.name} onChange={handleChange}
+                               aria-required="true" value={form.name} onChange={handleChange}
+                               aria-invalid={!!errors.name} aria-describedby="name-err"
                         />
+                        {errors.name && (<p id='name-err' role='alert' className="text-xs text-red">{errors.name}</p>)}
                     </div>
 
                     <div className='space-y-2'>
@@ -34,8 +66,10 @@ const ContactForm = () => {
                         <input type="email" id="email" name="email" placeholder='you@example.com'
                                className=" text-sm border border-muted/50 rounded px-3 py-2 w-full
                                        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
-                               required aria-required="true" value={form.email} onChange={handleChange}
+                               aria-required="true" value={form.email} onChange={handleChange}
+                               aria-invalid={!!errors.email} aria-describedby="email-err"
                         />
+                        {errors.email && (<p id='email-err' role='alert' className="text-xs text-red">{errors.email}</p>)}
                     </div>
 
                     <div className='space-y-2'>
@@ -69,8 +103,10 @@ const ContactForm = () => {
                               placeholder="Tell us about your child and what you're hoping for ..."
                               className="w-full text-sm border border-muted/50 rounded px-3 py-2
                                       focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
-                              required aria-required="true" value={form.query} onChange={handleChange}
+                              aria-required="true" value={form.query} onChange={handleChange}
+                              aria-invalid={!!errors.query} aria-describedby="query-err"
                     />
+                    {errors.query && (<p id='query-err' role='alert' className="text-xs text-red">{errors.query}</p>)}
                     <p className="text-xs text-body/80 m-0">
                         Helper: grade, subject, current school, and what's been frustrating.
                     </p>
