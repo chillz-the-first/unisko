@@ -4,15 +4,7 @@ import Home from "./pages/Home.jsx"
 import About from "./pages/About.jsx";
 import Services from "./pages/Services.jsx";
 import Contact from "./pages/Contact.jsx";
-
-function TempPlaceholder({ name }) {
-    return (
-        <div className="p-10">
-            <h1 className="text-2xl font-serif">{name} page</h1>
-            <p className="text-muted">This page is not built yet.</p>
-        </div>
-    );
-}
+import Enroll from "./pages/Enroll.jsx";
 
 export default function App() {
     return (
@@ -23,7 +15,7 @@ export default function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/services" element={<Services />} />
                     <Route path="/contact" element={<Contact />} />
-                    <Route path="/enroll" element={<TempPlaceholder name="Enroll" />} />
+                    <Route path="/enroll" element={<Enroll />} />
                 </Routes>
             </Layout>
         </BrowserRouter>
