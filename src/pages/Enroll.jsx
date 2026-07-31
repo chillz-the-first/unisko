@@ -12,6 +12,8 @@ const Enroll = () => {
                     <p className="text-muted">43 Oil Avenue, Freedom Park · 061 811 7116 · Unisko.co@gmail.com</p>
                 </div>
             </section>
+
+            {/*Enroll section*/}
             <EnrollWizard/>
         </div>
     );

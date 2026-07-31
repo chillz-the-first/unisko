@@ -1,6 +1,6 @@
 import {useState} from "react";
 import Step1 from "./Step1.jsx";
-import Step2 from "./Step2.jsx";
+// import Step2 from "./Step2.jsx";
 
 const EnrollWizard = () => {
     const [step, setStep] = useState(1);
@@ -39,8 +39,8 @@ const EnrollWizard = () => {
         <section className="bg-white py-16 px-10">
             <div className="max-w-6xl mx-auto">
                 <p>current step: {step}</p>
-                {step === 1 && <Step1 form={form} onchange={handleChange} onNext={next}/>}
-                {step === 2 && <Step2 form={form} onchange={handleChange} onNext={next} onBack={back}/>}
+                {step === 1 && <Step1 step={step} form={form} change={handleChange} next={next}/>}
+                {/*{step === 2 && <Step2 form={form} onChange={handleChange} onNext={next} onBack={back}/>}*/}
             </div>
         </section>
     );
