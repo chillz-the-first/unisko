@@ -11,31 +11,8 @@ const Step1 = ({step, form, change, next}) => {
     const stop = stepPerc[step] || {colored: 'from-0%', normal: 'to-0%'}
 
     return (
-        <div className='space-y-4'>
-            <div className="space-y-4">
-                <SectionStart>STEP {step} OF 4</SectionStart>
-                <div className={`w-full border-4 border-transparent bg-origin-border bg-gradient-to-r ${barColor} ${stop.colored} to-gray-200 ${stop.normal}`}/>
-                <div className="grid grid-cols-4 items-center justify-between">
-                    <div>
-                        <p className="text-red text-[10px] tracking-kicker font-medium">CURRENT</p>
-                        <p className="font-semibold text-navy">Parent</p>
-                    </div>
-                    <div>
-                        <p className="text-muted text-[10px] tracking-kicker font-medium">UP NEXT</p>
-                        <p className="text-muted">Applicant</p>
-                    </div>
-                    <div>
-                        <p className="text-muted text-[10px] tracking-kicker font-medium">THEN</p>
-                        <p className="text-muted">Documents</p>
-                    </div>
-                    <div>
-                        <p className="text-muted text-[10px] tracking-kicker font-medium">LAST</p>
-                        <p className="text-muted">Review</p>
-                    </div>
-                </div>
-            </div>
-
-            <div className='border border-navy/15'/>
+        <div className='space-y-8'>
+            <div className='border border-navy/15 my-4'/>
 
             <div className="space-y-4">
                 <h2 className="font-semibold font-serif text-navy text-4xl">Let's start with you.</h2>
@@ -44,13 +21,14 @@ const Step1 = ({step, form, change, next}) => {
                 <form className='space-y-4'>
                     {/*Parent' info*/}
                     <div className="grid grid-cols-[1fr_2fr_1fr] gap-4">
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="title" className="text-navy text-sm font-semibold">Title</label>
                             <select name="title" id="title" value={form.title}
                                     className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                     onChange={change}
                             >
+                                <option value=""></option>
                                 <option value='Mr.'>Mr.</option>
                                 <option value='Mrs.'>Mrs.</option>
                                 <option value='Miss'>Miss</option>
@@ -58,7 +36,7 @@ const Step1 = ({step, form, change, next}) => {
                                 <option value='Prof.'>Prof.</option>
                             </select>
                         </div>
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="surname" className="text-navy text-sm font-semibold">
                                 Surname <span className="text-red">*</span>
                             </label>
@@ -67,7 +45,7 @@ const Step1 = ({step, form, change, next}) => {
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="initials" className="text-navy text-sm font-semibold">Initials</label>
                             <input type="text" id="initials" name="initials" value={form.initials}
                                    placeholder="T.M" onChange={change}
@@ -77,7 +55,7 @@ const Step1 = ({step, form, change, next}) => {
                     </div>
 
                     <div className="grid grid-cols-2 gap-4">
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="firstName" className="text-navy text-sm font-semibold">
                                 First name <span className="text-red">*</span>
                             </label>
@@ -86,7 +64,7 @@ const Step1 = ({step, form, change, next}) => {
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="idNumber" className="text-navy text-sm font-semibold">
                                 ID / Passport number <span className="text-red">*</span>
                             </label>
@@ -97,11 +75,11 @@ const Step1 = ({step, form, change, next}) => {
                         </div>
                     </div>
 
-                    <div className='border border-navy/15'/>
+                    <div className='border border-navy/15 my-4'/>
 
                     {/*Residential info*/}
                     <p className="text-muted tracking-kicker font-medium mb-2">RESIDENTIAL ADDRESS</p>
-                    <div>
+                    <div className='space-y-2'>
                         <label htmlFor="address" className="text-navy text-sm font-semibold">
                             Street address <span className="text-red">*</span>
                         </label>
@@ -111,14 +89,14 @@ const Step1 = ({step, form, change, next}) => {
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                     </div>
                     <div className="grid grid-cols-3 gap-4">
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="town" className="text-navy text-sm font-semibold">Town</label>
                             <input type="text" id="town" name="town" value={form.town}
                                    placeholder="Town" onChange={change}
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="city" className="text-navy text-sm font-semibold">
                                 City <span className="text-red">*</span>
                             </label>
@@ -127,7 +105,7 @@ const Step1 = ({step, form, change, next}) => {
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"/>
                         </div>
-                        <div>
+                        <div className='space-y-2'>
                             <label htmlFor="cellPhone" className="text-navy text-sm font-semibold">
                                 Cell phone <span className="text-red">*</span>
                             </label>
@@ -141,8 +119,11 @@ const Step1 = ({step, form, change, next}) => {
                         <span className="bg-navy inline-flex items-center justify-center w-5 h-5 rounded-full text-white mr-2">i</span>
                         This is the parent or guardian's information. You'll add the student's detail in the next step.
                     </p>
+
+                    <div className='border border-navy/15 my-4'/>
+
                     <div className="flex justify-end">
-                        <button type='button' className="bg-navy text-white py-2 px-4 rounded-full" onClick={next}>Next:Applicant</button>
+                        <button type='button' className="bg-navy text-white py-2 px-4 rounded-full" onClick={next}>Next: Applicant→</button>
                     </div>
                 </form>
             </div>

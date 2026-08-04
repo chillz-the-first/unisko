@@ -1,5 +1,6 @@
 import {useState} from "react";
 import Step1 from "./Step1.jsx";
+import SectionStart from "./SectionStart.jsx";
 // import Step2 from "./Step2.jsx";
 
 const EnrollWizard = () => {
@@ -16,6 +17,7 @@ const EnrollWizard = () => {
         // Terms
         agreeTerms: false,
     })
+    const labels = ['Parent', 'Applicant', 'Documents', 'Review']
 
     function handleChange(e) {
         setForm({
@@ -38,7 +40,29 @@ const EnrollWizard = () => {
     return (
         <section className="bg-white py-16 px-10">
             <div className="max-w-6xl mx-auto">
-                <p>current step: {step}</p>
+                <div className="space-y-4">
+                    <SectionStart>STEP {step} OF 4</SectionStart>
+
+                    <div className="w-full h-2 bg-navy/10 rounded-full">
+                        <div className="h-full bg-navy rounded-full" style={{width: `${step * 25}%`}}></div>
+                    </div>
+
+                    <div className="grid grid-cols-4 items-center text-center">
+                        {labels.map((label, i) => (
+                            <div key={label}>
+                                <p className={`text-[10px] tracking-kicker font-medium ${
+                                    step === i + 1 ? 'text-red' : 'text-muted'
+                                }`}>{i + 1}</p>
+                                <p className={`${
+                                    step === i + 1 ? 'font-semibold text-navy' : 'text-muted'
+                                }`}>{label}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+
+
                 {step === 1 && <Step1 step={step} form={form} change={handleChange} next={next}/>}
                 {/*{step === 2 && <Step2 form={form} onChange={handleChange} onNext={next} onBack={back}/>}*/}
 
