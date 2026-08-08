@@ -10,7 +10,7 @@ const Step3 = ({form, change, next, back}) => {
             </div>
 
             <form className="space-y-4">
-                <div className='flex gap-x-6 items-center'>
+                <div className='flex gap-x-6 items-center pb-4 border-b-2 border-b-navy/15'>
                     <input type="checkbox" id='parentID' name="ackParentId" checked={form.ackParentId} onChange={change}
                         className='border border-navy rounded w-11 h-11 focus-visible:outline-none
                         focus-visible:ring-2 focus-visible:ring-navy'
@@ -23,9 +23,8 @@ const Step3 = ({form, change, next, back}) => {
                         }</p>
                     </div>
                 </div>
-                <div className='border border-navy/15'/>
 
-                <div className="flex items-center gap-x-6">
+                <div className="flex items-center gap-x-6 pb-4 border-b-2 border-b-navy/15">
                     <input type="checkbox" id='studentID' name="ackStudentId" checked={form.ackStudentId} onChange={change}
                            className='border border-navy rounded w-11 h-11 focus-visible:outline-none
                             focus-visible:ring-2 focus-visible:ring-navy'
@@ -35,9 +34,8 @@ const Step3 = ({form, change, next, back}) => {
                         <p className="text-muted">The learner's ID document, or a birth certificate if under 16.</p>
                     </div>
                 </div>
-                <div className="border border-navy/15"/>
 
-                <div className="flex items-center gap-x-6">
+                <div className="flex items-center gap-x-6 pb-4 border-b-2 border-b-navy/15">
                     <input type='checkbox' id='regFee' name="ackRegFee" checked={form.ackRegFee} onChange={change}
                         className='border border-navy rounded w-11 h-11 focus-visible:outline-none
                         focus-visible:ring-2 focus-visible:ring-navy'
@@ -53,7 +51,7 @@ const Step3 = ({form, change, next, back}) => {
                     and we handle them in person.
                 </p>
 
-                <div className="border border-navy/15"/>
+                {/*<div className="border border-navy/15"/>*/}
 
                 <div className="flex items-center justify-between">
                     <button type='button' onClick={back} className="bg-transparent text-navy py-2 px-4 rounded-full border border-navy">
