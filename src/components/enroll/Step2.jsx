@@ -1,9 +1,4 @@
-import {useState} from "react";
-
 const Step2 = ({form, setForm, change, next, back}) => {
-    const [selectedGender, setSelectedGender] = useState(null);
-    const [citizenship, setCitizenship] = useState(null);
-
     return (
         <div className='space-y-8 py-10'>
             <div className="space-y-2">
@@ -15,7 +10,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
             <form className="space-y-4">
                 <div className="grid grid-cols-[2fr_2fr_1fr] gap-4">
                     <div className="space-y-2">
-                        <label className="text-sm text-navy font-semibold">
+                        <label className="text-sm text-navy font-semibold" htmlFor="studentSurname">
                             Surname <span className="text-red">*</span>
                         </label>
                         <input type="text" id='studentSurname' name='studentSurname' value={form.studentSurname}
@@ -62,19 +57,19 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         <label htmlFor="gender" className="text-sm text-navy font-semibold">Gender</label>
                         <div className="flex items-center gap-4">
                             <button type='button' name='gender' id='gender' onClick={() => {
-                                setSelectedGender('male');
                                 setForm({ ...form, gender:'Male'});
-                            }}
-                                className={` border border-navy/10 rounded px-6 py-2 ${
-                                    selectedGender === 'male' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                            }} aria-pressed={form.gender === 'Male'}
+                                className={` border border-navy/10 rounded px-6 py-2 
+                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy ${
+                                    form.gender === 'Male' ? 'bg-navy text-white' : 'text-navy bg-transparent'
                                 }`}
                             >Male</button>
                             <button type='button' name='gender' onClick={() => {
-                                setSelectedGender('female');
                                 setForm({ ...form, gender:'Female'});
-                            }}
-                                className={` border border-navy/10 rounded px-6 py-2 ${
-                                    selectedGender === 'female' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                            }} aria-pressed={form.gender === 'Female'}
+                                className={` border border-navy/10 rounded px-6 py-2
+                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy ${
+                                    form.gender === 'Female' ? 'bg-navy text-white' : 'text-navy bg-transparent'
                                 }`}
                             >Female</button>
                         </div>
@@ -83,18 +78,20 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     <div className="space-y-2">
                         <label htmlFor="citizen" className="text-sm text-navy font-semibold">South African citizen?</label>
                         <div className="flex items-center gap-4">
-                            <button type='button' name='citizen' id='citizen' onClick={() => {
-                                setCitizenship('yes');
-                                setForm({ ...form, isSouthAfrican: true});
-                            }} className={`border border-navy/10 rounded px-6 py-2 ${
-                                citizenship === 'yes' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                            <button type='button' name='citizen' onClick={() => {
+                                setForm({ ...form, isSouthAfrican: 'Yes'});
+                            }} aria-pressed={form.isSouthAfrican === 'Yes'}
+                                    className={`border border-navy/10 rounded px-6 py-2
+                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy ${
+                                form.isSouthAfrican === 'Yes' ? 'bg-navy text-white' : 'text-navy bg-transparent'
                             }`}
                             >Yes</button>
-                            <button type='button' name='citizen' id='citizen' onClick={() => {
-                                setCitizenship('no');
-                                setForm({ ...form, isSouthAfrican: false});
-                            }} className={`border border-navy/10 rounded px-6 py-2 ${
-                                citizenship === 'no' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                            <button type='button' name='citizen' onClick={() => {
+                                setForm({ ...form, isSouthAfrican: 'No'});
+                            }} aria-pressed={form.isSouthAfrican === 'No'}
+                                    className={`border border-navy/10 rounded px-6 py-2
+                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy ${
+                                form.isSouthAfrican === 'No' ? 'bg-navy text-white' : 'text-navy bg-transparent'
                             }`}
                             >No</button>
 
@@ -158,7 +155,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     <button type='button' onClick={back} className="bg-transparent text-navy py-2 px-4 rounded-full border border-navy">
                         ← Back
                     </button>
-                    <button type='buuton' onClick={next} className="bg-navy text-white py-2 px-4 rounded-full">
+                    <button type='button' onClick={next} className="bg-navy text-white py-2 px-4 rounded-full">
                         Next: Documents →
                     </button>
                 </div>
