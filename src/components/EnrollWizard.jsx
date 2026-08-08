@@ -2,6 +2,7 @@ import {useState} from "react";
 import Step1 from "./enroll/Step1.jsx";
 import SectionStart from "./SectionStart.jsx";
 import Step2 from "./enroll/Step2.jsx";
+import Step3 from "./enroll/Step3.jsx";
 
 const EnrollWizard = () => {
     const [step, setStep] = useState(1);
@@ -68,7 +69,7 @@ const EnrollWizard = () => {
 
                 {step === 1 && <Step1 form={form} change={handleChange} next={next}/>}
                 {step === 2 && <Step2 form={form} setForm={setForm} change={handleChange} next={next} back={back}/>}
-
+                {step === 3 && <Step3 form={form} change={handleChange} next={next} back={back}/>}
                 <p>{JSON.stringify(form)}</p>
             </div>
         </section>

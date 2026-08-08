@@ -144,14 +144,14 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     </div>
                 </div>
 
-                <p className="bg-cream text-navy text-sm p-2">
-                    <span className="bg-navy inline-flex items-center justify-center w-5 h-5 rounded-full text-white mr-2">i</span>
-                    You'll attach proof of ID or passport in the next step. JPG, PNG, or PDF up to 5MB.
-                </p>
+                {/*<p className="bg-cream text-navy text-sm p-2">*/}
+                {/*    <span className="bg-navy inline-flex items-center justify-center w-5 h-5 rounded-full text-white mr-2">i</span>*/}
+                {/*    You'll attach proof of ID or passport in the next step. JPG, PNG, or PDF up to 5MB.*/}
+                {/*</p>*/}
 
                 <div className='border border-navy/15'/>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                     <button type='button' onClick={back} className="bg-transparent text-navy py-2 px-4 rounded-full border border-navy">
                         ← Back
                     </button>
