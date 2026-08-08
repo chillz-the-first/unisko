@@ -20,9 +20,10 @@ const EnrollWizard = () => {
     const labels = ['Parent', 'Applicant', 'Documents', 'Review']
 
     function handleChange(e) {
+        const {name, type} = e.target;
         setForm({
             ...form,
-            [e.target.name]: e.target.value,
+            [name]: type === 'checkbox' ? e.target.checked : e.target.value,
         });
     }
 
