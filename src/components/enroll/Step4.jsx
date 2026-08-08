@@ -1,4 +1,4 @@
-const Step4 = ({form, change, back}) => {
+const Step4 = ({form, setStep, change, back}) => {
     return (
         <div className="space-y-8 py-10">
             <div className="space-y-2">
@@ -7,8 +7,11 @@ const Step4 = ({form, change, back}) => {
             </div>
 
             <div className="border border-navy/15 rounded-md">
-                <div className="bg-cream py-2 px-4">
+                <div className="bg-cream py-2 px-4 flex justify-between items-center">
                     <p className="text-sm tracking-kicker text-muted">PARENT / GUARDIAN</p>
+                    <button onClick={() => {setStep(1)}}
+                        className="bg-transparent text-navy font-semibold text-sm underline decoration-{#0a1e3f26} underline-offset-2"
+                    >Edit</button>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Name</p>
@@ -32,8 +35,11 @@ const Step4 = ({form, change, back}) => {
             </div>
 
             <div className="border border-navy/15 rounded-md">
-                <div className="bg-cream py-2 px-4">
+                <div className="bg-cream py-2 px-4 flex justify-between items-center">
                     <p className="text-sm tracking-kicker text-muted">APPLICANT</p>
+                    <button onClick={() => {setStep(2)}}
+                            className="bg-transparent text-navy font-semibold text-sm underline decoration-{#0a1e3f26} underline-offset-2"
+                    >Edit</button>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Name</p>
@@ -56,8 +62,11 @@ const Step4 = ({form, change, back}) => {
             </div>
 
             <div className="border border-navy/15 rounded-md">
-                <div className="bg-cream py-2 px-4">
+                <div className="bg-cream py-2 px-4 flex justify-between items-center">
                     <p className="text-sm tracking-kicker text-muted">DOCUMENTS TO BRING</p>
+                    <button onClick={() => {setStep(3)}}
+                            className="bg-transparent text-navy font-semibold text-sm underline decoration-{#0a1e3f26} underline-offset-2"
+                    >Edit</button>
                 </div>
                 <div className="py-2 px-4 space-y-2">
                     <p className="text-body">{
