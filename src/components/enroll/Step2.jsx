@@ -1,0 +1,170 @@
+import {useState} from "react";
+
+const Step2 = ({form, setForm, change, next, back}) => {
+    const [selectedGender, setSelectedGender] = useState(null);
+    const [citizenship, setCitizenship] = useState(null);
+
+    return (
+        <div className='space-y-8 py-10'>
+            <div className="space-y-2">
+                <h2 className="text-navy text-4xl font-serif font-semibold">Tell us about your child</h2>
+                <p className="text-sm text-muted">The applicant. The student who'll be tutored.</p>
+            </div>
+
+
+            <form className="space-y-4">
+                <div className="grid grid-cols-[2fr_2fr_1fr] gap-4">
+                    <div className="space-y-2">
+                        <label className="text-sm text-navy font-semibold">
+                            Surname <span className="text-red">*</span>
+                        </label>
+                        <input type="text" id='studentSurname' name='studentSurname' value={form.studentSurname}
+                               onChange={change} placeholder='Mokoena'
+                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="studentFirstName" className="text-sm text-navy font-semibold">
+                            First name <span className="text-red">*</span>
+                        </label>
+                        <input type="text" id='studentFirstName' name='studentFirstName' value={form.studentFirstName}
+                            onChange={change} placeholder='Lerato'
+                            className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="studentInitials" className="text-navy text-sm font-semibold"> Initials</label>
+                        <input type="text" id='studentInitials' name='studentInitials' value={form.studentInitials}
+                               onChange={change} placeholder='T'
+                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                        />
+                    </div>
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="studentID" className="text-sm text-navy font-semibold">
+                        ID number <span className="text-red">*</span>
+                    </label>
+                    <input type="text" id='studentID' name='studentID' value={form.studentID}
+                           onChange={change} placeholder='13 digit ID number'
+                           className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                    />
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
+                    <div className="space-y-2">
+                        <label htmlFor="gender" className="text-sm text-navy font-semibold">Gender</label>
+                        <div className="flex items-center gap-4">
+                            <button type='button' name='gender' id='gender' onClick={() => {
+                                setSelectedGender('male');
+                                setForm({ ...form, gender:'Male'});
+                            }}
+                                className={` border border-navy/10 rounded px-6 py-2 ${
+                                    selectedGender === 'male' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                                }`}
+                            >Male</button>
+                            <button type='button' name='gender' onClick={() => {
+                                setSelectedGender('female');
+                                setForm({ ...form, gender:'Female'});
+                            }}
+                                className={` border border-navy/10 rounded px-6 py-2 ${
+                                    selectedGender === 'female' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                                }`}
+                            >Female</button>
+                        </div>
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="citizen" className="text-sm text-navy font-semibold">South African citizen?</label>
+                        <div className="flex items-center gap-4">
+                            <button type='button' name='citizen' id='citizen' onClick={() => {
+                                setCitizenship('yes');
+                                setForm({ ...form, isSouthAfrican: true});
+                            }} className={`border border-navy/10 rounded px-6 py-2 ${
+                                citizenship === 'yes' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                            }`}
+                            >Yes</button>
+                            <button type='button' name='citizen' id='citizen' onClick={() => {
+                                setCitizenship('no');
+                                setForm({ ...form, isSouthAfrican: false});
+                            }} className={`border border-navy/10 rounded px-6 py-2 ${
+                                citizenship === 'no' ? 'bg-navy text-white' : 'text-navy bg-transparent'
+                            }`}
+                            >No</button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="homeLanguage" className="text-navy text-sm font-semibold">Home language</label>
+                    <input type="text" name='homeLanguage' value={form.homeLanguage} id='homeLanguage'
+                           onChange={change} placeholder='e.g. English, Afrikaans, isiZulu'
+                           className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                    />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                        <label htmlFor="schoolName" className="text-navy text-sm font-semibold">
+                            School Name <span className="text-red">*</span>
+                        </label>
+                        <input type="text" name='schoolName' value={form.schoolName} id='schoolName'
+                               onChange={change} placeholder='Current school'
+                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                        />
+                    </div>
+                    <div className="space-y-2">
+                        <label htmlFor="grade" className="text-navy text-sm font-semibold">
+                            Grade <span className="text-red">*</span>
+                        </label>
+                        <select name="grade" id="grade" value={form.grade} onChange={change}
+                                className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                        >
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+                </div>
+
+                <p className="bg-cream text-navy text-sm p-2">
+                    <span className="bg-navy inline-flex items-center justify-center w-5 h-5 rounded-full text-white mr-2">i</span>
+                    You'll attach proof of ID or passport in the next step. JPG, PNG, or PDF up to 5MB.
+                </p>
+
+                <div className='border border-navy/15'/>
+
+                <div className="flex justify-between">
+                    <button type='button' onClick={back} className="bg-transparent text-navy py-2 px-4 rounded-full border border-navy">
+                        ← Back
+                    </button>
+                    <button type='buuton' onClick={next} className="bg-navy text-white py-2 px-4 rounded-full">
+                        Next: Documents →
+                    </button>
+                </div>
+            </form>
+        </div>
+    );
+}
+
+export default Step2;

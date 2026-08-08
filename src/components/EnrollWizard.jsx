@@ -1,7 +1,7 @@
 import {useState} from "react";
-import Step1 from "./Step1.jsx";
+import Step1 from "./enroll/Step1.jsx";
 import SectionStart from "./SectionStart.jsx";
-// import Step2 from "./Step2.jsx";
+import Step2 from "./enroll/Step2.jsx";
 
 const EnrollWizard = () => {
     const [step, setStep] = useState(1);
@@ -50,7 +50,7 @@ const EnrollWizard = () => {
                     <div className="grid grid-cols-4 items-center text-center">
                         {labels.map((label, i) => (
                             <div key={label}>
-                                <p className={`text-[10px] tracking-kicker font-medium ${
+                                <p className={`text-sm tracking-kicker font-medium ${
                                     step === i + 1 ? 'text-red' : 'text-muted'
                                 }`}>{i + 1}</p>
                                 <p className={`${
@@ -59,12 +59,14 @@ const EnrollWizard = () => {
                             </div>
                         ))}
                     </div>
+
+                    <div className='border border-navy/15'/>
                 </div>
 
 
 
-                {step === 1 && <Step1 step={step} form={form} change={handleChange} next={next}/>}
-                {/*{step === 2 && <Step2 form={form} onChange={handleChange} onNext={next} onBack={back}/>}*/}
+                {step === 1 && <Step1 form={form} change={handleChange} next={next}/>}
+                {step === 2 && <Step2 form={form} setForm={setForm} change={handleChange} next={next} back={back}/>}
 
                 <p>{JSON.stringify(form)}</p>
             </div>

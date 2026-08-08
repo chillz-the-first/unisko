@@ -1,19 +1,6 @@
-import SectionStart from "./SectionStart.jsx";
-
-const Step1 = ({step, form, change, next}) => {
-    const barColor = 'from-[#0a1e3f]'
-    const stepPerc = {
-        1: {colored: 'from-25%', normal: 'to-25%'},
-        2: {colored: 'from-50%', normal: 'to-50%'},
-        3: {colored: 'from-75%', normal: 'to-75%'},
-        4: {colored: 'from-75%', normal: 'to-100%'},
-    }
-    const stop = stepPerc[step] || {colored: 'from-0%', normal: 'to-0%'}
-
+const Step1 = ({form, change, next}) => {
     return (
-        <div className='space-y-8'>
-            <div className='border border-navy/15 my-4'/>
-
+        <div className='space-y-8 py-10'>
             <div className="space-y-4">
                 <h2 className="font-semibold font-serif text-navy text-4xl">Let's start with you.</h2>
                 <p className="text-muted text-sm">The parent or guardian responsible for enrollment.</p>
@@ -123,7 +110,8 @@ const Step1 = ({step, form, change, next}) => {
                     <div className='border border-navy/15 my-4'/>
 
                     <div className="flex justify-end">
-                        <button type='button' className="bg-navy text-white py-2 px-4 rounded-full" onClick={next}>Next: Applicant→</button>
+                        <button type='button' className="bg-navy text-white py-2 px-4 rounded-full" onClick={next}>
+                            Next: Applicant→</button>
                     </div>
                 </form>
             </div>
