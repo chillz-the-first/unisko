@@ -1,4 +1,4 @@
-const Step4 = ({form, setStep, change, submit, back, cap}) => {
+const Step4 = ({form, setStep, change, submit, back, cap, status}) => {
     const canSubmit = form.agreeTerms === true;
 
     return (
@@ -110,11 +110,11 @@ const Step4 = ({form, setStep, change, submit, back, cap}) => {
                     <button type='button' onClick={back} className="bg-transparent text-navy border border-navy rounded-full py-2 px-4">
                         ← Back
                     </button>
-                    <button disabled={!canSubmit} type='submit'
+                    <button disabled={!canSubmit || status === 'submitting'} type='submit'
                         className={` rounded-full py-2 px-4 ${
                             canSubmit ? 'bg-red text-white' : 'bg-cream text-navy'
                         }`}
-                    >Submit enrollment →</button>
+                    >{status === 'submitting' ? 'Sending...' : 'Submit enrollment →'}</button>
                 </div>
             </form>
 
