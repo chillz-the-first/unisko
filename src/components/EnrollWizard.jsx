@@ -63,12 +63,11 @@ const EnrollWizard = () => {
         return `${year}${month}${day}-${quickCode}`;
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-
         if (!form.agreeTerms) return;
+
         const code = generateCode();
-        setStatus('submitting');
         const cleaned = {
             ...form,
             firstName: cap(form.firstName),
@@ -82,9 +81,32 @@ const EnrollWizard = () => {
             initials: form.initials.toUpperCase(),
             studentInitials: form.studentInitials.toUpperCase(),
             code: code,
+            _subject: `New application: ${cap(form.studentFirstName)} ${cap(form.studentSurname)} ${code}`,
         };
         setForm(cleaned);
-        setStatus('success');
+        setStatus('submitting');
+
+        try {
+            const response = await fetch('https://formspree.io/f/xgawakjv', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(cleaned),
+            });
+
+            if (response.ok) {
+                setStatus('success');
+            }
+            else {
+                setStatus('error');
+            }
+        }
+        catch (e) {
+            setStatus('error');
+        }
+
         console.log('Submitting enrollment form', cleaned);
     }
 
