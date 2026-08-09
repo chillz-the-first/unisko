@@ -74,7 +74,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         </label>
                         <input type="text" id='studentSurname' name='studentSurname' value={form.studentSurname}
                                onChange={change} placeholder='Mokoena' ref={surnameRef}
-                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full capitalize
                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required='true' aria-invalid={!!errors.studentSurname}
                                aria-describedby='studentSurname-err'
@@ -88,7 +88,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         </label>
                         <input type="text" id='studentFirstName' name='studentFirstName' value={form.studentFirstName}
                             onChange={change} placeholder='Lerato' ref={nameRef}
-                            className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                            className="text-sm border border-muted/50 rounded px-3 py-2 w-full capitalize
                             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required='true' aria-invalid={!!errors.studentFirstName}
                                aria-describedby='studentFirstName-err'
@@ -100,7 +100,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         <label htmlFor="studentInitials" className="text-navy text-sm font-semibold"> Initials</label>
                         <input type="text" id='studentInitials' name='studentInitials' value={form.studentInitials}
                                onChange={change} placeholder='T'
-                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full uppercase
                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                         />
                     </div>
@@ -185,7 +185,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         </label>
                         <input type="text" name='schoolName' value={form.schoolName} id='schoolName'
                                onChange={change} placeholder='Current school' ref={schoolRef}
-                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full
+                               className="text-sm border border-muted/50 rounded px-3 py-2 w-full capitalize
                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required='true' aria-invalid={!!errors.schoolName}
                                aria-describedby='schoolName-err'

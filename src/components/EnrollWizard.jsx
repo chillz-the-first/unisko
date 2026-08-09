@@ -40,12 +40,35 @@ const EnrollWizard = () => {
         }
     }
 
+    function cap(text) {
+        if (!text) return '';
+
+        return text.split(' ').map((word) => {
+            if (word.length === 0 || typeof word !== 'string') return word;
+
+            return word.charAt(0).toUpperCase() + word.substring(1);
+        }).join(' ');
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
 
-        if (form.agreeTerms) {
-            console.log('Submitting enrollment form', form);
-        }
+        if (!form.agreeTerms) return;
+
+        const cleaned = {
+            ...form,
+            firstName: cap(form.firstName),
+            surname: cap(form.surname),
+            address: cap(form.address),
+            city: cap(form.city),
+            town: cap(form.town),
+            studentSurname: cap(form.studentSurname),
+            studentFirstName: cap(form.studentFirstName),
+            schoolName: cap(form.schoolName),
+            initials: form.initials.toUpperCase(),
+            studentInitials: form.studentInitials.toUpperCase(),
+        };
+        console.log('Submitting enrollment form', cleaned);
     }
 
     return (
@@ -79,7 +102,8 @@ const EnrollWizard = () => {
                 {step === 1 && <Step1 form={form} change={handleChange} next={next}/>}
                 {step === 2 && <Step2 form={form} setForm={setForm} change={handleChange} next={next} back={back}/>}
                 {step === 3 && <Step3 form={form} change={handleChange} next={next} back={back}/>}
-                {step === 4 && <Step4 form={form} setStep={setStep} change={handleChange} submit={handleSubmit} back={back}/>}
+                {step === 4 && <Step4 form={form} setStep={setStep} change={handleChange}
+                                      submit={handleSubmit} back={back} cap={cap}/>}
             </div>
         </section>
     );

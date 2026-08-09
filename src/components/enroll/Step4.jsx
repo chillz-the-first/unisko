@@ -1,4 +1,4 @@
-const Step4 = ({form, setStep, change, submit, back}) => {
+const Step4 = ({form, setStep, change, submit, back, cap}) => {
     const canSubmit = form.agreeTerms === true;
 
     return (
@@ -18,7 +18,7 @@ const Step4 = ({form, setStep, change, submit, back}) => {
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Name</p>
                     <p className="text-body">
-                        {form.title + ' ' + form.firstName + ' ' + form.surname + ' (' + form.initials + ')'}
+                        {form.title + ' ' + cap(form.firstName) + ' ' + cap(form.surname) + ' (' + form.initials.toUpperCase() + ')'}
                     </p>
                 </div>
                 {/*<div className="border border-navy/15"/>*/}
@@ -28,7 +28,7 @@ const Step4 = ({form, setStep, change, submit, back}) => {
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Address</p>
-                    <p className="text-body">{form.address + "," + form.town + ',' + form.city}</p>
+                    <p className="text-body">{cap(form.address) + ", " + cap(form.town) + ', ' + cap(form.city)}</p>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Cell phone</p>
@@ -46,7 +46,7 @@ const Step4 = ({form, setStep, change, submit, back}) => {
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Name</p>
                     <p className="text-body">
-                        {form.studentFirstName + ' ' + form.studentSurname + ' (' + form.studentInitials + ')'}
+                        {cap(form.studentFirstName) + ' ' + cap(form.studentSurname) + ' (' + form.studentInitials.toUpperCase() + ')'}
                     </p>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
@@ -63,7 +63,7 @@ const Step4 = ({form, setStep, change, submit, back}) => {
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">School · Grade</p>
-                    <p className="text-body">{form.schoolName + ' · ' + form.grade}</p>
+                    <p className="text-body">{cap(form.schoolName) + ' · ' + form.grade}</p>
                 </div>
             </div>
 
