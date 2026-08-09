@@ -1,4 +1,6 @@
-const Step4 = ({form, setStep, change, back}) => {
+const Step4 = ({form, setStep, change, submit, back}) => {
+    const canSubmit = form.agreeTerms === true;
+
     return (
         <div className="space-y-8 py-10">
             <div className="space-y-2">
@@ -10,7 +12,7 @@ const Step4 = ({form, setStep, change, back}) => {
                 <div className="bg-cream py-2 px-4 flex justify-between items-center">
                     <p className="text-sm tracking-kicker text-muted">PARENT / GUARDIAN</p>
                     <button onClick={() => {setStep(1)}}
-                        className="bg-transparent text-navy font-semibold text-sm underline decoration-{#0a1e3f26} underline-offset-2"
+                        className="bg-transparent text-navy font-semibold text-sm underline underline-offset-2"
                     >Edit</button>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
@@ -38,7 +40,7 @@ const Step4 = ({form, setStep, change, back}) => {
                 <div className="bg-cream py-2 px-4 flex justify-between items-center">
                     <p className="text-sm tracking-kicker text-muted">APPLICANT</p>
                     <button onClick={() => {setStep(2)}}
-                            className="bg-transparent text-navy font-semibold text-sm underline decoration-{#0a1e3f26} underline-offset-2"
+                            className="bg-transparent text-navy font-semibold text-sm underline underline-offset-2"
                     >Edit</button>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
@@ -46,6 +48,10 @@ const Step4 = ({form, setStep, change, back}) => {
                     <p className="text-body">
                         {form.studentFirstName + ' ' + form.studentSurname + ' (' + form.studentInitials + ')'}
                     </p>
+                </div>
+                <div className="flex justify-between gap-4 py-2 px-4">
+                    <p className="text-muted">ID / Passport</p>
+                    <p className="text-body">{form.studentID}</p>
                 </div>
                 <div className="flex justify-between gap-4 py-2 px-4">
                     <p className="text-muted">Gender · Citizen</p>
@@ -65,7 +71,7 @@ const Step4 = ({form, setStep, change, back}) => {
                 <div className="bg-cream py-2 px-4 flex justify-between items-center">
                     <p className="text-sm tracking-kicker text-muted">DOCUMENTS TO BRING</p>
                     <button onClick={() => {setStep(3)}}
-                            className="bg-transparent text-navy font-semibold text-sm underline decoration-{#0a1e3f26} underline-offset-2"
+                            className="bg-transparent text-navy font-semibold text-sm underline underline-offset-2"
                     >Edit</button>
                 </div>
                 <div className="py-2 px-4 space-y-2">
@@ -88,23 +94,31 @@ const Step4 = ({form, setStep, change, back}) => {
                 </p>
             </div>
 
-            <form className="flex items-center gap-4">
-                <input type="checkbox" id='terms' name='agreeTerms' checked={form.agreeTerms} onChange={change}
-                    className='border border-navy rounded w-8 h-8 focus-visible:outline-none
+            <form onSubmit={submit} className='space-y-6'>
+                <div className="flex items-center gap-4">
+                    <input type="checkbox" id='terms' name='agreeTerms' checked={form.agreeTerms} onChange={change}
+                           className='border border-navy rounded w-8 h-8 focus-visible:outline-none
                         focus-visible:ring-2 focus-visible:ring-navy'/>
-                <label htmlFor='terms' className="text-navy">
-                    I have read and accept the terms and conditions <span className="text-red">*</span>
-                </label>
+                    <label htmlFor='terms' className="text-navy">
+                        I have read and accept the terms and conditions <span className="text-red">*</span>
+                    </label>
+                </div>
+
+                <div className="border border-navy/15"/>
+
+                <div className="flex justify-between items-center gap-4">
+                    <button type='button' onClick={back} className="bg-transparent text-navy border border-navy rounded-full py-2 px-4">
+                        ← Back
+                    </button>
+                    <button disabled={!canSubmit} type='submit'
+                        className={` rounded-full py-2 px-4 ${
+                            canSubmit ? 'bg-red text-white' : 'bg-cream text-navy'
+                        }`}
+                    >Submit enrollment →</button>
+                </div>
             </form>
 
-            <div className="border border-navy/15"/>
 
-            <div className="flex justify-between items-center gap-4">
-                <button onClick={back} className="bg-transparent text-navy border border-navy rounded-full py-2 px-4">
-                    ← Back
-                </button>
-                <button className="bg-red text-white rounded-full py-2 px-4">Submit enrollment →</button>
-            </div>
         </div>
     );
 }

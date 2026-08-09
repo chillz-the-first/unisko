@@ -40,6 +40,14 @@ const EnrollWizard = () => {
         }
     }
 
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        if (form.agreeTerms) {
+            console.log('Submitting enrollment form', form);
+        }
+    }
+
     return (
         <section className="bg-white py-16 px-10">
             <div className="max-w-6xl mx-auto">
@@ -71,8 +79,7 @@ const EnrollWizard = () => {
                 {step === 1 && <Step1 form={form} change={handleChange} next={next}/>}
                 {step === 2 && <Step2 form={form} setForm={setForm} change={handleChange} next={next} back={back}/>}
                 {step === 3 && <Step3 form={form} change={handleChange} next={next} back={back}/>}
-                {step === 4 && <Step4 form={form} setStep={setStep} change={handleChange} back={back}/>}
-                <p>{JSON.stringify(form)}</p>
+                {step === 4 && <Step4 form={form} setStep={setStep} change={handleChange} submit={handleSubmit} back={back}/>}
             </div>
         </section>
     );
