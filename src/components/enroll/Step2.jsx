@@ -1,4 +1,41 @@
+import {useState} from "react";
+
 const Step2 = ({form, setForm, change, next, back}) => {
+    const [errors, setErrors] = useState({});
+
+    function handleNext(e) {
+        e.preventDefault();
+        const newErrors = {};
+
+        if (!form.studentSurname) {
+            newErrors.studentSurname = "Please enter your child's surname.";
+        }
+        if (!form.studentFirstName) {
+            newErrors.studentFirstName = "Please enter your child's first name.";
+        }
+        if (!form.studentID) {
+            newErrors.studentID = "Please enter your child's ID number.";
+        }
+        if (!form.isSouthAfrican) {
+            newErrors.isSouthAfrican = "Please select one of the options."
+        }
+        if (!form.schoolName) {
+            newErrors.schoolName = "Please enter your child's school name.";
+        }
+        if (!form.grade) {
+            newErrors.grade = "Please select one of the options."
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+
+            return;
+        }
+
+        setErrors({});
+        next();
+    }
+
     return (
         <div className='space-y-8 py-10'>
             <div className="space-y-2">
@@ -17,7 +54,10 @@ const Step2 = ({form, setForm, change, next, back}) => {
                                onChange={change} placeholder='Mokoena'
                                className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                               aria-required='true' aria-invalid={!!errors.studentSurname}
+                               aria-describedby='studentSurname-err'
                         />
+                        {errors.studentSurname && (<p id='studentSurname-err' role='alert' className="text-xs text-red">{errors.studentSurname}</p>)}
                     </div>
 
                     <div className="space-y-2">
@@ -28,7 +68,10 @@ const Step2 = ({form, setForm, change, next, back}) => {
                             onChange={change} placeholder='Lerato'
                             className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                               aria-required='true' aria-invalid={!!errors.studentFirstName}
+                               aria-describedby='studentFirstName-err'
                         />
+                        {errors.studentFirstName && (<p id='studentFirstName-err' role='alert' className="text-xs text-red">{errors.studentFirstName}</p>)}
                     </div>
 
                     <div className="space-y-2">
@@ -49,7 +92,10 @@ const Step2 = ({form, setForm, change, next, back}) => {
                            onChange={change} placeholder='13 digit ID number'
                            className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                           aria-required='true' aria-invalid={!!errors.studentID}
+                           aria-describedby='studentID-err'
                     />
+                    {errors.studentID && (<p id='studentID-err' role='alert' className="text-xs text-red">{errors.studentID}</p>)}
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -76,7 +122,8 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor="citizen" className="text-sm text-navy font-semibold">South African citizen?</label>
+                        <label htmlFor="citizen" className="text-sm text-navy font-semibold" aria-describedby='isSouthAfrican-err'>
+                            South African citizen?</label>
                         <div className="flex items-center gap-4">
                             <button type='button' name='citizen' onClick={() => {
                                 setForm({ ...form, isSouthAfrican: 'Yes'});
@@ -96,6 +143,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                             >No</button>
 
                         </div>
+                        {errors.isSouthAfrican && (<p id='isSouthAfrican-err' role='alert' className="text-xs text-red">{errors.isSouthAfrican}</p>)}
                     </div>
                 </div>
 
@@ -117,10 +165,13 @@ const Step2 = ({form, setForm, change, next, back}) => {
                                onChange={change} placeholder='Current school'
                                className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                               aria-required='true' aria-invalid={!!errors.schoolName}
+                               aria-describedby='schoolName-err'
                         />
+                        {errors.schoolName && (<p id='schoolName-err' role='alert' className="text-xs text-red">{errors.schoolName}</p>)}
                     </div>
                     <div className="space-y-2">
-                        <label htmlFor="grade" className="text-navy text-sm font-semibold">
+                        <label htmlFor="grade" className="text-navy text-sm font-semibold" aria-describedby='grade-err'>
                             Grade <span className="text-red">*</span>
                         </label>
                         <select name="grade" id="grade" value={form.grade} onChange={change}
@@ -141,6 +192,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
+                        {errors.grade && (<p id='grade-err' role='alert' className="text-xs text-red">{errors.grade}</p>)}
                     </div>
                 </div>
 
@@ -155,7 +207,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     <button type='button' onClick={back} className="bg-transparent text-navy py-2 px-4 rounded-full border border-navy">
                         ← Back
                     </button>
-                    <button type='button' onClick={next} className="bg-navy text-white py-2 px-4 rounded-full">
+                    <button type='button' onClick={handleNext} className="bg-navy text-white py-2 px-4 rounded-full">
                         Next: Documents →
                     </button>
                 </div>

@@ -1,9 +1,7 @@
 import {useRef, useState} from "react";
 
 const Step1 = ({form, change, next}) => {
-    const [errors, setErrors] = useState({
-        surname: '', firstName: '', idNumber: '', address: '', city: '', cellPhone: '',
-    });
+    const [errors, setErrors] = useState({});
 
     const surnameRef = useRef(null);
     const firstNameRef = useRef(null);
@@ -17,25 +15,22 @@ const Step1 = ({form, change, next}) => {
         const newErrors = {};
 
         if (!form.surname) {
-            newErrors.surname = 'Please enter your surname';
+            newErrors.surname = 'Please enter your surname.';
         }
         if (!form.firstName) {
-            newErrors.firstName = 'Please enter your name';
+            newErrors.firstName = 'Please enter your name.';
         }
-        if (!form.idNumber || !/^\d+$/.test(form.idNumber)) {
-            newErrors.idNumber = 'Please enter your ID number';
+        if (!form.idNumber) {
+            newErrors.idNumber = 'Please enter your ID number.';
         }
         if (!form.address) {
-            newErrors.address = 'Please enter your address';
+            newErrors.address = 'Please enter your address.';
         }
         if (!form.city) {
-            newErrors.city = 'Please enter your city';
+            newErrors.city = 'Please enter your city.';
         }
         if (!form.cellPhone) {
-            newErrors.cellPhone = 'Please enter your phone number';
-        }
-        else if (!/^\d+$/.test(form.cellPhone) || form.cellPhone.length < 10) {
-            newErrors.cellPhone = 'Please enter your 10 digit cellphone number';
+            newErrors.cellPhone = 'Please enter your phone number.';
         }
 
         if (Object.keys(newErrors).length > 0) {
@@ -133,7 +128,7 @@ const Step1 = ({form, change, next}) => {
                                 ID / Passport number <span className="text-red">*</span>
                             </label>
                             <input type="text" id="idNumber" name="idNumber" value={form.idNumber}
-                                   placeholder="13 digit ID or passport" onChange={change}
+                                   placeholder="13 digit ID or passport" onChange={change} inputMode='numeric'
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                    aria-required='true' aria-invalid={!!errors.idNumber}
@@ -186,7 +181,7 @@ const Step1 = ({form, change, next}) => {
                                 Cell phone <span className="text-red">*</span>
                             </label>
                             <input type="text" id="cellPhone" name="cellPhone" value={form.cellPhone}
-                                   placeholder="081 234 5678" onChange={change}
+                                   placeholder="081 234 5678" onChange={change} inputMode='numeric'
                                    className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                    aria-required='true' aria-invalid={!!errors.cellPhone}
