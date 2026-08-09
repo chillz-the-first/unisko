@@ -1,7 +1,13 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 
 const Step2 = ({form, setForm, change, next, back}) => {
     const [errors, setErrors] = useState({});
+
+    const surnameRef = useRef(null);
+    const nameRef = useRef(null);
+    const idRef = useRef(null);
+    const schoolRef = useRef(null);
+    const gradeRef = useRef(null);
 
     function handleNext(e) {
         e.preventDefault();
@@ -29,6 +35,22 @@ const Step2 = ({form, setForm, change, next, back}) => {
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
 
+            if (newErrors.studentSurname) {
+                surnameRef.current.focus();
+            }
+            else if (newErrors.studentFirstName) {
+                nameRef.current.focus();
+            }
+            else if (newErrors.studentID) {
+                idRef.current.focus();
+            }
+            else if (newErrors.schoolName) {
+                schoolRef.current.focus();
+            }
+            else if (newErrors.grade) {
+                gradeRef.current.focus();
+            }
+
             return;
         }
 
@@ -51,7 +73,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                             Surname <span className="text-red">*</span>
                         </label>
                         <input type="text" id='studentSurname' name='studentSurname' value={form.studentSurname}
-                               onChange={change} placeholder='Mokoena'
+                               onChange={change} placeholder='Mokoena' ref={surnameRef}
                                className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required='true' aria-invalid={!!errors.studentSurname}
@@ -65,7 +87,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                             First name <span className="text-red">*</span>
                         </label>
                         <input type="text" id='studentFirstName' name='studentFirstName' value={form.studentFirstName}
-                            onChange={change} placeholder='Lerato'
+                            onChange={change} placeholder='Lerato' ref={nameRef}
                             className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required='true' aria-invalid={!!errors.studentFirstName}
@@ -89,7 +111,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         ID number <span className="text-red">*</span>
                     </label>
                     <input type="text" id='studentID' name='studentID' value={form.studentID}
-                           onChange={change} placeholder='13 digit ID number'
+                           onChange={change} placeholder='13 digit ID number' ref={idRef}
                            className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                            aria-required='true' aria-invalid={!!errors.studentID}
@@ -122,9 +144,9 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     </div>
 
                     <div className="space-y-2">
-                        <label htmlFor="citizen" className="text-sm text-navy font-semibold" aria-describedby='isSouthAfrican-err'>
+                        <label htmlFor="citizen" className="text-sm text-navy font-semibold">
                             South African citizen?</label>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-4" role='group' aria-describedby='isSouthAfrican-err'>
                             <button type='button' name='citizen' onClick={() => {
                                 setForm({ ...form, isSouthAfrican: 'Yes'});
                             }} aria-pressed={form.isSouthAfrican === 'Yes'}
@@ -162,7 +184,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                             School Name <span className="text-red">*</span>
                         </label>
                         <input type="text" name='schoolName' value={form.schoolName} id='schoolName'
-                               onChange={change} placeholder='Current school'
+                               onChange={change} placeholder='Current school' ref={schoolRef}
                                className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                aria-required='true' aria-invalid={!!errors.schoolName}
@@ -171,14 +193,14 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         {errors.schoolName && (<p id='schoolName-err' role='alert' className="text-xs text-red">{errors.schoolName}</p>)}
                     </div>
                     <div className="space-y-2">
-                        <label htmlFor="grade" className="text-navy text-sm font-semibold" aria-describedby='grade-err'>
+                        <label htmlFor="grade" className="text-navy text-sm font-semibold">
                             Grade <span className="text-red">*</span>
                         </label>
-                        <select name="grade" id="grade" value={form.grade} onChange={change}
+                        <select name="grade" id="grade" value={form.grade} onChange={change} ref={gradeRef} aria-describedby='grade-err'
                                 className="text-sm border border-muted/50 rounded px-3 py-2 w-full
                                     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                         >
-                            <option value=""></option>
+                            <option value="" disabled>Select grade...</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

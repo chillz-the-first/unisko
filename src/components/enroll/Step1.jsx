@@ -78,7 +78,7 @@ const Step1 = ({form, change, next}) => {
                                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
                                     onChange={change}
                             >
-                                <option value=""></option>
+                                <option value="" disabled>Select title</option>
                                 <option value='Mr.'>Mr.</option>
                                 <option value='Mrs.'>Mrs.</option>
                                 <option value='Miss'>Miss</option>

@@ -1,4 +1,26 @@
+import {useState} from "react";
+
 const Step3 = ({form, change, next, back}) => {
+    const [errors, setErrors] = useState({});
+
+    function handleNext(e) {
+        e.preventDefault();
+        const newErrors = {};
+
+        if (!form.ackParentId || !form.ackStudentId || !form.ackRegFee) {
+            newErrors.checks = 'Please select all 3 to move on';
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+
+            return;
+        }
+
+        setErrors({});
+        next();
+    }
+
     return (
         <div className="space-y-8 py-10">
             <div className="space-y-2">
@@ -13,7 +35,7 @@ const Step3 = ({form, change, next, back}) => {
                 <div className='flex gap-x-6 items-center pb-4 border-b-2 border-b-navy/15'>
                     <input type="checkbox" id='parentID' name="ackParentId" checked={form.ackParentId} onChange={change}
                         className='border border-navy rounded w-11 h-11 focus-visible:outline-none
-                        focus-visible:ring-2 focus-visible:ring-navy'
+                        focus-visible:ring-2 focus-visible:ring-navy' aria-describedby='checks-err'
                     />
                     <div>
                         <label htmlFor="parentID" className="text-navy">Parent proof of ID</label>
@@ -27,7 +49,7 @@ const Step3 = ({form, change, next, back}) => {
                 <div className="flex items-center gap-x-6 pb-4 border-b-2 border-b-navy/15">
                     <input type="checkbox" id='studentID' name="ackStudentId" checked={form.ackStudentId} onChange={change}
                            className='border border-navy rounded w-11 h-11 focus-visible:outline-none
-                            focus-visible:ring-2 focus-visible:ring-navy'
+                            focus-visible:ring-2 focus-visible:ring-navy' aria-describedby='checks-err'
                     />
                     <div>
                         <label htmlFor="studentID" className="text-navy">Student proof of ID</label>
@@ -38,13 +60,15 @@ const Step3 = ({form, change, next, back}) => {
                 <div className="flex items-center gap-x-6 pb-4 border-b-2 border-b-navy/15">
                     <input type='checkbox' id='regFee' name="ackRegFee" checked={form.ackRegFee} onChange={change}
                         className='border border-navy rounded w-11 h-11 focus-visible:outline-none
-                        focus-visible:ring-2 focus-visible:ring-navy'
+                        focus-visible:ring-2 focus-visible:ring-navy' aria-describedby='checks-err'
                     />
                     <div>
                         <label htmlFor="regFee" className="text-navy">Proof of the R150 registration fee</label>
                         <p className="text-muted">A payment reference or receipt for the once-off registration fee.</p>
                     </div>
                 </div>
+
+                {errors.checks && (<p id='checks-err' role='alert' className="text-xs text-red">{errors.checks}</p>)}
 
                 <p className="text-sm text-navy p-2 bg-cream border-l-4 border-l-red">
                     You do not upload anything here. You bring the documents to your child's first session,
@@ -57,7 +81,7 @@ const Step3 = ({form, change, next, back}) => {
                     <button type='button' onClick={back} className="bg-transparent text-navy py-2 px-4 rounded-full border border-navy">
                         ← Back
                     </button>
-                    <button type='button' onClick={next} className="bg-navy text-white py-2 px-4 rounded-full">
+                    <button type='button' onClick={handleNext} className="bg-navy text-white py-2 px-4 rounded-full">
                         Next: Review →
                     </button>
                 </div>
