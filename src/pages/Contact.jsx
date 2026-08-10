@@ -103,7 +103,7 @@ const Contact = () => {
 
             {/*Note section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.6fr] gap-6 items-start">
+                <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.6fr] gap-6">
                     <div className="space-y-4">
                         <SectionStart>STILL HAVE QUESTIONS?</SectionStart>
                         <h2 className="text-navy text-4xl font-serif font-semibold">Send us a note.</h2>
