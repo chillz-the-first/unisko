@@ -54,12 +54,12 @@ const ContactForm = () => {
 
             return;
         }
-
-        setStatus('submitting')
-        setForm({
+        const payload = {
             ...form,
             _subject: `New message from ${form.name}`,
-        })
+        }
+        setStatus('submitting')
+
         setErrors({});
 
         try {
@@ -69,7 +69,7 @@ const ContactForm = () => {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                 },
-                body: JSON.stringify(form),
+                body: JSON.stringify(payload),
             });
 
             if (response.ok) {
@@ -163,7 +163,7 @@ const ContactForm = () => {
                         </p>
                     </div>
                     {status === 'error' && (
-                        <p className="text-red font-serif text-lg my-1">Couldn't send query. Please try again later.</p>
+                        <p className="text-red font-serif text-lg my-1">Couldn't send message. Please try again later.</p>
                     )}
 
                     <div className="mt-4 flex justify-end">
