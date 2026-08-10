@@ -1,12 +1,19 @@
 import SectionStart from "../components/SectionStart.jsx";
 import ChannelCard from "../components/ChannelCard.jsx";
 import ContactForm from "../components/ContactForm.jsx";
+import {useState} from "react";
 
-const questions = [
-    'What grades do you tutor?', 'How much does it cost?', 'Can I cancel anytime?', 'Do you offer financial aid?'
-]
+
 
 const Contact = () => {
+    const [openIndex, setOpenIndex] = useState(null);
+    const questions = [
+        {q: 'What grades do you tutor?', a: 'We tutor all grades from one through twelve.'},
+        {q: 'How much does it cost?', a: 'Our prices start from R200, visit the services page for more information'},
+        {q: 'Can I cancel anytime?', a: 'Yes, but you have to provide a 30-day notice.'},
+        {q: 'Do you offer financial aid?', a: "Sorry but we currently don't offer financial aid."},
+    ]
+
     return (
         <div>
             {/*Intro section*/}
@@ -90,11 +97,22 @@ const Contact = () => {
                     <SectionStart>BEFORE YOU WRITE</SectionStart>
                     <h2 className="text-navy text-4xl font-serif font-semibold mb-8">FAQs</h2>
 
-                    <div className='rounded bg-white'>
-                        {questions.map((q) => (
-                            <div className="px-3 py-5 flex justify-between border-b-2 border-b-navy/15 last:border-b-0" key={q}>
-                                <p className="text-navy">{q}</p>
-                                <p className="text-navy">+</p>
+                    <div className="rounded bg-white">
+                        {questions.map((q, i) => (
+                            <div key={q.q} className="border-b-2 border-b-navy/15 last:border-b-0">
+                                <button className="w-full px-3 py-5 flex justify-between
+                                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                    aria-expanded={openIndex === i}
+                                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                >
+                                    <span className="text-navy">{q.q}</span>
+                                    <span className="text-navy">{openIndex === i ? '-' : '+'}</span>
+                                </button>
+                                {openIndex === i && (
+                                    <div className="px-6 py-5">
+                                        <p className="text-body">{q.a}</p>
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>
