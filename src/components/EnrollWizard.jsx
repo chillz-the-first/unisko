@@ -22,7 +22,7 @@ const EnrollWizard = () => {
         code: '',
     })
     const labels = ['Parent', 'Applicant', 'Documents', 'Review']
-    const [status, setStatus] = useState('idle');
+    const [status, setStatus] = useState('idle'); // idle, submitting, success, error
 
     function handleChange(e) {
         const {name, type} = e.target;

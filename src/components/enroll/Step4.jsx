@@ -106,6 +106,10 @@ const Step4 = ({form, setStep, change, submit, back, cap, status}) => {
 
                 <div className="border border-navy/15"/>
 
+                {status === 'error' && (
+                    <h4 className="text-red text-2xl font-serif">Couldn't send application. Please try again later.</h4>
+                )}
+
                 <div className="flex justify-between items-center gap-4">
                     <button type='button' onClick={back} className="bg-transparent text-navy border border-navy rounded-full py-2 px-4">
                         ← Back
