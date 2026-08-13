@@ -24,8 +24,9 @@ const Services = () => {
             <section className="bg-white py-16 px-10">
                 <div className="max-w-6xl mx-auto">
                     <SectionStart>WHAT WE OFFER</SectionStart>
-                    <div className="grid grid-cols-[2fr_1fr] items-end gap-6">
-                        <h1 className="font-serif text-navy text-6xl font-semibold">Four ways <br/>to learn at <br/>Unisko.</h1>
+                    <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] items-end gap-6">
+                        <h1 className="font-serif text-navy font-semibold max-w-xs text-4xl md:text-5xl lg:text-6xl">
+                            Four ways to learn at Unisko.</h1>
                         <p className='text-muted'>
                             From daily after-school care to focused 1-on-1 sessions.
                             Pick the format that fits your child.
@@ -36,7 +37,7 @@ const Services = () => {
 
             {/*Flagship service section*/}
             <section className="bg-navy py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.5fr] items-center gap-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.5fr] items-center gap-10">
                     <Placeholder aspectRatio='4/3' label='CLASSROOM · AFTER-SCHOOL' dark/>
                     <div>
                         <ServiceBlock
@@ -56,7 +57,7 @@ const Services = () => {
 
             {/*Online tutorial section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-[1.5fr_1fr] items-center gap-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-center gap-10">
                     <ServiceBlock
                         kicker='FLEXIBLE · 7 DAYS A WEEK'
                         title='Online Tutorials'
@@ -74,7 +75,7 @@ const Services = () => {
 
             {/*Group & Homework section*/}
             <section className="bg-cream py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-2 items-center gap-10">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10">
                     <ServiceBlock
                         kicker='TUE & THU · 4:00-5:30 PM'
                         title='Group Classes'
@@ -102,7 +103,7 @@ const Services = () => {
             {/*Comparison section*/}
             <section className="bg-navy py-16 px-10">
                 <div className="max-w-6xl mx-auto space-y-6">
-                    <div className="flex justify-between items-baseline gap-6">
+                    <div className="flex flex-col md:flex-row justify-between items-baseline gap-6">
                         <div>
                             <SectionStart>NOT SURE WHICH ONE?</SectionStart>
                             <h2 className="text-white font-serif text-4xl font-semibold">Quick comparison.</h2>
