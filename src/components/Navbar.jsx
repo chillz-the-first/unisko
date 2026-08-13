@@ -1,4 +1,5 @@
 import {NavLink, Link} from 'react-router-dom'
+import {useState} from "react";
 
 const navItems = [
     {to: '/', label: 'Home'},
@@ -8,23 +9,18 @@ const navItems = [
 ];
 
 const Navbar = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
     return (
         <header className="bg-white border-b border-navy/10">
             <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/*Logo*/}
-                <Link to='/' className='flex items-center gap-2.5'>
-                    <div className="relative w-8 h-8 bg-navy rounded-md flex items-center justify-center">
-                        <span className="font-serif text-white text-sm font-medium">U</span>
-                        <span className="absolute top-1.5 right-1.5 w-1 h-1 bg-red rounded-full"></span>
-                    </div>
-                    <div>
-                        <div className="font-serif font-medium text-base leading-none">Unisko</div>
-                        <div className="text-[9px] tracking-kicker text-red mt-0.5">DO BETTER</div>
-                    </div>
+                <Link to='/'>
+                    <img src="/images/logo.png" alt="Unisko" className="h-12 w-auto"/>
                 </Link>
 
                 {/*Nav links*/}
-                <nav className="flex items-center gap-6 text-sm">
+                <nav className="hidden md:flex items-center gap-6 text-sm">
                     {navItems.map((item) => (
                         <NavLink
                             to={item.to}
@@ -44,7 +40,32 @@ const Navbar = () => {
                         Enroll
                     </Link>
                 </nav>
+                <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}
+                    aria-label='Open menu' aria-expanded={menuOpen}
+                >
+                    {menuOpen ? 'X' : '☰'}
+                </button>
             </div>
+            {menuOpen && (
+                <nav className="md:hidden flex flex-col gap-2 px-6 py-4 border-t border-navy/10 text-center">
+                    {navItems.map((item) => (
+                        <NavLink
+                            to={item.to}
+                            key={item.to}
+                            end={item.to === '/'}
+                            onClick={() => setMenuOpen(false)}
+                            className={({isActive}) =>
+                                isActive ? 'text-navy font-medium' : 'text-muted hover:text-navy transition-colors'}
+                        >
+                            {item.label}
+                        </NavLink>
+                    ))}
+                    <Link to='/enroll' onClick={() => {setMenuOpen(false)}}
+                        className="bg-red text-white px-4 py-1 5 rounded-full font-medium
+                        hover:opacity-90 transition-opacity"
+                    >Enrol</Link>
+                </nav>
+            )}
         </header>
     );
 }
