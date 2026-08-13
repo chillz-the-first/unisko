@@ -121,8 +121,8 @@ const Step2 = ({form, setForm, change, next, back}) => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    <div className="space-y-2">
-                        <label htmlFor="gender" className="text-sm text-navy font-semibold">Gender</label>
+                    <fieldset className="space-y-2 border-0 p-0 m-0">
+                        <legend className="text-sm text-navy font-semibold">Gender</legend>
                         <div className="flex items-center gap-4">
                             <button type='button' name='gender' id='gender' onClick={() => {
                                 setForm({ ...form, gender:'Male'});
@@ -141,12 +141,12 @@ const Step2 = ({form, setForm, change, next, back}) => {
                                 }`}
                             >Female</button>
                         </div>
-                    </div>
+                    </fieldset>
 
-                    <div className="space-y-2">
-                        <label htmlFor="citizen" className="text-sm text-navy font-semibold">
-                            South African citizen?</label>
-                        <div className="flex items-center gap-4" role='group' aria-describedby='isSouthAfrican-err'>
+                    <fieldset className="space-y-2 border-0 p-0 m-0" aria-describedby='isSouthAfrican-err'>
+                        <legend className="text-sm text-navy font-semibold">
+                            South African citizen?</legend>
+                        <div className="flex items-center gap-4">
                             <button type='button' name='citizen' onClick={() => {
                                 setForm({ ...form, isSouthAfrican: 'Yes'});
                             }} aria-pressed={form.isSouthAfrican === 'Yes'}
@@ -166,7 +166,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
 
                         </div>
                         {errors.isSouthAfrican && (<p id='isSouthAfrican-err' role='alert' className="text-xs text-red">{errors.isSouthAfrican}</p>)}
-                    </div>
+                    </fieldset>
                 </div>
 
                 <div className="space-y-2">

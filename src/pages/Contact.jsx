@@ -36,7 +36,7 @@ const Contact = () => {
                         body='Average reply: 30 seconds. Best for quick questions whenever you have them.'
                         status='Online now · 24/7'
                         cta='Start chat →'
-                        ctaTo='#'
+                        ctaTo='https://wa.me/27618117116'
                         variant='featured'
                     />
                     <ChannelCard
