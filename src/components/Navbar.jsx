@@ -12,7 +12,7 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <header className="bg-white border-b border-navy/10">
+        <header className="bg-white border-b border-navy/10 relative">
             <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
                 {/*Logo*/}
                 <Link to='/'>
@@ -47,7 +47,9 @@ const Navbar = () => {
                 </button>
             </div>
             {menuOpen && (
-                <nav className="md:hidden flex flex-col gap-2 px-6 py-4 border-t border-navy/10 text-center">
+                <nav className="md:hidden absolute top-full left-0 right-0 bg-white flex flex-col gap-2 px-6 py-4
+                    border-t border-navy/10 text-center z-50  transition-all duration-1000 ease-out"
+                >
                     {navItems.map((item) => (
                         <NavLink
                             to={item.to}
@@ -61,9 +63,9 @@ const Navbar = () => {
                         </NavLink>
                     ))}
                     <Link to='/enroll' onClick={() => {setMenuOpen(false)}}
-                        className="bg-red text-white px-4 py-1 5 rounded-full font-medium
+                        className="bg-red text-white px-4 py-1.5 rounded-full font-medium
                         hover:opacity-90 transition-opacity"
-                    >Enrol</Link>
+                    >Enroll</Link>
                 </nav>
             )}
         </header>
