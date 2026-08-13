@@ -96,7 +96,7 @@ const ContactForm = () => {
         return (
             <div>
                 <form onSubmit={handleSubmit} noValidate>
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className='space-y-2'>
                             <label htmlFor="name" className="text-navy text-sm font-semibold">
                                 Parent name <span className="text-red">*</span>

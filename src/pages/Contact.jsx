@@ -20,7 +20,7 @@ const Contact = () => {
             <section className="bg-white py-16 px-10">
                 <div className="max-w-6xl mx-auto space-y-5">
                     <SectionStart>GET IN TOUCH</SectionStart>
-                    <h1 className="font-serif text-navy text-6xl font-semibold">How can we help?</h1>
+                    <h1 className="font-serif text-navy font-semibold text-4xl md:text-5xl lg:text-6xl">How can we help?</h1>
                     <p className="text-body max-w-md">
                         Pick the channel that works for you. We reply to everything within two business days.
                     </p>
@@ -29,7 +29,7 @@ const Contact = () => {
 
             {/*Channel section*/}
             <section className="bg-cream py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-[1.5fr_1fr_1fr] gap-4">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr] gap-4">
                     <ChannelCard
                         kicker='FASTEST'
                         title='WhatsApp Chatbot'
@@ -62,8 +62,8 @@ const Contact = () => {
 
             {/*Visit us section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.3fr] gap-8 items-center">
-                    <div className="aspect-[4/3] w-full overflow-hidden rounded-md">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-8 items-center">
+                    <div className="aspect-[4/3] w-full overflow-hidden rounded-md order-last md:order-first">
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d894.3213950583005!2d27.940691081038324!3d-26.284840552228587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950937db80359b%3A0x10fb801b5f03214f!2sUnisko!5e0!3m2!1sen!2sza!4v1785339270253!5m2!1sen!2sza"
                             className="w-full h-full"
@@ -121,7 +121,7 @@ const Contact = () => {
 
             {/*Note section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-[1fr_1.6fr] gap-6">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-6">
                     <div className="space-y-4">
                         <SectionStart>STILL HAVE QUESTIONS?</SectionStart>
                         <h2 className="text-navy text-4xl font-serif font-semibold">Send us a note.</h2>
