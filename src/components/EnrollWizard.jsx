@@ -134,7 +134,7 @@ const EnrollWizard = () => {
     }
     else {
         return (
-            <section className="bg-white py-16 px-10">
+            <section className="bg-white px-10">
                 <div className="max-w-6xl mx-auto">
                     <div className="space-y-4">
                         <SectionStart>STEP {step} OF 4</SectionStart>
@@ -143,7 +143,7 @@ const EnrollWizard = () => {
                             <div className="h-full bg-navy rounded-full" style={{width: `${step * 25}%`}}></div>
                         </div>
 
-                        <div className="grid grid-cols-4 items-center text-center">
+                        <div className="hidden md:grid grid-cols-4 items-center text-center">
                             {labels.map((label, i) => (
                                 <div key={label}>
                                     <p className={`text-sm tracking-kicker font-medium ${
@@ -154,6 +154,10 @@ const EnrollWizard = () => {
                                     }`}>{label}</p>
                                 </div>
                             ))}
+                        </div>
+                        <div className="md:hidden text-center">
+                            <p className="text-red text-xs tracking-kicker font-medium">STEP {step}</p>
+                            <p className="font-semibold text-navy">{labels[step -1]}</p>
                         </div>
 
                         <div className='border border-navy/15'/>

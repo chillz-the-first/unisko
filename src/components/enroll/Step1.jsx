@@ -70,8 +70,8 @@ const Step1 = ({form, change, next}) => {
 
                 <form className='space-y-4'>
                     {/*Parent' info*/}
-                    <div className="grid grid-cols-[1fr_2fr_1fr] gap-4">
-                        <div className='space-y-2'>
+                    <div className="grid grid-cols-2 md:grid-cols-[1fr_2fr_1fr] gap-4">
+                        <div className='space-y-2 order-1'>
                             <label htmlFor="title" className="text-navy text-sm font-semibold">Title</label>
                             <select name="title" id="title" value={form.title}
                                     className="text-sm border border-muted/50 rounded px-3 py-2 w-full
@@ -86,7 +86,7 @@ const Step1 = ({form, change, next}) => {
                                 <option value='Prof.'>Prof.</option>
                             </select>
                         </div>
-                        <div className='space-y-2'>
+                        <div className='space-y-2 col-span-2 order-3 md:order-2 md:col-span-1'>
                             <label htmlFor="surname" className="text-navy text-sm font-semibold">
                                 Surname <span className="text-red">*</span>
                             </label>
@@ -99,7 +99,7 @@ const Step1 = ({form, change, next}) => {
                             />
                             {errors.surname && (<p id='surname-err' role='alert' className="text-xs text-red">{errors.surname}</p>)}
                         </div>
-                        <div className='space-y-2'>
+                        <div className='space-y-2 order-2 md:order-3'>
                             <label htmlFor="initials" className="text-navy text-sm font-semibold">Initials</label>
                             <input type="text" id="initials" name="initials" value={form.initials}
                                    placeholder="T.M" onChange={change}
@@ -108,7 +108,7 @@ const Step1 = ({form, change, next}) => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className='space-y-2'>
                             <label htmlFor="firstName" className="text-navy text-sm font-semibold">
                                 First name <span className="text-red">*</span>
@@ -155,7 +155,7 @@ const Step1 = ({form, change, next}) => {
                         />
                         {errors.address && (<p id='address-err' role='alert' className="text-xs text-red">{errors.address}</p>)}
                     </div>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className='space-y-2'>
                             <label htmlFor="town" className="text-navy text-sm font-semibold">Town</label>
                             <input type="text" id="town" name="town" value={form.town}

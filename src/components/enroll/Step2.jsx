@@ -67,7 +67,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
 
 
             <form className="space-y-4">
-                <div className="grid grid-cols-[2fr_2fr_1fr] gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-[2fr_2fr_1fr] gap-4">
                     <div className="space-y-2">
                         <label className="text-sm text-navy font-semibold" htmlFor="studentSurname">
                             Surname <span className="text-red">*</span>
@@ -120,7 +120,7 @@ const Step2 = ({form, setForm, change, next, back}) => {
                     {errors.studentID && (<p id='studentID-err' role='alert' className="text-xs text-red">{errors.studentID}</p>)}
                 </div>
 
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     <div className="space-y-2">
                         <label htmlFor="gender" className="text-sm text-navy font-semibold">Gender</label>
                         <div className="flex items-center gap-4">
@@ -217,11 +217,6 @@ const Step2 = ({form, setForm, change, next, back}) => {
                         {errors.grade && (<p id='grade-err' role='alert' className="text-xs text-red">{errors.grade}</p>)}
                     </div>
                 </div>
-
-                {/*<p className="bg-cream text-navy text-sm p-2">*/}
-                {/*    <span className="bg-navy inline-flex items-center justify-center w-5 h-5 rounded-full text-white mr-2">i</span>*/}
-                {/*    You'll attach proof of ID or passport in the next step. JPG, PNG, or PDF up to 5MB.*/}
-                {/*</p>*/}
 
                 <div className='border border-navy/15'/>
 
