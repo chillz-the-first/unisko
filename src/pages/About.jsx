@@ -10,21 +10,21 @@ const tutors = [
         'xp': '6 years',
         'description': 'Specialises in catching kids who\'ve decided maths isn\'t for them',
         'ratio': '4/5',
-        'margin': 'mt-0',
+        'margin': 'md:mt-0',
     },
     {
         'name': 'Ayanda Z.',
         'xp': '5 years',
         'subject': 'English & Reading',
         'ratio': '1/1',
-        'margin': 'mt-8',
+        'margin': 'md:mt-8',
     },
     {
         'name': 'Lerato D.',
         'xp': '4 years',
         'subject': 'Science',
         'ratio': '4/5',
-        'margin': 'mt-4',
+        'margin': 'md:mt-4',
     },
 ];
 
@@ -36,7 +36,7 @@ const About = () => {
                 <section className="bg-navy py-16 px-10">
                     <div className="max-w-6xl mx-auto relative">
                         <SectionStart color='muted'>OUR MANIFESTO</SectionStart>
-                        <h1 className="text-white text-6xl font-semibold font-serif mb-4 max-w-2xl">
+                        <h1 className="text-white font-semibold font-serif mb-4 max-w-2xl text-4xl md:text-5xl lg:text-6xl">
                             Tutoring is how kids stop falling behind.
                         </h1>
                         <p className="text-white/70 max-w-lg">
@@ -45,7 +45,7 @@ const About = () => {
                             We're the people who do.
                         </p>
 
-                        <div className="absolute bottom-0 right-0">
+                        <div className="static text-right md:absolute md:bottom-0 md:right-0 md:text-left">
                             <p className="text-white/30 font-serif text-7xl font-semibold">200+</p>
                             <p className="text-white/30 text-xs tracking-kicker uppercase">students · since 2020</p>
                         </div>
@@ -54,7 +54,7 @@ const About = () => {
 
                 {/*Mission section*/}
                 <section className="bg-white py-16 px-10">
-                    <div className="max-w-6xl mx-auto grid grid-cols-[1fr_2fr] gap-20 items-start">
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:gap-20 items-start">
                         <div>
                             <SectionStart>MISSION</SectionStart>
                             <h2 className="font-serif text-navy text-4xl font-semibold">Helping every student thrive.</h2>
@@ -75,8 +75,8 @@ const About = () => {
 
                 {/*Vision section*/}
                 <section className="bg-cream py-16 px-10">
-                    <div className="max-w-6xl mx-auto grid grid-cols-[2fr_1fr] gap-20">
-                        <div className="space-y-4">
+                    <div className="max-w-6xl mx-auto grid grid-cols-1 gap-4 md:grid-cols-[2fr_1fr] md:gap-20">
+                        <div className="space-y-4 order-last md:order-first">
                             <p>
                                 We see a future where every child finishes high school feeling capable.
                                 Not because they were the smartest in the room, but because someone took the
@@ -104,7 +104,7 @@ const About = () => {
                             </h2>
                         </div>
 
-                        <div className="grid grid-cols-[1.6fr_1fr] gap-4">
+                        <div className="grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-4">
                             <PrincipleCard number='01' title='Patience first' variant='navy'
                                 body='No shame around struggle. Every kid moves at their own pace, and
                                 our tutors are trained to wait without rushing.'
@@ -133,7 +133,7 @@ const About = () => {
                             <h2 className="font-serif text-navy text-4xl font-semibold">Meet the tutors.</h2>
                         </div>
 
-                        <div className="grid grid-cols-[1.3fr_1fr_1fr] gap-4 items-start">
+                        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr_1fr] gap-4 items-start">
                             {tutors.map((tutor) => (
                                 <div key={tutor.name} className={tutor.margin}>
                                     <Placeholder aspectRatio={tutor.ratio} label={tutor.name} />
