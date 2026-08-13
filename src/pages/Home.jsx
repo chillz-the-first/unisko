@@ -30,13 +30,13 @@ const Home = () => {
             {/*Hero section*/}
             <section className="bg-cream">
                 {/*Hero section — TODO: full-bleed cream/navy backgrounds to screen edges*/}
-                <div className="max-w-6xl mx-auto grid grid-cols-[1.17fr_1fr] w-full">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1.17fr_1fr] w-full">
                     <div className="bg-cream py-16 px-6">
                         <SectionStart>SINCE 2020 · FREEDOM PARK</SectionStart>
-                        <h1 className="font-serif text-navy my-4 text-6xl font-semibold">
-                            Over five years <br/>of helping <br/>kids stop <br/>falling behind.
+                        <h1 className="font-serif text-navy my-4 font-semibold text-5xl md:text-6xl lg:text-6xl max-w-[410px]">
+                            Over five years of helping kids stop falling behind.
                         </h1>
-                        <p className="my-2">
+                        <p className="my-2 max-w-md">
                             A tutor who shows up. An open loop for parents. Progress you can see in twelve weeks
                         </p>
                         <div className="flex gap-6 my-4">
@@ -47,28 +47,29 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="bg-navy py-16 px-10">
+                    <div className="bg-navy py-16 px-10 md:text-right lg:text-left">
                         <SectionStart color='muted'>BY THE NUMBERS</SectionStart>
-                        <p className="font-serif text-white text-7xl">1:8</p>
-                        <p className="text-white text-xs">Tutor to student ratio</p>
+                        <p className="font-serif text-white text-5xl md:text-6xl lg:text-7xl">1:8</p>
+                        <p className="text-white lg:text-xs">Tutor to student ratio</p>
                         <hr className="h-[1px] bg-white/10 my-6 border-0"/>
 
-                        <p className="font-serif text-white text-5xl">12 wks</p>
-                        <p className="text-white text-xs">to a full level jump</p>
+                        <p className="font-serif text-white text-4xl md:text-5xl">12 wks</p>
+                        <p className="text-white text-sm lg:text-xs">to a full level jump</p>
                         <hr className="h-[1px] bg-white/10 my-6 border-0"/>
-                        <p className="font-serif text-white text-5xl">K-12</p>
-                        <p className="text-white text-xs">Every grade, no exceptions</p>
+
+                        <p className="font-serif text-white text-4xl md:text-5xl">1-12</p>
+                        <p className="text-white text-sm lg:text-xs">Every grade, no exceptions</p>
                     </div>
                 </div>
             </section>
 
             {/*About section*/}
             <section className="py-16 px-10 bg-white">
-                <div className="max-w-6xl mx-auto grid grid-cols-2 gap-12 items-center">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div>
                         <SectionStart>ABOUT UNISKO</SectionStart>
                         <h2 className="text-navy text-4xl font-serif my-2">We started with four students in a garage.</h2>
-                        <p className="text-muted my-2">
+                        <p className="text-muted my-2 md:max-w-xl">
                             Today we serve every grade from K to 12, and we still know every student's name. No
                             franchise model. No rotating substitutes.
                         </p>
@@ -77,7 +78,8 @@ const Home = () => {
 
                     <div className="relative">
                         <Placeholder aspectRatio='4/5' label='CLASSROOM'/>
-                        <blockquote className="absolute -bottom-9 -left-10 bg-navy font-serif text-white italic p-6 rounded-lg">
+                        <blockquote className="static lg:absolute w-fit bg-navy font-serif text-white italic p-6 rounded-lg
+                            lg:-bottom-9 lg:-left-10">
                             "We know every student's name."
                         </blockquote>
                     </div>
@@ -90,7 +92,7 @@ const Home = () => {
                     <SectionStart color='muted'>OUR APPROACH</SectionStart>
                     <h2 className="text-white text-4xl font-serif mb-10">One tutor. One plan. Real progress.</h2>
 
-                    <div className="grid grid-cols-[1.4fr_1fr_1fr] gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-6">
                         <p className="text-white/75">
                             Every child gets a dedicated tutor matched to their grade, subjects, and pace.
                             No rotating substitutes. No mystery curriculum. A plan you can read in plain language.
@@ -110,13 +112,13 @@ const Home = () => {
             {/*Subjects section*/}
             <section className="py-16 px-10 bg-cream">
                 <div className="max-w-6xl mx-auto">
-                    <div className="flex justify-between items-baseline mb-8 gap-6">
+                    <div className="flex  flex-col md:flex-row justify-between items-baseline mb-8 gap-6">
                         <div>
                             <SectionStart>WHAT WE COVER</SectionStart>
-                            <h2 className="text-4xl font-serif text-navy">Twelve subjects.<br/>Specialist tutors only.
+                            <h2 className="text-4xl font-serif text-navy max-w-sm">Twelve subjects. Specialist tutors only.
                             </h2>
                         </div>
-                        <p className="text-muted text-right max-w-xs">
+                        <p className="text-muted text-center max-w-xs md:text-right">
                             K-12, taught by tutors who specialise, never by generalists trying to wing it.
                         </p>
                     </div>
@@ -138,10 +140,10 @@ const Home = () => {
                         <h2 className="text-4xl font-serif text-navy">What parents say.</h2>
                     </div>
 
-                    <div className="grid grid-cols-[1.5fr_1fr] gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-4">
                         <div className="bg-cream p-6 border-l-4 border-red rounded-lg">
                             <p className="text-red">★★★★★</p>
-                            <blockquote className="font-serif text-navy text-2xl my-3">"{testimonials[0].quote}"
+                            <blockquote className="font-serif text-navy my-3 text-xl md:text-2xl">"{testimonials[0].quote}"
                             </blockquote>
                             <p className="text-navy">{testimonials[0].name}</p>
                             <p className="text-muted">Parent of {testimonials[0].grade}</p>

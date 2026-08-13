@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 const CTASection = ({headline, body, primaryLabel, primaryTo, secondaryLabel, secondaryTo}) => {
     return (
         <div className="py-16 px-10 bg-navy">
-            <div className="max-w-6xl mx-auto grid grid-cols-[2fr_1fr] gap-4">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
                 <div>
                     <h2 className="text-white text-4xl font-serif my-4 font-semibold">{headline}</h2>
                     <p className="text-white/75">{body}</p>
