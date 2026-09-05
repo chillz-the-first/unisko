@@ -1,30 +1,49 @@
 import SectionStart from "../components/SectionStart.jsx";
 import PrincipleCard from "../components/PrincipleCard.jsx";
-import Placeholder from "../components/Placeholder.jsx";
 import CTASection from "../components/CTASection.jsx";
+import Carousel from "../components/Carousel.jsx";
 
 const tutors = [
     {
-        'name': 'Nkosinathi M.',
-        'subject': 'Mathematics',
-        'xp': '6 years',
-        'description': 'Specialises in catching kids who\'ve decided maths isn\'t for them',
-        'ratio': '4/5',
-        'margin': 'md:mt-0',
+        name: 'Nkosinathi Mlambo',
+        src: "/images/nathi.jpg",
+        alt: "Picture of the founder, Nkosinathi Mlambo",
+        subject: 'English, Mathematical Literacy, Life Sciences, Geography, Business Studies',
     },
     {
-        'name': 'Ayanda Z.',
-        'xp': '5 years',
-        'subject': 'English & Reading',
-        'ratio': '1/1',
-        'margin': 'md:mt-8',
+        name: 'Siphesihle Martin',
+        src: "/images/martin.jpg",
+        alt: "Picture of tutor, Siphesihle Martin",
+        subject: 'Mathematics, isiZulu, Physical Sciences',
+        grade: "FET (10-12)"
     },
     {
-        'name': 'Lerato D.',
-        'xp': '4 years',
-        'subject': 'Science',
-        'ratio': '4/5',
-        'margin': 'md:mt-4',
+        name: "Zodwa Mazibuko",
+        src: "/images/mazibuko.jpg",
+        alt: "Picture of tutor, Zodwa Mazibuko",
+        subject: 'English, Mathematics, isiZulu',
+        grade: "Foundation phase"
+    },
+    {
+        name: 'Nokukhanya Mlambo',
+        src: "/images/mlambo.jpg",
+        alt: "Picture of tutor, Nokukhanya Mlambo",
+        subject: 'English, Mathematics',
+        grade: "Foundation phase"
+    },
+    {
+        name: 'Ayanda Nkosi',
+        src: "/images/nkosi.jpg",
+        alt: "Picture of tutor, Ayanda Nkosi",
+        subject: 'English, Mathematics (Intermediate phase), History',
+        grade: "FET (10-12)"
+    },
+    {
+        name: 'Prudence Ramaqhele',
+        src: "/images/ramaqhele.jpg",
+        alt: "Picture of tutor, Prudence Ramaqhele",
+        subject: 'English, Mathematics, Sesotho',
+        grade: 'Intermediate phase',
     },
 ];
 
@@ -133,18 +152,7 @@ const About = () => {
                             <h2 className="font-serif text-navy text-4xl font-semibold">Meet the tutors.</h2>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-[1.3fr_1fr_1fr] gap-4 items-start">
-                            {tutors.map((tutor) => (
-                                <div key={tutor.name} className={tutor.margin}>
-                                    <Placeholder aspectRatio={tutor.ratio} label={tutor.name} />
-                                    <div className="space-y-2">
-                                        <h3 className="text-navy font-serif text-2xl mt-3">{tutor.name}</h3>
-                                        <p className="text-muted text-sm">{tutor.subject} · {tutor.xp}</p>
-                                        {tutor.description && <p className='text-sm'>{tutor.description}</p>}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                        <Carousel images={tutors}/>
                     </div>
                 </section>
 
