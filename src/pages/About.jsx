@@ -2,6 +2,7 @@ import SectionStart from "../components/SectionStart.jsx";
 import PrincipleCard from "../components/PrincipleCard.jsx";
 import CTASection from "../components/CTASection.jsx";
 import Carousel from "../components/Carousel.jsx";
+import {useRef} from "react";
 
 const tutors = [
     {
@@ -48,6 +49,14 @@ const tutors = [
 ];
 
 const About = () => {
+    const trackRef = useRef(null);
+
+    function scroll (direction) {
+        const track = trackRef.current;
+        const amount = track.clientWidth + 16;
+        track.scrollBy({left: direction * amount, behavior: 'smooth'});
+    }
+
     return (
         <div>
             <div>
@@ -147,12 +156,25 @@ const About = () => {
                 {/*Team section*/}
                 <section className="bg-cream py-16 px-10">
                     <div className="max-w-6xl mx-auto space-y-8">
-                        <div>
-                            <SectionStart>THE TEAM</SectionStart>
-                            <h2 className="font-serif text-navy text-4xl font-semibold">Meet the tutors.</h2>
+                        <div className="flex justify-between items-center">
+                            <div>
+                                <SectionStart>THE TEAM</SectionStart>
+                                <h2 className="font-serif text-navy text-4xl font-semibold">Meet the tutors.</h2>
+                            </div>
+                            <div className="flex gap-2">
+                                <button type="button" onClick={() => scroll(-1)} aria-label="Previous tutors"
+                                    className="bg-transparent text-navy border-navy border-2 rounded-full px-2 py-1
+                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                >←</button>
+                                <button type="button" onClick={() => scroll(1)} aria-label="Next tutors"
+                                    className="bg-transparent text-navy border-navy border-2 rounded-full px-2 py-1
+                                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+                                >→</button>
+                            </div>
                         </div>
 
-                        <Carousel images={tutors}/>
+
+                        <Carousel items={tutors} trackRef={trackRef}/>
                     </div>
                 </section>
 
