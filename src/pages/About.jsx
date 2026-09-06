@@ -174,7 +174,9 @@ const About = () => {
                         </div>
 
 
-                        <Carousel items={tutors} trackRef={trackRef}/>
+                        <Carousel items={tutors} trackRef={trackRef}
+                            cardWidth="w-full md:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+                        />
                     </div>
                 </section>
 

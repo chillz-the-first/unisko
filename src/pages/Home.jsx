@@ -1,7 +1,7 @@
 import SectionStart from "../components/SectionStart.jsx";
 import {Link} from "react-router-dom";
-import Placeholder from "../components/Placeholder.jsx";
 import CTASection from "../components/CTASection.jsx";
+import Carousel from "../components/Carousel.jsx";
 
 const  subjects = ['Mathematics', 'English', 'Science', 'Reading & Writing', 'Algebra', 'Biology',
     'Chemistry', 'Physics', 'History', 'Geography', 'Afrikaans', 'IsiZulu'];
@@ -23,6 +23,13 @@ const testimonials = [
         'grade': 'Grade 10',
     },
 ];
+
+const images = [
+    {src: "/images/stu_group_pic_1.jpg", alt: "First group picture of students"},
+    {src: "/images/group_pic_1.jpg", alt: "First group picture of staff"},
+    {src: "/images/stu_group_pic_2.jpg", alt: "Second group picture of students"},
+    {src: "/images/group_pic_2.jpg", alt: "Second group picture of staff"},
+]
 
 const Home = () => {
     return (
@@ -77,7 +84,8 @@ const Home = () => {
                     </div>
 
                     <div className="relative">
-                        <Placeholder aspectRatio='4/5' label='CLASSROOM'/>
+                        <Carousel items={images} cardWidth="w-full" ratio="aspect-video" autoScroll/>
+
                         <blockquote className="static lg:absolute w-fit bg-navy font-serif text-white italic p-6 rounded-lg
                             lg:-bottom-9 lg:-left-10">
                             "We know every student's name."
