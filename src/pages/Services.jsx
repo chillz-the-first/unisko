@@ -2,19 +2,46 @@ import SectionStart from "../components/SectionStart.jsx";
 import Placeholder from "../components/Placeholder.jsx";
 import ServiceBlock from "../components/ServiceBlock.jsx";
 import {Link} from "react-router-dom";
+import PackageCard from "../components/PackageCard.jsx";
 
 const flagshipFeatures = [
     'K-12 grades', 'Healthy snack', 'Weekly emails', 'Small groups', 'Drop-off', 'Quiet study space'
-];
-const onlineFeatures = [
-    'All subjects K-12', 'Same tutor weekly', 'Sessions recorded',
-    'Homework support', 'Parent dashboard', 'Reschedule anytime'
 ];
 const groupFeatures = [
     'Cohorts of 4-6', 'Peer learning', 'Lower per-hour rate', 'Termly progress reports'
 ]
 const homeworkFeatures = [
     'No booking needed', 'Any subject', 'Snack & water', 'Stay as long as needed'
+]
+
+const packages = [
+    {
+        name: "Unisko Basic",
+        price: "R149",
+        tag: "Entry",
+        features: ["English recorded lessons, once a week", "Worksheets", "Study notes", "Past papers", "Monthly test"],
+        featured: false,
+        msg: "Hi%20Unisko%2C%20I'm%20interested%20in%20Unisko%20Basic",
+    },
+    {
+        name: "Unisko Plus",
+        price: "R300",
+        inherits: "Everything in Basic, plus",
+        features: ["Weekly recorded lessons, English and Maths", "Teacher interaction",
+            "Marked activities", "Monthly progress report"],
+        featured: true,
+        msg: "Hi%20Unisko%2C%20I'm%20interested%20in%20Unisko%20Plus",
+    },
+    {
+        name: "Unisko Premium",
+        price: "R499",
+        tag: "Full support",
+        inherits: "Everything in Plus, plus",
+        features: ["Two weekly recorded lessons, English and Maths", "Live lessons once a week", "Exam preparation",
+            "Personalised academic support", "Parent progress reports", "Priority tutoring and support"],
+        featured: false,
+        msg: "Hi%20Unisko%2C%20I'm%20interested%20in%20Unisko%20Premium",
+    },
 ]
 
 const Services = () => {
@@ -57,19 +84,12 @@ const Services = () => {
 
             {/*Online tutorial section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1.5fr_1fr] items-center gap-10">
-                    <ServiceBlock
-                        kicker='FLEXIBLE · 7 DAYS A WEEK'
-                        title='Online Tutorials'
-                        price='R200'
-                        duration='hour'
-                        body='1-on-1 video sessions, anywhere. Same dedicated tutor every week.
-                        Sessions are recorded so your child can rewatch tricky parts.'
-                        features={onlineFeatures}
-                        variant='white'
-                        featureGrid
-                    />
-                    <Placeholder aspectRatio='3/4' label='LAPTOP · ONLINE'/>
+                <div className="max-w-6xl mx-auto space-y-8">
+                    <div className="space-y-2">
+                        <SectionStart>FLEXIBLE · 7 DAYS A WEEK</SectionStart>
+                        <h2 className="font-serif text-navy font-semibold text-3xl">Online Packages</h2>
+                    </div>
+                    <PackageCard packages={packages} />
                 </div>
             </section>
 
