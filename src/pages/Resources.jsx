@@ -7,8 +7,10 @@ const courses = [
     {title: "Grade 10 Geometry", subject: "Mathematics", price: "R199"},
     {title: "Grade 11 Functions", subject: "Mathematics", price: "R199"},
     {title: "Grade 12 Trigonometry", subject: "Mathematics", price: "R199"},
+    {title: "Grade 12 Financial Mathematics", subject: "Mathematics", price: "R199"},
     {title: "How to Write a Great Essay", subject: "English", price: "R199"},
     {title: "Comprehension Masterclass", subject: "English", price: "R199"},
+    {title: "Grammar Masterclass", subject: "English", price: "R199"},
     {title: "Grade 12 Literature", subject: "English", price: "R199"},
     {title: "Creative Writing", subject: "English", price: "R199"},
 ];
@@ -43,10 +45,10 @@ const Resources = () => {
 
             {/*Courses section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto space-y-3">
+                <div className="max-w-6xl mx-auto space-y-4">
                     <div className="space-y-3">
                         <SectionStart>RECORDED COURSES</SectionStart>
-                        <h2 className="font-serif font-semibold text-navy text-3xl md:text-4xl lg:text-5xl">
+                        <h2 className="font-serif font-semibold text-navy text-2xl md:text-3xl lg:text-4xl">
                             Every course, R199
                         </h2>
                         <p className="text-sm text-body bg-cream p-3 border-l-2 border-l-red">
@@ -55,7 +57,7 @@ const Resources = () => {
                     </div>
 
                     <div className="space-y-2">
-                        <p className="text-sm tracking-kicker font-medium text-muted">MATHEMATICS</p>
+                        <p className="text-xs tracking-kicker font-medium text-muted">MATHEMATICS</p>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             {courses.filter((course) => (course.subject === "Mathematics"))
                                 .map((course) => (
@@ -82,12 +84,12 @@ const Resources = () => {
                 </div>
             </section>
 
-            {/*Courses section*/}
+            {/*Packages section*/}
             <section className="bg-navy py-16 px-10">
-                <div className="max-w-6xl mx-auto space-y-3">
+                <div className="max-w-6xl mx-auto space-y-4">
                     <div className="space-y-2">
                         <SectionStart color="muted">DIGITAL STUDY PACKS</SectionStart>
-                        <h2 className="font-serif font-semibold text-white text-3xl md:text-4xl lg:text-5xl">
+                        <h2 className="font-serif font-semibold text-white text-2xl md:text-3xl lg:text-4xl">
                             Study Packs
                         </h2>
                         <p className="text-white/70">
@@ -99,8 +101,8 @@ const Resources = () => {
                         {packs.map((pack) => (
                             <div key={pack.title}
                                  className={`flex justify-between items-center ${
-                                     pack.bundle ? "border border-red rounded-md bg-red/30 px-4 py-4 mt-2" : 
-                                         "border-b border-b-muted py-3"
+                                     pack.bundle ? "border border-red rounded-md bg-red/30 px-4 py-4 mt-3" : 
+                                         "border-b border-b-white/25 py-3"
                                  }`}>
                                 <div>
                                     <p className="text-white font-semibold">{pack.title}</p>
@@ -114,12 +116,12 @@ const Resources = () => {
                 </div>
             </section>
 
-            {/*Courses section*/}
+            {/*CTA section*/}
             <section className="bg-white py-16 px-10">
-                <div className="max-w-6xl mx-auto space-y-3 grid place-items-center">
-                    <h3 className="font-serif font-semibold text-navy text-2xl md:text-3xl lg:text-4xl">
+                <div className="max-w-6xl mx-auto flex flex-col items-center gap-4">
+                    <h2 className="font-serif font-semibold text-navy text-2xl md:text-3xl lg:text-4xl">
                         How to buy
-                    </h3>
+                    </h2>
                     <p className="text-body/80">
                         Message us on WhatsApp or visit the centre at 43 Oil Avenue, Freedom Park.
                         We'll sort out payment and get the material to you.
