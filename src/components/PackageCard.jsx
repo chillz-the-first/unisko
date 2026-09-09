@@ -13,7 +13,7 @@ const PackageCard = ({packages}) => {
     ]
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-3 items-stretch h-full gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             {packages.map(item => {
                 const style = item.featured ? styles[1] : styles[0];
 
