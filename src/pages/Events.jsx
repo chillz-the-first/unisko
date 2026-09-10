@@ -1,4 +1,5 @@
 import SectionStart from "../components/SectionStart.jsx";
+import EmptyState from "../components/EmptyState.jsx";
 
 const Events = () => {
     return (
@@ -15,6 +16,13 @@ const Events = () => {
                             Excursions, workshops, fundraisers, and parent meetings. This is where we post what' coming up.
                         </p>
                     </div>
+                </div>
+            </section>
+
+            {/*Events section*/}
+            <section className="bg-white py-16 px-10">
+                <div className="max-w-6xl mx-auto">
+                    <EmptyState/>
                 </div>
             </section>
         </div>
