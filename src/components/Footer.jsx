@@ -36,8 +36,6 @@ const pages = [
     {to:'/enroll', label:'Enroll'},
 ];
 
-const subjects = ['Mathematics', 'English', 'Science', 'Reading & Writing'];
-
 const Footer = () => {
     return (
         <footer className="bg-navy text-white">
@@ -78,13 +76,16 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/*Subjects*/}
+                    {/*Extras*/}
                     <div>
-                        <div className="text-[10px] tracking-kicker text-white/50 mb-4">SUBJECTS</div>
+                        <p className="text-[10px] tracking-kicker text-white/50 mb-4">EXPLORE</p>
                         <ul className="space-y-2">
-                            {subjects.map((subject) => (
-                                <li key={subject} className="text-sm text-white/80">{subject}</li>
-                            ))}
+                            <li>
+                                <Link to="/resources" className="text-sm text-white/80 hover:text-white">Resources</Link>
+                            </li>
+                            <li>
+                                <Link to="/events" className="text-sm text-white/80 hover:text-white">Events</Link>
+                            </li>
                         </ul>
                     </div>
 
