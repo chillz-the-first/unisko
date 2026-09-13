@@ -10,6 +10,7 @@ const navItems = [
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [ExtraOpen, setExtraOpen] = useState(false);
 
     return (
         <header className="bg-white border-b border-navy/10 relative">
@@ -32,6 +33,20 @@ const Navbar = () => {
                             {item.label}
                         </NavLink>
                     ))}
+
+                    <div className="relative">
+                        <button onClick={() => setExtraOpen(!ExtraOpen)} aria-expanded={ExtraOpen}
+                            aria-haspopup={true}
+                            className="text-muted bover:text-navy transition-colors"
+                        >Extras {ExtraOpen ? "▲" : "▼"}</button>
+                        {ExtraOpen && (
+                            <div className="absolute top-full left-0 bg-white rounded-md p-4 flex flex-col gap-2">
+                                <Link to="/resources" onClick={() => setExtraOpen(false)}>Resources</Link>
+                                <Link to="/events" onClick={() => setExtraOpen(false)}>Events</Link>
+                            </div>
+                        )}
+                    </div>
+
                     <Link
                         to='/enroll'
                         className='bg-red text-white px-4 py-1.5 rounded-full text-xs font-medium
