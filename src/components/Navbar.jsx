@@ -57,8 +57,14 @@ const Navbar = () => {
                         {extraOpen && (
                             <div className="absolute top-full left-0 bg-white rounded-md p-4 flex flex-col gap-2
                              border border-navy/10 shadow-xl z-50">
-                                <Link to="/resources" onClick={() => setExtraOpen(false)}>Resources</Link>
-                                <Link to="/events" onClick={() => setExtraOpen(false)}>Events</Link>
+                                <NavLink to="/resources" onClick={() => setExtraOpen(false)}
+                                    className={({isActive}) =>
+                                        isActive ? 'text-navy font-medium' : 'text-muted hover:text-navy transition-colors'}
+                                >Resources</NavLink>
+                                <NavLink to="/events" onClick={() => setExtraOpen(false)}
+                                    className={({isActive}) =>
+                                        isActive ? 'text-navy font-medium' : 'text-muted hover:text-navy transition-colors'}
+                                >Events</NavLink>
                             </div>
                         )}
                     </div>
@@ -93,6 +99,16 @@ const Navbar = () => {
                             {item.label}
                         </NavLink>
                     ))}
+
+                    <NavLink to="/resources" onClick={() => setMenuOpen(false)}
+                        className={({isActive}) =>
+                            isActive ? 'text-navy font-medium' : 'text-muted hover:text-navy transition-colors'}
+                    >Resources</NavLink>
+                    <NavLink to="/events" onClick={() => setMenuOpen(false)}
+                        className={({isActive}) =>
+                            isActive ? 'text-navy font-medium' : 'text-muted hover:text-navy transition-colors'}
+                    >Events</NavLink>
+
                     <Link to='/enroll' onClick={() => {setMenuOpen(false)}}
                         className="bg-red text-white px-4 py-1.5 rounded-full font-medium
                         hover:opacity-90 transition-opacity"
