@@ -1,5 +1,5 @@
 import {NavLink, Link} from 'react-router-dom'
-import {useState} from "react";
+import {useState, useEffect, useRef} from "react";
 
 const navItems = [
     {to: '/', label: 'Home'},
@@ -10,7 +10,22 @@ const navItems = [
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
-    const [ExtraOpen, setExtraOpen] = useState(false);
+    const [extraOpen, setExtraOpen] = useState(false);
+
+    const extraRef = useRef(null);
+
+    useEffect(() => {
+        if (!extraOpen) return;
+
+        function handleClick(e) {
+            if (extraRef.current && !extraRef.current.contains(e.target)) {
+                setExtraOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClick);
+        return () => document.removeEventListener("mousedown", handleClick);
+    }, [extraOpen])
 
     return (
         <header className="bg-white border-b border-navy/10 relative">
@@ -34,13 +49,14 @@ const Navbar = () => {
                         </NavLink>
                     ))}
 
-                    <div className="relative">
-                        <button onClick={() => setExtraOpen(!ExtraOpen)} aria-expanded={ExtraOpen}
+                    <div className="relative" ref={extraRef}>
+                        <button onClick={() => setExtraOpen(!extraOpen)} aria-expanded={extraOpen}
                             aria-haspopup={true}
-                            className="text-muted bover:text-navy transition-colors"
-                        >Extras {ExtraOpen ? "▲" : "▼"}</button>
-                        {ExtraOpen && (
-                            <div className="absolute top-full left-0 bg-white rounded-md p-4 flex flex-col gap-2">
+                            className="text-muted hover:text-navy transition-colors"
+                        >Extras {extraOpen ? "▲" : "▼"}</button>
+                        {extraOpen && (
+                            <div className="absolute top-full left-0 bg-white rounded-md p-4 flex flex-col gap-2
+                             border border-navy/10 shadow-xl z-50">
                                 <Link to="/resources" onClick={() => setExtraOpen(false)}>Resources</Link>
                                 <Link to="/events" onClick={() => setExtraOpen(false)}>Events</Link>
                             </div>
