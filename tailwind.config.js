@@ -4,26 +4,27 @@ export default {
     theme: {
         extend: {
             colors: {
-                navy: "#0a1e3f", //#004ecd(blue) #0a1e3f(navy)
+                navy: "#0a1e3f",
+                body: "#243552",
                 red: "#c80f2d",
+                "red-hover": "#a90c26",
                 cream: "#f5f6f8",
                 muted: "#5a6477",
-                body: "#2a2e3b",
-                "navy-2": "#243552",
+                line: "rgba(10, 30, 63, 0.12)",
                 focus: "#2f6fed",
                 danger: "#b3261e",
+                success: "#1d7a46",
                 "field-border": "#8a93a3",
             },
             fontFamily: {
-                serif: ['Fraunces', "serif"],
-                sans: ["Inter", "system-ui", "sans-serif"],
-                display: ["Figtree", "system-ui", "sans-serif"],
+                sans: ["Figtree", "system-ui", "sans-serif"],
             },
-            letterSpacing: {
-                display: "-0.028em",
-                headline: "-0.022em",
-                kicker: "0.18em",
-            },
+            fontSize: {
+                display: ["clamp(2.75rem, 7.2vw, 5.25rem)", {lineHeight: "1.04", letterSpacing: "-0.028em"}],
+                headline : ["clamp(2rem, 4.8vw, 3.5rem)", {lineHeight: "1.07", letterSpacing: "-0.022em"}],
+                title: ["1.75rem", {lineHeight: "1.1", letterSpacing: "-0.02em"}],
+                lede: ["clamp(1.1875rem, 2.2vw, 1.5rem)", {lineHeight: "1.35", letterSpacing: "-0.01em"}],
+            }
         },
     },
     plugins: [],
