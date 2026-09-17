@@ -5,19 +5,23 @@ export default {
         extend: {
             colors: {
                 navy: "#0a1e3f", //#004ecd(blue) #0a1e3f(navy)
-                red: "#c8102e",
-                cream: "#f5f6fa",
-                ink: "#1a1a1a",
-                muted: "#5a5e6b",
+                red: "#c80f2d",
+                cream: "#f5f6f8",
+                muted: "#5a6477",
                 body: "#2a2e3b",
+                "navy-2": "#243552",
+                focus: "#2f6fed",
+                danger: "#b3261e",
+                "field-border": "#8a93a3",
             },
             fontFamily: {
-                serif: ['"Fraunces"', "serif"],
-                sans: ['"Inter"', "system-ui", "sans-serif"],
+                serif: ['Fraunces', "serif"],
+                sans: ["Inter", "system-ui", "sans-serif"],
+                display: ["Figtree", "system-ui", "sans-serif"],
             },
             letterSpacing: {
-                tightest: "-0.025em",
-                tighter: "-0.02em",
+                display: "-0.028em",
+                headline: "-0.022em",
                 kicker: "0.18em",
             },
         },
