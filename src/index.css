@@ -3,9 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        scrollbar-gutter: stable;
+    }
+
     body {
-        font-family: theme("fontFamily.sans");
-        color: theme("colors.ink");
-        background: white;
+        @apply font-sans text-navy bg-white;
+        font-size: 1.0625rem;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    :focus-visible {
+        outline: 3px solid theme("colors.focus");
+        outline-offset: 3px;
+    }
+
+    h1:focus, h2:focus {
+        outline: none;
+    }
+
+    img {
+        @apply block max-w-full;
     }
 }
