@@ -39,7 +39,7 @@ const Footer = () => {
             <div className="max-w-wrap mx-auto px-6 py-10">
                 <div className="grid grid-cols-1 ml:grid-cols-2 border-b border-line pb-4">
                     <div className="space-y-2 mb-2">
-                        <img src="/images/logo.png" alt="Unisko logo" className="h-6 w-auto"/>
+                        <Link to="/"><img src="/images/logo.png" alt="Unisko logo" className="h-6 w-auto"/></Link>
                         <p className="text-muted text-sm max-w-56">
                             After-school tutoring rooted in patience, progress and partnership with parents.
                         </p>

@@ -27,7 +27,7 @@ const Navbar = () => {
     return (
         <header className="bg-white/80 backdrop-blur-md h-[3.5rem] sticky top-0 z-50 w-full">
             <div className="max-w-wrap mx-auto px-6 flex items-center justify-between h-full">
-                <Link to="/"className="flex items-center min-h-[44px]">
+                <Link to="/" className="flex items-center min-h-[44px]">
                     <img src="/images/logo.png" alt="Unisko logo" className="h-6 w-auto"/>
                 </Link>
 
