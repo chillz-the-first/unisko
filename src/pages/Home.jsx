@@ -1,6 +1,7 @@
 import Section from "../components/Section.jsx";
 import Button from "../components/Button.jsx";
 import Arrowlink from "../components/Arrowlink.jsx";
+import Tile from "../components/Tile.jsx";
 
 const stats = [
     {value: "135+", label: "Learners enrolled"},
@@ -8,6 +9,68 @@ const stats = [
     {value: "1:15", label: "Tutor to learner ratio"},
     {value: "1 Term", label: "For a full level jump"},
 ];
+
+const packages = [
+    {
+        title: "After-School Program",
+        details: "Monday to Friday, 3:00 to 5:30 PM",
+        body: "Drop-off from school, supervised study, a snack, and dedicated tutor time.",
+        price: "R500",
+        duration: "per month",
+        btnTo: "/services",
+        btnText: "Learn more",
+        btnTextColor: "white",
+        tone: "navy",
+        span: "ml:col-span-4",
+    },
+    {
+        title: "Group Classes",
+        details: "Tuesday and Thursday, 4:00 to 5:30 PM",
+        body: "Small cohorts of 4 to 6 learners.",
+        price: "R250",
+        duration: "per month",
+        tone: "white",
+        span: "ml:col-span-2",
+    },
+    {
+        title: "Homework Help",
+        details: "Monday to Friday, 3:00 to 6:00 PM",
+        body: "Walk in, no booking needed.",
+        price: "R250",
+        duration: "per visit",
+        tone: "white",
+        span: "ml:col-span-2",
+    },
+    {
+        title: "Online Packages",
+        details: "Learn from home",
+        body: "Recorded lessons, worksheets and monthly tests, with live lessons on Premium.",
+        price: "From R149",
+        duration: "per month",
+        btnTo: "/services",
+        btnText: "Compare packages",
+        btnTextColor: "red",
+        tone: "white",
+        span: "ml:col-span-4",
+    },
+
+];
+const toneStyles = {
+    navy : {
+        title: "text-white",
+        detail: "text-white/80",
+        body: "text-white/80",
+        price: "text-white",
+        duration: "text-white/80",
+    },
+    white: {
+        title: "text-navy",
+        detail: "text-muted",
+        body: "text-body",
+        price: "text-body",
+        duration: "text-muted",
+    },
+};
 
 const Home = () => {
     return (
@@ -41,6 +104,44 @@ const Home = () => {
                             </div>
                         ))}
                     </div>
+                </div>
+            </Section>
+
+            {/*Package Section*/}
+            <Section tone="cream">
+                <div className="space-y-4 mb-8">
+                    <h2 className="text-headline text-navy font-semibold">Four ways to learn.</h2>
+                    <p className="text-lede text-muted">At the centre on weekday afternoons or from home.</p>
+                </div>
+
+                <div className="grid grid-cols-1 ml:grid-cols-6 gap-4">
+                    {packages.map((item) => {
+                        const t = toneStyles[item.tone];
+
+                        return (
+                            <Tile tone={item.tone} key={item.title}
+                                  className={`${item.span} min-h-[14rem] flex flex-col`}
+                            >
+                                <div className="space-y-4">
+                                    <h3 className={`text-title font-semibold ${t.title}`}>{item.title}</h3>
+                                    <p className={`text-sm ${t.detail}`}>{item.details}</p>
+                                    <p className={`max-w-sm ${t.body}`}>{item.body}</p>
+                                </div>
+
+                                <div className="mt-auto pt-6 min-h-[44px] flex flex-wrap items-center justify-between gap-4">
+                                    <p className={`text-title font-semibold tabular-nums ${t.price}`}>
+                                        {item.price}
+                                        <span className={`ml-1.5 text-sm font-normal ${t.duration}`}>{item.duration}</span>
+                                    </p>
+                                    {item.btnTo && (
+                                        <Arrowlink to={item.btnTo} textColor={item.btnTextColor}>
+                                            {item.btnText}
+                                        </Arrowlink>
+                                    )}
+                                </div>
+                            </Tile>
+                        );
+                    })}
                 </div>
             </Section>
         </div>
