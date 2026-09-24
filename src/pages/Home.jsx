@@ -62,6 +62,7 @@ const toneStyles = {
         body: "text-white/80",
         price: "text-white",
         duration: "text-white/80",
+        divider: "border-white/20",
     },
     white: {
         title: "text-navy",
@@ -69,8 +70,16 @@ const toneStyles = {
         body: "text-body",
         price: "text-body",
         duration: "text-muted",
+        divider: "border-line",
     },
 };
+
+const subjectGroups = [
+    {group: "Languages", subjects: ["English", "isiZulu"]},
+    {group: "Mathematics", subjects: ["Mathematics", "Mathematical Literacy"]},
+    {group: "Sciences", subjects: ["Physical Sciences", "Life Sciences"]},
+    {group: "Humanities and Commerce", subjects: ["Geography", "History", "Business Studies"], tone: "navy"},
+];
 
 const Home = () => {
     return (
@@ -139,6 +148,33 @@ const Home = () => {
                                         </Arrowlink>
                                     )}
                                 </div>
+                            </Tile>
+                        );
+                    })}
+                </div>
+            </Section>
+
+            {/*Subjects section*/}
+            <Section>
+                <div className="space-y-4 mb-8">
+                    <h2 className="text-headline text-navy font-semibold">Subjects our tutors teach.</h2>
+                    <p className="text-muted text-lede max-w-[46ch]">
+                        {subjectGroups.reduce((total, g) => total + g.subjects.length, 0)} subjects across languages, maths, the sciences and commerce.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 ml:grid-cols-4 gap-4">
+                    {subjectGroups.map((item) => {
+                        const t = toneStyles[item.tone] || toneStyles.white;
+
+                        return (
+                            <Tile tone={item.tone} key={item.group}>
+                                <h3 className={`font-semibold mb-2 text-lede ${t.title}`}>{item.group}</h3>
+                                <ul className="list-none">
+                                    {item.subjects.map((sub) => (
+                                        <li key={sub} className={`border-t ${t.divider} ${t.body} py-2`}>{sub}</li>
+                                    ))}
+                                </ul>
                             </Tile>
                         );
                     })}
