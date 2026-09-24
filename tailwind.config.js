@@ -31,6 +31,9 @@ export default {
             maxWidth: {
                 wrap: "65rem",
             },
+            borderRadius: {
+                tile: "20px",
+            },
         },
     },
     plugins: [],
