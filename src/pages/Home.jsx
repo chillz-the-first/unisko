@@ -107,13 +107,11 @@ const ctaBtns = [
     {
         type: "btn",
         destination: "/enroll",
-        variant: "white",
         text: "Enroll",
     },
     {
         type: "link",
         destination: "/contact",
-        textColor: "white",
         text: "Contact us",
     },
 ];
