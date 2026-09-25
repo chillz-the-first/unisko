@@ -2,6 +2,7 @@ import Section from "../components/Section.jsx";
 import Button from "../components/Button.jsx";
 import Arrowlink from "../components/Arrowlink.jsx";
 import Tile from "../components/Tile.jsx";
+import CTA from "../components/CTA.jsx";
 
 const stats = [
     {value: "135+", label: "Learners enrolled"},
@@ -99,6 +100,21 @@ const testimonials = [
         name: "[Parent's name]",
         grade: "[Learner's grade]",
         id: 3,
+    },
+];
+
+const ctaBtns = [
+    {
+        type: "btn",
+        destination: "/enroll",
+        variant: "white",
+        text: "Enroll",
+    },
+    {
+        type: "link",
+        destination: "/contact",
+        textColor: "white",
+        text: "Contact us",
     },
 ];
 
@@ -223,6 +239,13 @@ const Home = () => {
                     ))}
                 </div>
             </Section>
+
+            {/*CTA section*/}
+            <CTA
+                head="Ready when you are."
+                lede={"Enrolling takes four steps. The registration fee is R150."}
+                btns={ctaBtns}
+            />
         </div>
     )
 }
