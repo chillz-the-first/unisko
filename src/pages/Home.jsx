@@ -81,6 +81,27 @@ const subjectGroups = [
     {group: "Humanities and Commerce", subjects: ["Geography", "History", "Business Studies"], tone: "navy"},
 ];
 
+const testimonials = [
+    {
+        quote: "[Two or three sentences from a parent about what changed for the child.]",
+        name: "[Parent's name]",
+        grade: "[Learner's grade]",
+        id: 1,
+    },
+    {
+        quote: "[Two or three sentences from a parent about what changed for the child.]",
+        name: "[Parent's name]",
+        grade: "[Learner's grade]",
+        id: 2,
+    },
+    {
+        quote: "[Two or three sentences from a parent about what changed for the child.]",
+        name: "[Parent's name]",
+        grade: "[Learner's grade]",
+        id: 3,
+    },
+];
+
 const Home = () => {
     return (
         <div>
@@ -178,6 +199,28 @@ const Home = () => {
                             </Tile>
                         );
                     })}
+                </div>
+            </Section>
+
+            {/*Testimonials section*/}
+            <Section tone="cream">
+                <div className="space-y-4 mb-8">
+                    <h2 className="text-headline text-navy font-semibold">What parents say.</h2>
+                    <p className="text-lede text-muted">From families whose children come to us after school.</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {testimonials.map((t) => (
+                        <Tile tone="white" className="border-2 border-line border-dashed flex flex-col h-full" key={t.id}>
+                            <figure className="flex-1 flex flex-col">
+                                <blockquote className="text-body pb-2">{t.quote}</blockquote>
+                                <figcaption className="mt-auto flex flex-col  border-t border-line pt-2">
+                                    <span className="font-semibold text-navy">{t.name}</span>
+                                    <span className="text-muted text-sm">{t.grade}</span>
+                                </figcaption>
+                            </figure>
+                        </Tile>
+                    ))}
                 </div>
             </Section>
         </div>
