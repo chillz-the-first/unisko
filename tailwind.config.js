@@ -25,6 +25,7 @@ export default {
                 title: ["1.75rem", {lineHeight: "1.1", letterSpacing: "-0.02em"}],
                 lede: ["clamp(1.1875rem, 2.2vw, 1.5rem)", {lineHeight: "1.35", letterSpacing: "-0.01em"}],
                 stat: ["clamp(2.25rem, 4vw, 3rem)", { lineHeight: "1", letterSpacing: "-0.02em" }],
+                "stat-lg": ["clamp(3rem, 5.5vw, 4rem)", { lineHeight: "1", letterSpacing: "-0.024em" }],
             },
             screens: {
                 'ml': '900px', // Medium-Large custom breakpoint
