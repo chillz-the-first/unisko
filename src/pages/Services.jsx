@@ -80,6 +80,16 @@ const plans = [
     },
 ];
 
+const comparison = {
+    columns: [" ", "After-School Program", "Group Classes", "Homework Help", "Online packages"],
+    rows: [
+        { label: "Best for", values: ["Working parents", "Social learners", "Stuck on homework", "Learning from home"] },
+        { label: "Where", values: ["At the centre", "At the centre", "At the centre", "Online"] },
+        { label: "When", values: ["Mon to Fri, 3:00 to 5:30 PM", "Tue and Thu, 4:00 to 5:30 PM", "Mon to Fri, 3:00 to 6:00 PM", "Recorded lessons any time"] },
+        { label: "Price", values: ["R500 per month", "R250 per month", "R250 per visit", "From R149 per month"] },
+    ],
+};
+
 function CheckIcon({ color = "", className = "" }) {
     return (
         <svg
@@ -225,6 +235,45 @@ const Services = () => {
                         The registration fee is R150,{" "}
                         <Link className="text-red text-sm hover:underline" to="/payment-details">see our payment details</Link>
                     </p>
+                </div>
+            </Section>
+
+            {/*Comparison section*/}
+            <Section>
+                <h2 className="text-headline text-navy font-semibold mb-8" id="compare-title">Quick comparison.</h2>
+
+                <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="compare-title">
+                    <table className="w-full text-left border-collapse min-w-[44rem]">
+                        <thead className="text-navy font-semibold">
+                            <tr className="border-b border-line">
+                                <th className="w-1/5 py-6 font-semibold text-navy align-top" />
+                                {comparison.columns.slice(1).map((column) => (
+                                    <th key={column} className="w-1/5 py-6 pr-6 font-bold text-navy text-lg leading-snug align-top">
+                                        <span className="max-w-[140px] block">{column}</span>
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {comparison.rows.map((row) => (
+                            <tr key={row.label}>
+                                <th className="text-muted font-normal border-b border-line py-2">{row.label}</th>
+                                {row.values.map((value) => (
+                                    <td key={value} className="border-b border-line py-2">{value}</td>
+                                ))}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div className="flex flex-col md:flex-row items-center mt-8 gap-4">
+                    <Button  variant="ink"
+                             href={getWhatsAppUrl("Hi Unisko, can you please explain the differences in your provided packages.")}
+                    >
+                        Ask us on WhatsApp
+                    </Button>
+                    <p className="text-muted text-sm">Not sure which one fits? We'll help you pick.</p>
                 </div>
             </Section>
         </div>
