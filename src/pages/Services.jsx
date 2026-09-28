@@ -81,7 +81,7 @@ const plans = [
 ];
 
 const comparison = {
-    columns: [" ", "After-School Program", "Group Classes", "Homework Help", "Online packages"],
+    columns: ["After-School Program", "Group Classes", "Homework Help", "Online packages"],
     rows: [
         { label: "Best for", values: ["Working parents", "Social learners", "Stuck on homework", "Learning from home"] },
         { label: "Where", values: ["At the centre", "At the centre", "At the centre", "Online"] },
@@ -239,37 +239,50 @@ const Services = () => {
             </Section>
 
             {/*Comparison section*/}
+            {/*Comparison section*/}
             <Section>
-                <h2 className="text-headline text-navy font-semibold mb-8" id="compare-title">Quick comparison.</h2>
+                <h2 className="text-headline text-navy font-semibold mb-8" id="compare-title">
+                    Quick comparison.
+                </h2>
 
                 <div className="overflow-x-auto" tabIndex={0} role="region" aria-labelledby="compare-title">
                     <table className="w-full text-left border-collapse min-w-[44rem]">
-                        <thead className="text-navy font-semibold">
+                        <thead>
                             <tr className="border-b border-line">
-                                <th className="w-1/5 py-6 font-semibold text-navy align-top" />
-                                {comparison.columns.slice(1).map((column) => (
-                                    <th key={column} className="w-1/5 py-6 pr-6 font-bold text-navy text-lg leading-snug align-top">
-                                        <span className="max-w-[140px] block">{column}</span>
+                                <td className="w-32" />
+                                {comparison.columns.map((column) => (
+                                    <th key={column} scope="col"
+                                        className="pb-4 pr-6 font-semibold text-navy align-bottom"
+                                    >
+                                        {column}
                                     </th>
                                 ))}
                             </tr>
                         </thead>
                         <tbody>
-                        {comparison.rows.map((row) => (
-                            <tr key={row.label}>
-                                <th className="text-muted font-normal border-b border-line py-2">{row.label}</th>
-                                {row.values.map((value) => (
-                                    <td key={value} className="border-b border-line py-2">{value}</td>
-                                ))}
-                            </tr>
-                        ))}
+                            {comparison.rows.map((row) => (
+                                <tr key={row.label}>
+                                    <th scope="row"
+                                        className="py-4 pr-6 font-normal text-muted align-top border-b border-line"
+                                    >
+                                        {row.label}
+                                    </th>
+                                    {row.values.map((value, i) => (
+                                        <td key={`${row.label}-${i}`}
+                                            className="py-4 pr-6 text-body align-top border-b border-line"
+                                        >
+                                            {value}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
 
                 <div className="flex flex-col md:flex-row items-center mt-8 gap-4">
-                    <Button  variant="ink"
-                             href={getWhatsAppUrl("Hi Unisko, can you please explain the differences in your provided packages.")}
+                    <Button variant="ink" external={true}
+                        href={getWhatsAppUrl("Hi Unisko, could you explain the differences between your packages?")}
                     >
                         Ask us on WhatsApp
                     </Button>
