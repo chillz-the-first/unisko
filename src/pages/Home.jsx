@@ -3,6 +3,7 @@ import Button from "../components/Button.jsx";
 import Arrowlink from "../components/Arrowlink.jsx";
 import Tile from "../components/Tile.jsx";
 import CTA from "../components/CTA.jsx";
+import {toneStyles as tones} from "../styles/toneStyles.js";
 
 const stats = [
     {value: "135+", label: "Learners enrolled"},
@@ -54,26 +55,7 @@ const packages = [
         tone: "white",
         span: "ml:col-span-4",
     },
-
 ];
-const toneStyles = {
-    navy : {
-        title: "text-white",
-        detail: "text-white/80",
-        body: "text-white/80",
-        price: "text-white",
-        duration: "text-white/80",
-        divider: "border-white/20",
-    },
-    white: {
-        title: "text-navy",
-        detail: "text-muted",
-        body: "text-body",
-        price: "text-body",
-        duration: "text-muted",
-        divider: "border-line",
-    },
-};
 
 const subjectGroups = [
     {group: "Languages", subjects: ["English", "isiZulu"]},
@@ -160,7 +142,7 @@ const Home = () => {
 
                 <div className="grid grid-cols-1 ml:grid-cols-6 gap-4">
                     {packages.map((item) => {
-                        const t = toneStyles[item.tone];
+                        const t = tones[item.tone];
 
                         return (
                             <Tile tone={item.tone} key={item.title}
@@ -200,7 +182,7 @@ const Home = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 ml:grid-cols-4 gap-4">
                     {subjectGroups.map((item) => {
-                        const t = toneStyles[item.tone] || toneStyles.white;
+                        const t = tones[item.tone] || tones.white;
 
                         return (
                             <Tile tone={item.tone} key={item.group}>

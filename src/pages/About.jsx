@@ -1,4 +1,33 @@
 import Section from "../components/Section.jsx";
+import {toneStyles as tones} from "../styles/toneStyles.js";
+import Tile from "../components/Tile.jsx";
+
+const principles = [
+    {
+        title: "Patience first",
+        body: "No shame around struggle. Every learner moves at their own pace.",
+        tone: "navy",
+        span: "ml:col-span-4",
+    },
+    {
+        title: "Real progress",
+        body: "If a learner isn't improving, we change the plan, not the explanation.",
+        tone: "cream",
+        span: "ml:col-span-2",
+    },
+    {
+        title: "Whole student",
+        body: "Confidence beats correctness. We celebrate the brave wrong answer.",
+        tone: "cream",
+        span: "ml:col-span-2",
+    },
+    {
+        title: "Family loop",
+        body: "Parents stay in the conversation, with a progress report every term and a door that's always open.",
+        tone: "cream",
+        span: "ml:col-span-4",
+    },
+];
 
 const About = () => {
     return (
@@ -40,7 +69,7 @@ const About = () => {
 
                     <div className="space-y-4 max-w-[65ch] flex-1">
                         <h2 className="text-headline text-navy font-semibold">
-                            <span className="block text-red font-medium text-base mb-4">Mission</span>
+                            <span className="block text-red font-medium text-base mb-4">Vision</span>
                             A confident learner in every home.
                         </h2>
                         <p className="text-body">
@@ -48,6 +77,24 @@ const About = () => {
                             the room, but because someone took the time to show them how to learn.
                         </p>
                     </div>
+                </div>
+            </Section>
+
+            {/*Principles section*/}
+            <Section>
+                <h2 className="text-headline text-navy font-semibold mb-8">What we believe.</h2>
+
+                <div className="grid grid-cols-1 ml:grid-cols-6 gap-4">
+                    {principles.map((p) => {
+                        const t = tones[p.tone] || tones.white;
+
+                        return (
+                            <Tile tone={p.tone} key={p.title} className={`space-y-4 ${p.span}`}>
+                                <h3 className={`text-title font-semibold ${t.title}`}>{p.title}</h3>
+                                <p className={t.body}>{p.body}</p>
+                            </Tile>
+                        );
+                    })}
                 </div>
             </Section>
         </div>
