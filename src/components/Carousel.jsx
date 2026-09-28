@@ -11,6 +11,7 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
     const [atEnd, setAtEnd] = useState(false);
 
     const [paused, setPaused] = useState(false);
+    const [userPaused, setUserPaused] = useState(false);
 
     const reduceMotion = typeof window !== "undefined" &&
         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -46,7 +47,7 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
     }, []);
 
     useEffect(() => {
-        if (!autoScroll || reduceMotion || paused) return;
+        if (!autoScroll || reduceMotion || paused || userPaused) return;
 
         const timer = setInterval(() => {
             const el = track.current;
@@ -60,11 +61,12 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
             }
         }, interval);
         return () => clearInterval(timer);
-    }, [autoScroll, interval, paused, reduceMotion]);
+    }, [autoScroll, interval, paused, userPaused, reduceMotion]);
 
     return (
         <div onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}
              onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}
+             className="relative"
         >
             <div ref={track} onScroll={update} tabIndex={0} role="group" aria-label={label}
                 className="flex gap-4 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -98,6 +100,25 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
                     </button>
                 </div>
             )}
+
+            {autoScroll && (
+                <button type="button" onClick={() => setUserPaused((p) => !p)}
+                        aria-label={userPaused ? "Play slideshow" : "Pause slideshow"}
+                    className="absolute bottom-4 right-4 w-11 inline-grid place-items-center rounded-full
+                    bg-white/90 backdrop-blur-sm text-navy hover:bg-white shadow-sm"
+                >
+                    {userPaused ? (
+                        <svg viewBox="0 0 24 24" className="w-4 h-4" aria-hidden="true" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    ) : (
+                        <svg viewBox="0 0 24 24" className="w-4 h-4" aria-hidden="true" fill="currentColor">
+                            <path d="M7 5h3v14H7zM14 5h3v14h-3z" />
+                        </svg>
+                    )}
+                </button>
+            )}
+
         </div>
     );
 
