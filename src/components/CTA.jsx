@@ -17,6 +17,13 @@ const CTA = ({ head, lede, btns }) => (
                             </Button>
                         );
                     }
+                    if (btn.type === "href") {
+                        return (
+                            <Button href={btn.destination} variant="white" key={btn.text} external={btn.external}>
+                                {btn.text}
+                            </Button>
+                        );
+                    }
                     if (btn.type === "link") {
                         return (
                             <Arrowlink to={btn.destination} textColor="white" key={btn.text}>

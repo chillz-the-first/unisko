@@ -1,6 +1,7 @@
 import Section from "../components/Section.jsx";
 import {toneStyles as tones} from "../styles/toneStyles.js";
 import Tile from "../components/Tile.jsx";
+import CTA from "../components/CTA.jsx";
 
 const principles = [
     {
@@ -27,6 +28,21 @@ const principles = [
         tone: "cream",
         span: "ml:col-span-4",
     },
+];
+
+const ctaBtns = [
+    {
+        type: "href",
+        destination: `https://wa.me/27618117116?text=${encodeURIComponent(
+            "Hi Unisko, I have a few questions about your tutoring. Could we set up a time to chat?")}`,
+        text: "Message us on WhatsApp",
+        external: true,
+    },
+    {
+        type: "link",
+        destination: "/enroll",
+        text: "Enroll",
+    }
 ];
 
 const About = () => {
@@ -97,6 +113,12 @@ const About = () => {
                     })}
                 </div>
             </Section>
+
+            <CTA
+                head="Want to meet a tutor?"
+                lede="Send us a message or come by the centre at 43 Oil Avenue."
+                btns={ctaBtns}
+            />
         </div>
     );
 };
