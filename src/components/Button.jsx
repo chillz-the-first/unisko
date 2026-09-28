@@ -4,6 +4,7 @@ const styles = {
     filled: "bg-red hover:bg-red-hover text-white",
     outline: "border border-line text-navy hover:bg-cream",
     white: "bg-white text-navy hover:bg-cream",
+    ink: "bg-navy hover:bg-body text-white",
 };
 
 const Button = ({variant = "filled", to, href, external = false, children, disabled = false ,onClick}) => {
