@@ -4,6 +4,14 @@ import Arrowlink from "../components/Arrowlink.jsx";
 import Tile from "../components/Tile.jsx";
 import CTA from "../components/CTA.jsx";
 import {toneStyles as tones} from "../styles/toneStyles.js";
+import Carousel from "../components/Carousel.jsx";
+
+const images = [
+    {id: "h1", src: "/images/stu_group_pic_1.jpg", alt: "First group picture of students", position: "object-cover"},
+    {id: "h2", src: "/images/group_pic_1.jpg", alt: "First group picture of staff", position: "object-top"},
+    {id: "h3",src: "/images/stu_group_pic_2.jpg", alt: "Second group picture of students", position: "object-cover"},
+    {id: "h4",src: "/images/group_pic_2.jpg", alt: "Second group picture of staff", position: "object-top"},
+]
 
 const stats = [
     {value: "135+", label: "Learners enrolled"},
@@ -117,8 +125,14 @@ const Home = () => {
                     </div>
                 </div>
 
-                <img src="/images/stu_group_pic_1.jpg" alt="Group picture of students"
-                     className="rounded-tile object-cover w-full aspect-[4/3] ml:aspect-[16/9] mt-8"/>
+                <div className="mt-8">
+                    <Carousel items={images} label="Photos from the centre" cardWidth="w-full" autoScroll>
+                        {(image) => (
+                            <img src={image.src} alt={image.alt}
+                                 className={`rounded-tile object-cover w-full aspect-[4/3] ml:aspect-[16/9] ${image.position}`}/>
+                        )}
+                    </Carousel>
+                </div>
 
                 <div className="mt-16">
                     <h2 className="text-headline text-navy font-semibold mb-8">Unisko at a glance.</h2>

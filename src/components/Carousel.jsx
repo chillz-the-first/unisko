@@ -13,7 +13,7 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
     const [paused, setPaused] = useState(false);
 
     const reduceMotion = typeof window !== "undefined" &&
-        window.matchMedia("(prefers-reduce-motion: reduce)").matches;
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const step = () => {
         const card = track.current?.firstElementChild;
@@ -43,7 +43,7 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
         update();
         window.addEventListener('resize', update);
         return () => window.removeEventListener('resize', update);
-    }, [update]); //Maybe remove
+    }, []);
 
     useEffect(() => {
         if (!autoScroll || reduceMotion || paused) return;
@@ -67,7 +67,7 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
              onFocusCapture={() => setPaused(true)} onBlurCapture={() => setPaused(false)}
         >
             <div ref={track} onScroll={update} tabIndex={0} role="group" aria-label={label}
-                className="flex gap-4 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::webkit-scrollbar]:hidden"
+                className="flex gap-4 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
                 {items.map((item) => (
                     <div key={item.id} className={`${cardWidth} flex-shrink-0 snap-start`}>
@@ -82,20 +82,22 @@ const Carousel = ({items, children, cardWidth, label, autoScroll = false, interv
                 </p>
             )}
 
-            <div className="flex gap-2 mt-6">
-                <button type="button" onClick={() => scrollByCards(-1)} disabled={atStart}
-                        aria-label="Previous"
-                    className="w-11 h-11 inline-grid place-items-center rounded-full border border-line text-navy
+            {!autoScroll && (
+                <div className="flex gap-2 mt-6 justify-center">
+                    <button type="button" onClick={() => scrollByCards(-1)} disabled={atStart}
+                            aria-label="Previous"
+                            className="w-11 h-11 inline-grid place-items-center rounded-full border border-line text-navy
                     hover:bg-cream disabled:opacity-40 disabled:cursor-not-allowed">
-                    ←
-                </button>
-                <button type="button" onClick={() => scrollByCards(1)} disabled={atEnd}
-                        aria-label="Next"
-                    className="w-11 h-11 inline-grid place-items-center rounded-full border border-line text-navy
+                        ←
+                    </button>
+                    <button type="button" onClick={() => scrollByCards(1)} disabled={atEnd}
+                            aria-label="Next"
+                            className="w-11 h-11 inline-grid place-items-center rounded-full border border-line text-navy
                     hover:bg-cream disabled:opacity-40 disabled:cursor-not-allowed">
-                    →
-                </button>
-            </div>
+                        →
+                    </button>
+                </div>
+            )}
         </div>
     );
 

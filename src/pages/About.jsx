@@ -2,6 +2,7 @@ import Section from "../components/Section.jsx";
 import {toneStyles as tones} from "../styles/toneStyles.js";
 import Tile from "../components/Tile.jsx";
 import CTA from "../components/CTA.jsx";
+import Carousel from "../components/Carousel.jsx";
 
 const principles = [
     {
@@ -27,6 +28,62 @@ const principles = [
         body: "Parents stay in the conversation, with a progress report every term and a door that's always open.",
         tone: "cream",
         span: "ml:col-span-4",
+    },
+];
+
+const tutors = [
+    {
+        id: "t1",
+        name: 'Nkosinathi Mlambo',
+        role: "Founder",
+        src: "/images/nathi.jpg",
+        alt: "Picture of the founder, Nkosinathi Mlambo",
+        subject: 'English, Mathematical Literacy, Life Sciences, Geography, Business Studies',
+    },
+    {
+        id: "t12",
+        role: "Tutor",
+        name: 'Siphesihle Martin',
+        src: "/images/martin.jpg",
+        alt: "Picture of tutor, Siphesihle Martin",
+        subject: 'Mathematics, isiZulu, Physical Sciences',
+        grade: "FET (10-12)"
+    },
+    {
+        id: "t3",
+        role: "Tutor",
+        name: "Zodwa Mazibuko",
+        src: "/images/mazibuko.jpg",
+        alt: "Picture of tutor, Zodwa Mazibuko",
+        subject: 'English, Mathematics, isiZulu',
+        grade: "Foundation phase"
+    },
+    {
+        id: "t4",
+        role: "Tutor",
+        name: 'Nokukhanya Mlambo',
+        src: "/images/mlambo.jpg",
+        alt: "Picture of tutor, Nokukhanya Mlambo",
+        subject: 'English, Mathematics',
+        grade: "Foundation phase"
+    },
+    {
+        id: "t5",
+        role: "Tutor",
+        name: 'Ayanda Nkosi',
+        src: "/images/nkosi.jpg",
+        alt: "Picture of tutor, Ayanda Nkosi",
+        subject: 'English, Mathematics (Intermediate phase), History',
+        grade: "FET (10-12)"
+    },
+    {
+        id: "t6",
+        role: "Tutor",
+        name: 'Prudence Ramaqhele',
+        src: "/images/ramaqhele.jpg",
+        alt: "Picture of tutor, Prudence Ramaqhele",
+        subject: 'English, Mathematics, Sesotho',
+        grade: 'Intermediate phase',
     },
 ];
 
@@ -112,6 +169,23 @@ const About = () => {
                         );
                     })}
                 </div>
+            </Section>
+
+            {/*Team section*/}
+            <Section tone="cream">
+                <h2 className="text-headline text-navy font-semibold mb-8">Meet the tutors.</h2>
+
+                <Carousel items={tutors} label="Unisko tutors"
+                cardWidth="w-full md:w-[calc((100%-1rem)/2)] ml:w-[calc((100%-2rem)/3)]">
+                    {(tutor) => (
+                        <>
+                            <img src={tutor.src} alt="" className="w-full aspect-[4/5] object-cover rounded-tile bg-cream"/>
+                            <h3 className="text-title font-semibold text-navy mt-4">{tutor.name}</h3>
+                            <p className="text-muted text-sm">{tutor.role}</p>
+                            <p className="text-body text-sm mt-1">{tutor.subject}</p>
+                        </>
+                    )}
+                </Carousel>
             </Section>
 
             <CTA
