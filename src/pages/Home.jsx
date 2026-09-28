@@ -3,7 +3,7 @@ import Button from "../components/Button.jsx";
 import Arrowlink from "../components/Arrowlink.jsx";
 import Tile from "../components/Tile.jsx";
 import CTA from "../components/CTA.jsx";
-import {toneStyles as tones} from "../styles/toneStyles.js";
+import {toneStyles as tones} from "../lib/toneStyles.js";
 import Carousel from "../components/Carousel.jsx";
 
 const images = [

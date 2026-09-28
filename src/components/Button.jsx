@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 
 const styles = {
     filled: "bg-red hover:bg-red-hover text-white",
-    outline: "border border-line text-navy hover:bg-cream",
+    outline: "border border-navy text-navy hover:bg-navy hover:text-white",
     white: "bg-white text-navy hover:bg-cream",
     ink: "bg-navy hover:bg-body text-white",
 };

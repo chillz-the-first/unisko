@@ -1,7 +1,9 @@
 import Section from "../components/Section.jsx";
-import {toneStyles as tones} from "../styles/toneStyles.js";
+import {toneStyles as tones} from "../lib/toneStyles.js";
 import Button from "../components/Button.jsx";
 import Tile from "../components/Tile.jsx";
+import {getWhatsAppUrl} from "../lib/whatsapp.js";
+import {Link} from "react-router-dom";
 
 const afterSchoolIncludes = [
     "Drop-off from school",
@@ -31,6 +33,52 @@ const centreServices = [
     },
 ];
 const lightTone = tones.white; // Serves both white and cream tiles
+
+const plans = [
+    {
+        name: "Unisko Basic",
+        shortName: "Basic",
+        price: "R149",
+        inherits: "Includes:",
+        features: [
+            "English recorded lessons once a week",
+            "Worksheets",
+            "Study notes",
+            "Past papers",
+            "Monthly test",
+        ],
+        msg: "Hi Unisko, I'd like to know more about Unisko Basic.",
+    },
+    {
+        name: "Unisko Plus",
+        shortName: "Plus",
+        price: "R300",
+        inherits: "Everything in Basic, plus:",
+        features: [
+            "Weekly recorded lessons in English and maths",
+            "Teacher interaction",
+            "Marked activities",
+            "Monthly progress report",
+        ],
+        msg: "Hi Unisko, I'd like to know more about Unisko Plus.",
+
+    },
+    {
+        name: "Unisko Premium",
+        shortName: "Premium",
+        price: "R499",
+        inherits: "Everything in Plus, plus:",
+        features: [
+            "Two weekly recorded lessons in English and maths",
+            "A live lesson once a week",
+            "Exam preparation",
+            "Personalised academic support",
+            "Parent progress reports",
+            "Priority tutoring and support",
+        ],
+        msg: "Hi Unisko, I'd like to know more about Unisko Premium.",
+    },
+];
 
 function CheckIcon({ color = "", className = "" }) {
     return (
@@ -97,6 +145,7 @@ const Services = () => {
                 </div>
             </Section>
 
+            {/*Programmes section*/}
             <Section>
                 <div className="grid grid-cols-1 ml:grid-cols-2 gap-4">
                     {centreServices.map((item) => (
@@ -128,7 +177,54 @@ const Services = () => {
                             </div>
                         </Tile>
                     ))}
+                </div>
+            </Section>
 
+            {/*Online packages section*/}
+            <Section tone="cream">
+                <div className="space-y-4">
+                    <h2 className="text-headline text-navy font-semibold">Online packages.</h2>
+                    <p className="text-lede text-muted">Keep learning from home, priced per month.</p>
+                </div>
+
+                <div className="grid grid-cols-1 ml:grid-cols-3 mt-8">
+                    {plans.map((plan) => (
+                        <div key={plan.name}
+                             className="ml:border-l ml:border-line ml:first:border-l-0 border-t border-line
+                                 px-4 py-6 ml:first:pl-0 ml:last:pr-0"
+                        >
+                            <div className="space-y-4 mb-8">
+                                <h3 className="text-navy font-semibold text-title">{plan.name}</h3>
+                                <p className="text-navy text-stat font-semibold tabular-nums">
+                                    {plan.price} <span className="text-muted font-normal text-sm">per month</span>
+                                </p>
+                            </div>
+
+
+                            <Button href={getWhatsAppUrl(plan.msg)} variant="outline" external={true}>
+                                Ask about {plan.shortName}
+                            </Button>
+
+                            <div className="mt-8">
+                                <p className="text-sm text-muted mb-3">{plan.inherits}</p>
+                                <ul className="list-none">
+                                    {plan.features.map((item) => (
+                                        <li key={item} className="text-navy text-sm border-t border-line py-3.5">
+                                            {item}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="mt-8">
+                    <p className="text-muted text-sm">Billed monthly. Cancel with 30 days' notice.</p>
+                    <p className="text-muted text-sm">
+                        The registration fee is R150,{" "}
+                        <Link className="text-red text-sm hover:underline" to="/payment-details">see our payment details</Link>
+                    </p>
                 </div>
             </Section>
         </div>

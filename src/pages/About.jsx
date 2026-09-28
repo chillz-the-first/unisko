@@ -1,8 +1,9 @@
 import Section from "../components/Section.jsx";
-import {toneStyles as tones} from "../styles/toneStyles.js";
+import {toneStyles as tones} from "../lib/toneStyles.js";
 import Tile from "../components/Tile.jsx";
 import CTA from "../components/CTA.jsx";
 import Carousel from "../components/Carousel.jsx";
+import {getWhatsAppUrl} from "../lib/whatsapp.js";
 
 const principles = [
     {
@@ -90,8 +91,7 @@ const tutors = [
 const ctaBtns = [
     {
         type: "href",
-        destination: `https://wa.me/27618117116?text=${encodeURIComponent(
-            "Hi Unisko, I have a few questions about your tutoring. Could we set up a time to chat?")}`,
+        destination: getWhatsAppUrl("Hi Unisko, I have a few questions about your tutoring. Could we set up a time to chat?"),
         text: "Message us on WhatsApp",
         external: true,
     },
