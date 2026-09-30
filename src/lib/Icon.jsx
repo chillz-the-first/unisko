@@ -1,5 +1,3 @@
-// src/components/Icon.jsx
-
 const paths = {
     calendar: (
         <>
