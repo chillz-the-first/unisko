@@ -239,7 +239,6 @@ const Services = () => {
             </Section>
 
             {/*Comparison section*/}
-            {/*Comparison section*/}
             <Section>
                 <h2 className="text-headline text-navy font-semibold mb-8" id="compare-title">
                     Quick comparison.
