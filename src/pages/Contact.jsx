@@ -4,6 +4,7 @@ import Tile from "../components/Tile.jsx";
 import Icon from "../lib/Icon.jsx";
 import Button from "../components/Button.jsx";
 import ArrowLink from "../components/Arrowlink.jsx";
+import {useState} from "react";
 
 const channels = [
     {
@@ -41,7 +42,24 @@ const hours = [
     { days: "Sunday", time: "Closed" },
 ];
 
+const faqs = [
+    {
+        q: "What grades do you tutor?",
+        a: "Our tutors teach from Foundation Phase through to Grade 12. Tell us your child's grade and subjects when you enroll.",
+    },
+    {
+        q: "How much does it cost?",
+        a: "The After-School Program is R500 a month, Group Classes are R250 a month, and Homework Help is R250 a visit. Online packages start at R149 a month. Registration is a once-off R150.",
+    },
+    {
+        q: "Can I cancel anytime?",
+        a: "Online packages are billed monthly and need 30 days' notice to cancel. For programmes at the centre, monthly fees are due before the 10th of each month.",
+    },
+];
+
 const Contact = () => {
+    const [openIndex, setOpenIndex] = useState(null);
+
     return (
         <div>
             {/*Header Section*/}
@@ -106,6 +124,32 @@ const Contact = () => {
                         </dl>
                         <ArrowLink href="https://maps.app.goo.gl/p7qbEnEDy93Epscc8">Open in Maps</ArrowLink>
                     </div>
+                </div>
+            </Section>
+
+            {/*FAQ Section*/}
+            <Section tone="cream">
+                <div className="max-w-[52rem]">
+                    <h2 className="text-headline text-navy font-semibold mb-8">Questions parents ask.</h2>
+
+                    {faqs.map((faq, i) => (
+                        <div className="border-t border-line last:border-b" key={faq.q}>
+                            <h3 className="font-semibold text-navy text-lede">
+                                <button type="button" aria-expanded={openIndex === i} aria-controls={`faq-${i}`}
+                                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                    className="flex items-center justify-between w-full py-4 text-left min-h-[44px] gap-4"
+                                >
+                                    {faq.q}
+                                    <Icon name="plus"
+                                        className={`w-4 h-4 transition-transform ${openIndex === i ? "rotate-45" : ""}`}
+                                    />
+                                </button>
+                            </h3>
+                            <div id={`faq-${i}`} hidden={openIndex !== i}>
+                                <p className="px-4 mb-4 text-body">{faq.a}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             </Section>
         </div>
