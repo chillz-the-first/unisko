@@ -5,6 +5,7 @@ import Icon from "../lib/Icon.jsx";
 import Button from "../components/Button.jsx";
 import ArrowLink from "../components/Arrowlink.jsx";
 import {useState} from "react";
+import ContactForm from "../components/ContactForm.jsx";
 
 const channels = [
     {
@@ -150,6 +151,21 @@ const Contact = () => {
                             </div>
                         </div>
                     ))}
+                </div>
+            </Section>
+
+            {/*CTA Section*/}
+            <Section>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div className="space-y-4">
+                        <h2 className="text-headline text-navy font-semibold">Send us a note.</h2>
+                        <p className="text-muted text-lede">
+                            Tell us what's going on with your child's schoolwork.
+                        </p>
+                        <p className="text-muted text-sm mt-4">We never share your information.</p>
+                    </div>
+
+                    <ContactForm/>
                 </div>
             </Section>
         </div>
