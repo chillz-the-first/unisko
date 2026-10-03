@@ -6,6 +6,7 @@ import Services from "./pages/Services.jsx";
 import Resources from "./pages/Resources.jsx";
 import Events from "./pages/Events.jsx";
 import Contact from "./pages/Contact.jsx";
+import Enrol from "./pages/Enrol.jsx";
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
                     <Route path="/resources" element={<Resources/>}/>
                     <Route path="/events" element={<Events/>}/>
                     <Route path="/contact" element={<Contact/>}/>
+                    <Route path="/enroll" element={<Enrol/>}/>
                 </Routes>
             </Layout>
         </BrowserRouter>
