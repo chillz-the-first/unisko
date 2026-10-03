@@ -1,57 +1,66 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Button from "./Button.jsx";
+
+const fieldClass =
+    "block w-full rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60";
+const labelClass = "block text-navy text-sm font-semibold";
 
 const ContactForm = () => {
     const [form, setForm] = useState({
         name: "", email: "", phone: "", available: "", query: "",
     });
-
-    const [errors, setErrors] = useState({
-        name: "", email: "", query: "",
-    });
-
+    const [errors, setErrors] = useState({});
     const [status, setStatus] = useState("idle");
 
     const nameRef = useRef(null);
     const emailRef = useRef(null);
     const queryRef = useRef(null);
+    const successRef = useRef(null);
 
     function handleChange (e) {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value,
-        });
+        const {name, value} = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
+        setErrors((prev) => ({ ...prev, [name]: "" }));
     }
+
+    function reset() {
+        setForm({name: "", email: "", phone: "", available: "", query: ""});
+        setErrors({});
+        setStatus("idle");
+    }
+
+    useEffect(() => {
+        if (status !== "success") return;
+
+        successRef.current?.focus();
+
+        const timer = setTimeout(reset, 30000);
+        return () => clearTimeout(timer);
+    },[status]);
 
     async function handleSubmit(e) {
         e.preventDefault();
         const newErrors = {};
 
-        if (!form.name) {
-            newErrors.name = "Please enter your name";
+        if (!form.name.trim()) {
+            newErrors.name = "Please enter your name.";
         }
-        if (!form.email) {
-            newErrors.email = "Please enter your email";
+        if (!form.email.trim()) {
+            newErrors.email = "Please enter your email address.";
         }
         else if (!form.email.includes("@")) {
-            newErrors.email = "Email must include an @";
+            newErrors.email = "Email must include an @, like name@example.com";
         }
-        if (!form.query) {
-            newErrors.query = "Please enter your query";
+        if (!form.query.trim()) {
+            newErrors.query = "Tell us a little about what you need.";
         }
 
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
 
-            if (newErrors.name) {
-                nameRef.current.focus();
-            }
-            else if (newErrors.email) {
-                emailRef.current.focus();
-            }
-            else if (newErrors.query) {
-                queryRef.current.focus();
-            }
+            if (newErrors.name) nameRef.current.focus();
+            else if (newErrors.email) emailRef.current.focus();
+            else if (newErrors.query) queryRef.current.focus();
 
             return;
         }
@@ -61,7 +70,7 @@ const ContactForm = () => {
             _subject: `New message from ${form.name}`,
         };
         setStatus("submitting");
-        setErrors({name: "", email: "", query: "",});
+        setErrors({});
 
         try {
             const response = await fetch('https://formspree.io/f/xyegeaer', {
@@ -73,90 +82,93 @@ const ContactForm = () => {
                 body: JSON.stringify(payload),
             });
 
-            if (response.ok) {
-                setStatus('success');
-            }
-            else {
-                setStatus('error');
-            }
+            setStatus(response.ok ? "success" : "error");
         }
-        catch (e) {
+        catch {
             setStatus('error')
         }
     }
 
+    if (status === "success") {
+        return(
+            <div className="flex flex-col items-center justify-center space-y-2">
+                <h3 ref={successRef} tabIndex={-1} className="text-navy text-title font-semibold">
+                    Thanks for reaching out.
+                </h3>
+                <p className="text-lede text-muted">We'll get back to you within 48 hours.</p>
+                <Button variant="outline" onClick={reset}>Send another message.</Button>
+            </div>
+        );
+    }
+
     return (
-        <div className="space-y-4">
-            <form noValidate>
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
-                    <div className="space-y-2">
-                        <label htmlFor="name" className="text-navy text-sm font-semibold">
-                            Parent name <span className="text-red">*</span>
-                        </label>
-                        <input type="text" name="name" id="name" placeholder="Thando Mazibuko"
-                               autoComplete="name" aria-required="true" value={form.name} onChange={handleChange}
-                               aria-invalid={!!errors.name} aria-describedby="name-err" ref={nameRef}
-                               className="rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60"
-                        />
-                        {errors.name && (<p id='name-err' role='alert' className="text-xs text-red">{errors.name}</p>)}
-                    </div>
-
-                    <div className="space-y-2">
-                        <label htmlFor="email" className="text-navy text-sm font-semibold">
-                            Email <span className="text-red">*</span>
-                        </label>
-                        <input type="email" name="email" id="email" placeholder="name@example.com"
-                               autoComplete="email" aria-required="true" value={form.email} onChange={handleChange}
-                               aria-invalid={!!errors.email} aria-describedby="email-err" ref={emailRef}
-                               className="rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60"
-                        />
-                        {errors.email && (<p id='email-err' role='alert' className="text-xs text-red">{errors.email}</p>)}
-                    </div>
-                </div>
-
-                <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-4">
-                    <div className="space-y-2">
-                        <label htmlFor="phone" className="text-navy text-sm font-semibold">
-                            Phone
-                        </label>
-                        <input type="tel" name="phone" id="phone" placeholder="081 234 5678" inputMode="tel"
-                               aria-required="true" value={form.phone} onChange={handleChange}
-                               className="rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60"/>
-                    </div>
-
-                    <div className="space-y-2">
-                        <label htmlFor="available" className="text-navy text-sm font-semibold">
-                            Email
-                        </label>
-                        <input type="text" name="available" id="available" placeholder="Weekday afternoons"
-                               aria-required="true" value={form.available} onChange={handleChange}
-                               className="rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60"/>
-                    </div>
-                </div>
-
-                <div className="w-full space-y-2">
-                    <label htmlFor="query" className="text-navy text-sm font-semibold">
-                        What do you need help with? <span className="text-red">*</span>
+        <form noValidate onSubmit={handleSubmit} className={"space-y-4"}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                    <label htmlFor="name" className={labelClass}>
+                        Parent name <span className="text-red">*</span>
                     </label>
-                    <textarea name="query" id="query"
-                              aria-required="true" value={form.query} onChange={handleChange}
-                              aria-invalid={!!errors.query} aria-describedby="query-err" ref={queryRef}
-                              className="block min-h-[10rem] w-full rounded-xl border border-field-border px-4 py-2"
+                    <input type="text" name="name" id="name" placeholder="Thando Mazibuko"
+                           autoComplete="name" aria-required="true" value={form.name} onChange={handleChange}
+                           aria-invalid={!!errors.name} ref={nameRef} className={fieldClass}
+                           aria-describedby={errors.name ? "name-err" : undefined}
                     />
-                    {errors.query && (<p id='query-err' role='alert' className="text-xs text-red">{errors.query}</p>)}
-                    <p className="text-sm text-muted">
-                        Grade, subject, current school, and what's been frustrating.
-                    </p>
+                    {errors.name && (<p id='name-err' role='alert' className="text-sm text-danger">{errors.name}</p>)}
                 </div>
 
-                <div className="mt-4 flex justify-end">
-                    <Button onClick={handleSubmit} disabled={status === "submitting"} variant="ink">
+                <div className="space-y-2">
+                    <label htmlFor="email" className={labelClass}>
+                        Email <span className="text-red">*</span>
+                    </label>
+                    <input type="email" name="email" id="email" placeholder="name@example.com"
+                           autoComplete="email" aria-required="true" value={form.email} onChange={handleChange}
+                           aria-invalid={!!errors.email} ref={emailRef} className={fieldClass}
+                           aria-describedby={errors.email ? "email-err" : undefined}
+                    />
+                    {errors.email && (<p id='email-err' role='alert' className="text-sm text-danger">{errors.email}</p>)}
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                    <label htmlFor="phone" className={labelClass}>Phone</label>
+                    <input type="tel" name="phone" id="phone" placeholder="081 234 5678" inputMode="tel"
+                           value={form.phone} onChange={handleChange} autoComplete="phone" className={fieldClass}
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label htmlFor="available" className={labelClass}>Best time to reach you</label>
+                    <input type="text" name="available" id="available" placeholder="Weekday afternoons"
+                           value={form.available} onChange={handleChange} className={fieldClass}
+                    />
+                </div>
+            </div>
+
+            <div className="space-y-2">
+                <label htmlFor="query" className={labelClass}>
+                    What do you need help with? <span className="text-red">*</span>
+                </label>
+                <textarea name="query" id="query"
+                          aria-required="true" value={form.query} onChange={handleChange}
+                          aria-invalid={!!errors.query} ref={queryRef} className={`${fieldClass} min-h-[10rem]`}
+                          aria-describedby={errors.name ? "query-help query-err" : "query-help"}
+                />
+                {errors.query && (<p id='query-err' role='alert' className="text-sm text-danger">{errors.query}</p>)}
+                <p id="query-help" className="text-sm text-muted">
+                    Grade, subject, current school, and what's been frustrating.
+                </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center md:justify-end gap-4">
+                <p aria-live="polite" className="text-sm text-danger">
+                    {status === "error" && "That didn't send. Please try again later, or message us on WhatsApp."}
+                    <Button disabled={status === "submitting"} variant="ink" type="submit">
                         {status === "submitting" ? "Sending..." : "Send message"}
                     </Button>
-                </div>
-
-            </form>
-        </div>
+                </p>
+            </div>
+        </form>
     );
 };
 

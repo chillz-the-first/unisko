@@ -7,7 +7,7 @@ const styles = {
     ink: "bg-navy hover:bg-body text-white",
 };
 
-const Button = ({variant = "filled", to, href, external = false, children, disabled = false ,onClick}) => {
+const Button = ({variant = "filled", to, href, external = false, children, disabled = false ,onClick, type = "button"}) => {
     const base = `inline-flex items-center justify-center min-h-[44px] px-5 rounded-full ${styles[variant]} 
         disabled:opacity-50 disabled:cursor-not-allowed`;
 
@@ -25,7 +25,7 @@ const Button = ({variant = "filled", to, href, external = false, children, disab
     }
 
     return (
-        <button type="button" className={base} onClick={onClick} disabled={disabled}>{children}</button>
+        <button type={type} className={base} onClick={onClick} disabled={disabled}>{children}</button>
     );
 };
 
