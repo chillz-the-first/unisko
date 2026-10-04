@@ -69,14 +69,17 @@ const Step1 = ({ form, change, next}) => {
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                     <div className="space-y-2 col-span-2">
                         <label htmlFor="title" className={labelClass}>Title</label>
-                        <select name="title" id="title" className={fieldClass} value={form.title} onChange={change}>
-                            <option value="">Select</option>
-                            <option value="Mr">Mr.</option>
-                            <option value="Mrs">Mrs.</option>
-                            <option value="Miss">Miss.</option>
-                            <option value="Dr">Dr.</option>
-                            <option value="Prof">Prof.</option>
-                        </select>
+                        <div className={fieldClass}>
+                            <select name="title" id="title" className="w-full" value={form.title} onChange={change}>
+                                <option value="">Select</option>
+                                <option value="Mr">Mr.</option>
+                                <option value="Mrs">Mrs.</option>
+                                <option value="Miss">Miss.</option>
+                                <option value="Dr">Dr.</option>
+                                <option value="Prof">Prof.</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div className="space-y-2 col-span-2 md:col-span-4">
