@@ -16,6 +16,11 @@ const Step2 = ({ form, change, next, back }) => {
     const schoolRef = useRef(null);
     const gradeRef = useRef(null);
 
+    function handleFieldChange(e) {
+        change(e);
+        setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+    }
+
     function handleNext(e) {
         e.preventDefault();
         const newErrors = {};
@@ -71,7 +76,7 @@ const Step2 = ({ form, change, next, back }) => {
                         <label htmlFor="studentSurname" className={labelClass}>
                             Surname <span className="text-danger">*</span>
                         </label>
-                        <input type="text" name="studentSurname" id="studentSurname" onChange={change}
+                        <input type="text" name="studentSurname" id="studentSurname" onChange={handleFieldChange}
                                value={form.studentSurname} className={fieldClass} placeholder="Maselela"
                                autoComplete="family-name" aria-required="true" aria-invalid={!!errors.studentSurname}
                                ref={surnameRef} aria-describedby={errors.studentSurname ? "surname-err" : undefined}
@@ -83,7 +88,7 @@ const Step2 = ({ form, change, next, back }) => {
 
                     <div className="space-y-2 col-span-1">
                         <label htmlFor="studentInitials" className={labelClass}>Initials</label>
-                        <input type="text" name="studentInitials" id="studentInitials" onChange={change}
+                        <input type="text" name="studentInitials" id="studentInitials" onChange={handleFieldChange}
                                value={form.studentInitials} placeholder="M" className={fieldClass}
                         />
                     </div>
@@ -92,7 +97,7 @@ const Step2 = ({ form, change, next, back }) => {
                         <label htmlFor="studentName" className={labelClass}>
                             First name <span className="text-danger">*</span>
                         </label>
-                        <input type="text" name="studentName" id="studentName" onChange={change}
+                        <input type="text" name="studentName" id="studentName" onChange={handleFieldChange}
                             value={form.studentName} className={fieldClass} placeholder="Lerato"
                             aria-required="true" aria-invalid={!!errors.studentName}
                             ref={nameRef} aria-describedby={errors.studentName ? "name-err" : undefined}
@@ -105,12 +110,12 @@ const Step2 = ({ form, change, next, back }) => {
                     <div className="col-span-full grid grid-cols-1 md:grid-cols-2 gap-4">
                         <Segmented legend="Gender" name="gender"
                             options={[{ value: "Male", label: "Male" }, { value: "Female", label: "Female" }]}
-                            value={form.gender} onChange={change}
+                            value={form.gender} onChange={handleFieldChange}
                         />
 
                         <Segmented legend="South African citizen?" name="isSouthAfrican" required
                             options={[{ value: "Yes", label: "Yes" }, { value: "No", label: "No" }]}
-                            value={form.isSouthAfrican} onChange={change} inputRef={citizenRef}
+                            value={form.isSouthAfrican} onChange={handleFieldChange} inputRef={citizenRef}
                             error={errors.isSouthAfrican} errorId="citizen-err"
                         />
                     </div>
@@ -120,7 +125,7 @@ const Step2 = ({ form, change, next, back }) => {
                             {form.isSouthAfrican !== "No" ? "ID number " : "Passport number "}
                             <span className="text-danger">*</span>
                         </label>
-                        <input type="text" name="studentID" id="studentID" value={form.studentID} onChange={change}
+                        <input type="text" name="studentID" id="studentID" value={form.studentID} onChange={handleFieldChange}
                                className={fieldClass}
                                placeholder={form.isSouthAfrican !== "No" ? "13-digit ID number" : "Passport number"}
                                aria-required="true" aria-invalid={!!errors.studentID}
@@ -136,7 +141,7 @@ const Step2 = ({ form, change, next, back }) => {
 
                     <div className="space-y-2 col-span-full">
                         <label htmlFor="homeLanguage" className={labelClass}>Home language</label>
-                        <input type="text" name="homeLanguage" id="homeLanguage" onChange={change}
+                        <input type="text" name="homeLanguage" id="homeLanguage" onChange={handleFieldChange}
                                value={form.homeLanguage} className={fieldClass} placeholder="isiZulu"
                         />
                     </div>
@@ -145,7 +150,7 @@ const Step2 = ({ form, change, next, back }) => {
                         <label htmlFor="schoolName" className={labelClass}>
                             School name <span className="text-danger">*</span>
                         </label>
-                        <input type="text" name="schoolName" id="schoolName" onChange={change}
+                        <input type="text" name="schoolName" id="schoolName" onChange={handleFieldChange}
                                value={form.schoolName} className={fieldClass} placeholder="Current school"
                                aria-required="true" aria-invalid={!!errors.schoolName}
                                ref={schoolRef} aria-describedby={errors.schoolName ? "school-err" : undefined}
@@ -160,7 +165,7 @@ const Step2 = ({ form, change, next, back }) => {
                             Grade <span className="text-danger">*</span>
                         </label>
                         <select name="grade" id="grade" className={`w-full ${fieldClass}`} value={form.grade}
-                                onChange={change} aria-required="true" aria-invalid={!!errors.grade}
+                                onChange={handleFieldChange} aria-required="true" aria-invalid={!!errors.grade}
                                 aria-describedby={errors.grade ? "grade-err" : undefined}
                         >
                             <option value="">Select</option>

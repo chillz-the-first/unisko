@@ -16,6 +16,11 @@ const Step1 = ({ form, change, next}) => {
     const cityRef = useRef(null);
     const phoneRef = useRef(null);
 
+    function handleFieldChange(e) {
+        change(e);
+        setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+    }
+
     function handleNext(e) {
         e.preventDefault();
         const newErrors = {};
@@ -70,7 +75,7 @@ const Step1 = ({ form, change, next}) => {
                     <div className="space-y-2 col-span-2">
                         <label htmlFor="title" className={labelClass}>Title</label>
                         <div className={fieldClass}>
-                            <select name="title" id="title" className="w-full" value={form.title} onChange={change}>
+                            <select name="title" id="title" className="w-full" value={form.title} onChange={handleFieldChange}>
                                 <option value="">Select</option>
                                 <option value="Mr">Mr.</option>
                                 <option value="Mrs">Mrs.</option>
@@ -87,7 +92,7 @@ const Step1 = ({ form, change, next}) => {
                             Surname <span className="text-danger">*</span>
                         </label>
                         <input type="text" className={fieldClass} name="surname" id="surname"
-                               value={form.surname} onChange={change} placeholder="Maselela" autoComplete="family-name"
+                               value={form.surname} onChange={handleFieldChange} placeholder="Maselela" autoComplete="family-name"
                                aria-required="true" aria-invalid={!!errors.surname} ref={surnameRef}
                                aria-describedby={errors.surname ? "surname-err" : undefined}
                         />
@@ -101,7 +106,7 @@ const Step1 = ({ form, change, next}) => {
                             First Name <span className="text-danger">*</span>
                         </label>
                         <input type="text" className={fieldClass} name="firstName" id="firstName"
-                               value={form.firstName} onChange={change} placeholder="Thabo" autoComplete="given-name"
+                               value={form.firstName} onChange={handleFieldChange} placeholder="Thabo" autoComplete="given-name"
                                aria-required="true" aria-invalid={!!errors.firstName} ref={nameRef}
                                aria-describedby={errors.firstName ? "name-err" : undefined}
                         />
@@ -113,7 +118,7 @@ const Step1 = ({ form, change, next}) => {
                     <div className="space-y-2 col-span-2">
                         <label htmlFor="initials" className={labelClass}>Initials</label>
                         <input type="text" className={fieldClass} name="initials" id="initials" value={form.initials}
-                               onChange={change} placeholder="T"
+                               onChange={handleFieldChange} placeholder="T"
                         />
                     </div>
 
@@ -121,7 +126,7 @@ const Step1 = ({ form, change, next}) => {
                         <label htmlFor="idNumber" className={labelClass}>
                             ID or Passport number <span className="text-danger">*</span>
                         </label>
-                        <input type="text" name="idNumber" id="idNumber" value={form.idNumber} onChange={change}
+                        <input type="text" name="idNumber" id="idNumber" value={form.idNumber} onChange={handleFieldChange}
                                placeholder="13-digit ID or Passport number" className={fieldClass}
                                inputMode="numeric"
                                aria-required="true" aria-invalid={!!errors.idNumber} ref={idRef}
@@ -141,7 +146,7 @@ const Step1 = ({ form, change, next}) => {
                             Street address <span className="text-danger">*</span>
                         </label>
                         <input type="text" className={fieldClass} name="address" id="address"
-                               value={form.address} onChange={change} placeholder="12 Jan de Necker Drive"
+                               value={form.address} onChange={handleFieldChange} placeholder="12 Jan de Necker Drive"
                                aria-required="true" aria-invalid={!!errors.address} ref={addressRef}
                                aria-describedby={errors.address ? "address-err" : undefined}
                         />
@@ -152,7 +157,7 @@ const Step1 = ({ form, change, next}) => {
 
                     <div className="space-y-2 col-span-2 md:col-span-3">
                         <label htmlFor="town" className={labelClass}>Town</label>
-                        <input type="text" name="town" id="town" value={form.town} onChange={change}
+                        <input type="text" name="town" id="town" value={form.town} onChange={handleFieldChange}
                                placeholder="Freedom Park" className={fieldClass}
                         />
                     </div>
@@ -161,7 +166,7 @@ const Step1 = ({ form, change, next}) => {
                         <label htmlFor="city" className={labelClass}>
                             City <span className="text-danger">*</span>
                         </label>
-                        <input type="text" name="city" id="city" value={form.city} onChange={change}
+                        <input type="text" name="city" id="city" value={form.city} onChange={handleFieldChange}
                                placeholder="Freedom Park" className={fieldClass}
                                aria-required="true" aria-invalid={!!errors.city} ref={cityRef}
                                aria-describedby={errors.city ? "city-err" : undefined}
@@ -175,7 +180,7 @@ const Step1 = ({ form, change, next}) => {
                         <label htmlFor="cellPhone" className={labelClass}>
                             Cell phone <span className="text-danger">*</span>
                         </label>
-                        <input type="tel" name="cellPhone" id="cellPhone" value={form.cellPhone} onChange={change}
+                        <input type="tel" name="cellPhone" id="cellPhone" value={form.cellPhone} onChange={handleFieldChange}
                                placeholder="081 234 5678" className={fieldClass} autoComplete="tel"
                                aria-required="true" aria-invalid={!!errors.cellPhone} ref={phoneRef}
                                aria-describedby={errors.cellPhone ? "phone-err" : undefined}
@@ -187,7 +192,7 @@ const Step1 = ({ form, change, next}) => {
 
                     <div className="space-y-2 col-span-2 md:col-span-3">
                         <label htmlFor="email" className={labelClass}>Email</label>
-                        <input type="text" name="email" id="email" value={form.email} onChange={change}
+                        <input type="text" name="email" id="email" value={form.email} onChange={handleFieldChange}
                                placeholder="name@example.com" className={fieldClass} autoComplete="email"
                         />
                     </div>

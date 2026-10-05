@@ -25,8 +25,8 @@ const Enrol = () => {
     const [status, setStatus] = useState("idle");
 
     function handleChange(e) {
-        const {name, type} = e.target;
-        setForm({...form, [name]: type === "checkbox" ? e.target.checked : e.target.value});
+        const { name, type, checked, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
     }
 
     function next() {
