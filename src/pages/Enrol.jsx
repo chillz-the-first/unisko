@@ -2,6 +2,7 @@ import Section from "../components/Section.jsx";
 import Icon from "../lib/Icon.jsx";
 import {useEffect, useState} from "react";
 import Step1 from "../components/enroll/Step1.jsx";
+import Step2 from "../components/enroll/Step2.jsx";
 
 const Enrol = () => {
     const [step, setStep] = useState(1);
@@ -84,6 +85,7 @@ const Enrol = () => {
                 </div>
 
                 {step === 1 && <Step1 next={next} change={handleChange} form={form}/>}
+                {step === 2 && <Step2 next={next} back={prev} change={handleChange} form={form}/>}
 
                 <pre className="text-xs bg-cream p-4 rounded">{JSON.stringify(form, null, 2)}</pre>
             </div>
