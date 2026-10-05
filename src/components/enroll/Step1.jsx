@@ -1,4 +1,5 @@
 import Icon from "../../lib/Icon.jsx";
+import Note from "./Note.jsx"
 import Button from "../Button.jsx";
 import {useRef, useState} from "react";
 
@@ -197,12 +198,7 @@ const Step1 = ({ form, change, next}) => {
                         />
                     </div>
 
-                    <div className="col-span-full bg-cream py-4 px-5 rounded-xl text-body
-                        flex items-center gap-4"
-                    >
-                        <Icon name="alert"/>
-                        <p>These are your details. You'll add your child's details in the next step.</p>
-                    </div>
+                    <Note>These are your details. You'll add your child's details in the next step.</Note>
 
                     <div className="border-t border-line my-4 col-span-full"/>
 
