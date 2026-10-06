@@ -71,7 +71,7 @@ const Step3 = ({ form, change, next, back }) => {
                     {documents.map((doc) => (
                         <div key={doc.name} className="flex items-start gap-4 py-4 border-t last:border-b border-line">
                             <input type="checkbox" id={doc.name} name={doc.name} checked={form[doc.name]}
-                                   onChange={change} ref={refs[doc.name]}
+                                   onChange={handleFieldChange} ref={refs[doc.name]}
                                    className="mt-1 w-5 h-5 flex-none rounded accent-navy"
                             />
 
