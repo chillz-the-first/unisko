@@ -1,10 +1,7 @@
 import Button from "../Button.jsx";
 import {useRef, useState} from "react";
 import Segmented from "./Segmented.jsx";
-
-const fieldClass =
-    "block w-full rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60";
-const labelClass = "block text-navy font-semibold";
+import { fieldClass, labelClass } from "../../lib/fieldStyles.js";
 
 const Step2 = ({ form, change, next, back }) => {
     const [errors, setErrors] = useState({});
@@ -15,6 +12,8 @@ const Step2 = ({ form, change, next, back }) => {
     const idRef = useRef(null);
     const schoolRef = useRef(null);
     const gradeRef = useRef(null);
+
+    const usesPassport = form.isSouthAfrican === "No";
 
     function handleFieldChange(e) {
         change(e);
@@ -35,7 +34,8 @@ const Step2 = ({ form, change, next, back }) => {
             newErrors.isSouthAfrican = "Please choose yes or no."
         }
         if (!form.studentID.trim()) {
-            newErrors.studentID = "Please enter your child's ID number."
+            newErrors.studentID = usesPassport ? "Please enter your child's passport number."
+                : "Please enter your child's ID number.";
         }
         if (!form.schoolName.trim()) {
             newErrors.schoolName = "Please enter your child's school.";
@@ -78,7 +78,7 @@ const Step2 = ({ form, change, next, back }) => {
                         </label>
                         <input type="text" name="studentSurname" id="studentSurname" onChange={handleFieldChange}
                                value={form.studentSurname} className={fieldClass} placeholder="Maselela"
-                               autoComplete="family-name" aria-required="true" aria-invalid={!!errors.studentSurname}
+                               autoComplete="off" aria-required="true" aria-invalid={!!errors.studentSurname}
                                ref={surnameRef} aria-describedby={errors.studentSurname ? "surname-err" : undefined}
                         />
                         {errors.studentSurname &&
@@ -89,7 +89,7 @@ const Step2 = ({ form, change, next, back }) => {
                     <div className="space-y-2 col-span-1">
                         <label htmlFor="studentInitials" className={labelClass}>Initials</label>
                         <input type="text" name="studentInitials" id="studentInitials" onChange={handleFieldChange}
-                               value={form.studentInitials} placeholder="M" className={fieldClass}
+                               value={form.studentInitials} placeholder="M" className={fieldClass} autoComplete="off"
                         />
                     </div>
 
@@ -99,7 +99,7 @@ const Step2 = ({ form, change, next, back }) => {
                         </label>
                         <input type="text" name="studentName" id="studentName" onChange={handleFieldChange}
                             value={form.studentName} className={fieldClass} placeholder="Lerato"
-                            aria-required="true" aria-invalid={!!errors.studentName}
+                            aria-required="true" aria-invalid={!!errors.studentName} autoComplete="off"
                             ref={nameRef} aria-describedby={errors.studentName ? "name-err" : undefined}
                         />
                         {errors.studentName &&
@@ -122,11 +122,10 @@ const Step2 = ({ form, change, next, back }) => {
 
                     <div className="space-y-2 col-span-full">
                         <label htmlFor="studentID" className={labelClass}>
-                            {form.isSouthAfrican !== "No" ? "ID number " : "Passport number "}
-                            <span className="text-danger">*</span>
+                            {usesPassport ? "Passport number" : "ID number"} <span className="text-danger">*</span>
                         </label>
                         <input type="text" name="studentID" id="studentID" value={form.studentID} onChange={handleFieldChange}
-                               className={fieldClass}
+                               className={fieldClass} autoComplete="off"
                                placeholder={form.isSouthAfrican !== "No" ? "13-digit ID number" : "Passport number"}
                                aria-required="true" aria-invalid={!!errors.studentID}
                                ref={idRef} aria-describedby={errors.studentID ? "id-err" : undefined}
@@ -134,8 +133,9 @@ const Step2 = ({ form, change, next, back }) => {
                         {errors.studentID &&
                             <p className="text-sm text-danger" id="id-err" role="alert">{errors.studentID}</p>
                         }
-                        <p className="text-sm text-muted">
-                            If your child isn't a South African citizen, enter their passport number.
+                        <p id="id-hint" className="text-sm text-muted">
+                            {usesPassport ? "As it appears on your child's passport."
+                                : "If your child doesn't have an ID card yet, the number is on their birth certificate."}
                         </p>
                     </div>
 
@@ -164,9 +164,9 @@ const Step2 = ({ form, change, next, back }) => {
                         <label htmlFor="grade" className={labelClass}>
                             Grade <span className="text-danger">*</span>
                         </label>
-                        <select name="grade" id="grade" className={`w-full ${fieldClass}`} value={form.grade}
+                        <select name="grade" id="grade" className={fieldClass} value={form.grade}
                                 onChange={handleFieldChange} aria-required="true" aria-invalid={!!errors.grade}
-                                aria-describedby={errors.grade ? "grade-err" : undefined}
+                                aria-describedby={errors.grade ? "grade-err" : undefined} ref={gradeRef}
                         >
                             <option value="">Select</option>
                             <option value="Grade R">R</option>

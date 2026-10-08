@@ -1,11 +1,7 @@
-import Icon from "../../lib/Icon.jsx";
 import Note from "./Note.jsx"
 import Button from "../Button.jsx";
+import { fieldClass, labelClass } from "../../lib/fieldStyles.js";
 import {useRef, useState} from "react";
-
-const fieldClass =
-    "block w-full rounded-xl border border-field-border px-4 py-2 text-body placeholder:text-body/60";
-const labelClass = "block text-navy font-semibold";
 
 const Step1 = ({ form, change, next}) => {
     const [errors, setErrors] = useState({});
@@ -16,6 +12,7 @@ const Step1 = ({ form, change, next}) => {
     const addressRef = useRef(null);
     const cityRef = useRef(null);
     const phoneRef = useRef(null);
+    const emailRef = useRef(null);
 
     function handleFieldChange(e) {
         change(e);
@@ -26,14 +23,14 @@ const Step1 = ({ form, change, next}) => {
         e.preventDefault();
         const newErrors = {};
 
-        if (!form.firstName.trim()) {
-            newErrors.firstName = "Please enter your name.";
-        }
         if (!form.surname.trim()) {
             newErrors.surname = "Please enter your surname.";
         }
+        if (!form.firstName.trim()) {
+            newErrors.firstName = "Please enter your name.";
+        }
         if (!form.idNumber.trim()) {
-            newErrors.idNumber = "Please enter your id/passport number.";
+            newErrors.idNumber = "Please enter your ID or Passport number.";
         }
         if (!form.address.trim()) {
             newErrors.address = "Please enter your address.";
@@ -41,8 +38,15 @@ const Step1 = ({ form, change, next}) => {
         if (!form.city.trim()) {
             newErrors.city = "Please enter your city.";
         }
-        if (!form.cellPhone.trim()) {
-            newErrors.cellPhone = "Please enter your phone number.";
+        const phoneDigits = form.cellPhone.replace(/\D/g, "");
+        if (!phoneDigits) {
+            newErrors.cellPhone = "Please enter your cell phone number.";
+        } else if (phoneDigits.length < 10) {
+            newErrors.cellPhone = "That number looks too short. Include the 0 at the start, e.g. 081 234 5678.";
+        }
+        const email = form.email.trim();
+        if (email && !/^\S+@\S+\.\S+$/.test(email)) {
+            newErrors.email = "Please check your email address, e.g. name@example.com.";
         }
 
         if (Object.keys(newErrors).length > 0) {
@@ -54,6 +58,7 @@ const Step1 = ({ form, change, next}) => {
             else if (newErrors.address) addressRef.current.focus();
             else if (newErrors.city) cityRef.current.focus();
             else if (newErrors.cellPhone) phoneRef.current.focus();
+            else if (newErrors.email) emailRef.current.focus();
 
             return;
         }
@@ -75,17 +80,17 @@ const Step1 = ({ form, change, next}) => {
                 <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
                     <div className="space-y-2 col-span-2">
                         <label htmlFor="title" className={labelClass}>Title</label>
-                        <div className={fieldClass}>
-                            <select name="title" id="title" className="w-full" value={form.title} onChange={handleFieldChange}>
-                                <option value="">Select</option>
-                                <option value="Mr">Mr.</option>
-                                <option value="Mrs">Mrs.</option>
-                                <option value="Miss">Miss.</option>
-                                <option value="Dr">Dr.</option>
-                                <option value="Prof">Prof.</option>
-                            </select>
-                        </div>
-
+                        <select name="title" id="title" className={fieldClass} value={form.title}
+                                onChange={handleFieldChange} autoComplete="honorific-prefix"
+                        >
+                            <option value="">Select</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Prof">Prof</option>
+                        </select>
                     </div>
 
                     <div className="space-y-2 col-span-2 md:col-span-4">
@@ -129,8 +134,7 @@ const Step1 = ({ form, change, next}) => {
                         </label>
                         <input type="text" name="idNumber" id="idNumber" value={form.idNumber} onChange={handleFieldChange}
                                placeholder="13-digit ID or Passport number" className={fieldClass}
-                               inputMode="numeric"
-                               aria-required="true" aria-invalid={!!errors.idNumber} ref={idRef}
+                               autoComplete="off" aria-required="true" aria-invalid={!!errors.idNumber} ref={idRef}
                                aria-describedby={errors.idNumber ? "id-err" : undefined}
                         />
                         {errors.idNumber &&
@@ -148,8 +152,8 @@ const Step1 = ({ form, change, next}) => {
                         </label>
                         <input type="text" className={fieldClass} name="address" id="address"
                                value={form.address} onChange={handleFieldChange} placeholder="12 Jan de Necker Drive"
-                               aria-required="true" aria-invalid={!!errors.address} ref={addressRef}
-                               aria-describedby={errors.address ? "address-err" : undefined}
+                               autoComplete="address-line1" aria-required="true" aria-invalid={!!errors.address}
+                               ref={addressRef} aria-describedby={errors.address ? "address-err" : undefined}
                         />
                         {errors.address &&
                             <p className="text-sm text-danger" id="address-err" role="alert">{errors.address}</p>
@@ -168,7 +172,7 @@ const Step1 = ({ form, change, next}) => {
                             City <span className="text-danger">*</span>
                         </label>
                         <input type="text" name="city" id="city" value={form.city} onChange={handleFieldChange}
-                               placeholder="Freedom Park" className={fieldClass}
+                               placeholder="Johannesburg" className={fieldClass} autoComplete="address-line2"
                                aria-required="true" aria-invalid={!!errors.city} ref={cityRef}
                                aria-describedby={errors.city ? "city-err" : undefined}
                         />
@@ -193,9 +197,14 @@ const Step1 = ({ form, change, next}) => {
 
                     <div className="space-y-2 col-span-2 md:col-span-3">
                         <label htmlFor="email" className={labelClass}>Email</label>
-                        <input type="text" name="email" id="email" value={form.email} onChange={handleFieldChange}
+                        <input type="email" name="email" id="email" value={form.email} onChange={handleFieldChange}
                                placeholder="name@example.com" className={fieldClass} autoComplete="email"
+                               aria-invalid={!!errors.email} ref={emailRef}
+                               aria-describedby={errors.email ? "email-err" : undefined}
                         />
+                        {errors.email &&
+                            <p className="text-sm text-danger" id="email-err" role="alert">{errors.email}</p>
+                        }
                     </div>
 
                     <Note>These are your details. You'll add your child's details in the next step.</Note>

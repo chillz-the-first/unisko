@@ -11,7 +11,7 @@ const Segmented = ({ legend, name, options, value, onChange, required, inputRef,
             <div className="relative inline-grid grid-flow-col auto-cols-fr min-w-[15rem] p-[3px] rounded-[0.875rem] bg-navy/10">
                 <span
                     aria-hidden="true"
-                    className="absolute top-[3px] bottom-[3px] left-[3px] rounded-[0.6875rem] bg-white shadow-sm
+                    className="absolute top-[3px] bottom-[3px] left-[3px] rounded-[0.6875rem] bg-white shadow-sm ring-1 ring-muted
                                transition-[transform,opacity] duration-300 ease-out motion-reduce:transition-none"
                     style={{
                         width: `calc((100% - 6px) / ${options.length})`,
@@ -22,20 +22,14 @@ const Segmented = ({ legend, name, options, value, onChange, required, inputRef,
 
                 {options.map((option, i) => (
                     <div key={option.value} className="relative z-10">
-                        <input
-                            type="radio"
-                            name={name}
-                            id={`${name}-${option.value}`}
-                            value={option.value}
-                            checked={value === option.value}
-                            onChange={onChange}
-                            ref={i === 0 ? inputRef : undefined}
-                            aria-describedby={error ? errorId : undefined}
+                        <input type="radio" name={name} id={`${name}-${option.value}`} value={option.value}
+                            checked={value === option.value} onChange={onChange} ref={i === 0 ? inputRef : undefined}
+                            aria-invalid={error ? true : undefined} aria-describedby={error ? errorId : undefined}
                             className="sr-only peer"
                         />
                         <label
                             htmlFor={`${name}-${option.value}`}
-                            className="flex items-center justify-center min-h-[42px] px-5 rounded-[0.6875rem]
+                            className="flex items-center justify-center min-h-[44px] px-5 rounded-[0.6875rem]
                                        text-sm font-medium text-body cursor-pointer transition-colors
                                        peer-checked:text-navy peer-checked:font-semibold
                                        peer-focus-visible:ring-[3px] peer-focus-visible:ring-focus"

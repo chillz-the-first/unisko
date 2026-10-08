@@ -8,24 +8,21 @@ const documents = [
         name: "ackParentId",
         title: "Parent proof of ID",
         desc: "A copy of the parent's or guardian's ID.",
-        form: "form.ackParentId",
     },
     {
         name: "ackStudentId",
         title: "Child proof of ID",
         desc: "Your child's ID document, or a birth certificate if under 16.",
-        form: "form.ackStudentId",
     },
     {
         name: "ackRegFee",
         title: "Proof of the R150 registration fee",
         desc: "A payment reference or receipt for the once-off fee.",
-        form: "form.ackRegFee",
     },
 ];
 
 const Step3 = ({ form, change, next, back }) => {
-    const [errors, setErrors] = useState({});
+    const [error, setError] = useState("");
 
     const parentRef = useRef(null);
     const studentRef = useRef(null);
@@ -34,21 +31,20 @@ const Step3 = ({ form, change, next, back }) => {
 
     function handleFieldChange(e) {
         change(e);
-        setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+        setError("");
     }
 
     function handleNext(e) {
         e.preventDefault();
-        const newErrors = {};
 
         const missing = documents.find((doc) => !form[doc.name]);
         if (missing) {
-            setErrors({checks: "Tick all three documents to continue."});
+            setError("Tick all three documents to continue.");
             refs[missing.name].current.focus();
             return;
         }
 
-        setErrors({});
+        setError("");
         next();
     }
 
@@ -65,7 +61,7 @@ const Step3 = ({ form, change, next, back }) => {
             </div>
 
             <form className="space-y-6" noValidate onSubmit={handleNext}>
-                <fieldset aria-describedby={errors.checks ? "docs-err" : undefined}>
+                <fieldset >
                     <legend className="sr-only">Documents to bring.</legend>
 
                     {documents.map((doc) => (
@@ -73,17 +69,19 @@ const Step3 = ({ form, change, next, back }) => {
                             <input type="checkbox" id={doc.name} name={doc.name} checked={form[doc.name]}
                                    onChange={handleFieldChange} ref={refs[doc.name]}
                                    className="mt-1 w-5 h-5 flex-none rounded accent-navy"
+                                   aria-invalid={error && !form[doc.name] ? true : undefined}
+                                   aria-describedby={error ? "docs-err" : undefined}
                             />
 
                             <label htmlFor={doc.name} className="block text-navy font-semibold cursor-pointer">
                                 {doc.name}
-                                <p className="block text-muted font-normal">{doc.desc}</p>
+                                <span className="block text-muted font-normal">{doc.desc}</span>
                             </label>
                         </div>
                     ))}
                 </fieldset>
 
-                {errors.checks && <p id="docs-err" role="alert" className="text-sm text-danger">{errors.checks}</p>}
+                {error.checks && <p id="docs-err" role="alert" className="text-sm text-danger">{error.checks}</p>}
 
                 <div className="space-y-4">
                     <Note>
@@ -92,7 +90,7 @@ const Step3 = ({ form, change, next, back }) => {
                     </Note>
                     <Note>
                         The R150 registration fee is due before the first session.{" "}
-                        <Link to="/payment-details" className="text-red hover:underline">
+                        <Link to="/payment-details" className="text-red underline">
                             See our payment details
                         </Link>
                     </Note>

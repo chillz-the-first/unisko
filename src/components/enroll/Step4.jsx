@@ -1,6 +1,8 @@
 import Tile from "../Tile.jsx";
 import Button from "../Button.jsx";
 import { useRef, useState } from "react";
+import Icon from "../../lib/Icon.jsx";
+import { getWhatsAppUrl } from "../../lib/whatsapp.js";
 
 const Step4 = ({ form, change, back, setStep, submit, status }) => {
     const groups = [
@@ -43,6 +45,7 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
 
     const [errors, setErrors] = useState({});
     const termsRef = useRef(null);
+    const sending = status === "sending";
 
     function handleFieldChange(e) {
         change(e);
@@ -81,8 +84,9 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
                 <Tile tone="cream" className="mb-4 px-7 py-2" key={group.title}>
                     <div className="flex items-center justify-between">
                         <h3 className="text-navy font-semibold py-4">{group.title}</h3>
-                        <button type="button" onClick={() => setStep(group.step)}
-                            className="text-red hover:text-red-hover hover:underline text-sm min-h-[44px] px-2 -mr-2"
+                        <button type="button" onClick={() => setStep(group.step)} disabled={sending}
+                            className="text-red hover:text-red-hover hover:underline text-sm min-h-[44px] px-2
+                            -mr-2 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             Edit<span className="sr-only"> {group.title.toLowerCase()}</span>
                         </button>
@@ -145,12 +149,35 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
 
                 <div className="border-t border-line mt-4 mb-4" />
 
+                <div role="alert">
+                    {status === "error" && (
+                        <div className="mb-4 flex items-start gap-3 rounded-xl border border-danger/40
+                            bg-danger/5 px-5 py-4 text-body"
+                        >
+                            <Icon name="alert" className="w-5 h-5 mt-0.5 text-danger" />
+                            <p>
+                                <span className="font-semibold text-navy">Your application didn't send.</span>{" "}
+                                Your details are still here, so please try again. If it keeps failing,{" "}
+                                <a
+                                    href={getWhatsAppUrl("Hi Unisko, I tried to submit an enrolment application on " +
+                                        "the website but it didn't go through.")}
+                                    target="_blank" rel="noopener noreferrer"
+                                    className="text-red underline hover:text-red-hover"
+                                >
+                                    message us on WhatsApp<span className="sr-only"> (opens in a new tab)</span>
+                                </a>{" "}
+                                or call 061 811 7116.
+                            </p>
+                        </div>
+                    )}
+                </div>
+
                 <div className="flex items-center justify-between pt-4">
-                    <Button variant="outline" type="button" onClick={back} disabled={status === "sending"}>
+                    <Button variant="outline" onClick={back} disabled={sending}>
                         Back
                     </Button>
-                    <Button variant="filled" type="submit" disabled={status === "sending"}>
-                        {status === "sending" ? "Submitting…" : "Submit enrolment"}
+                    <Button variant="filled" type="submit" disabled={sending}>
+                        {sending ? "Submitting…" : "Submit enrolment"}
                     </Button>
                 </div>
             </form>
