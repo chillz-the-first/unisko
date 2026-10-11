@@ -21,7 +21,10 @@ const Button = ({variant = "filled", to, href, external = false, children, disab
         return (
             <a href={href} className={base} target={external ? "_blank" : undefined}
                rel={external ? "noopener noreferrer" : undefined}
-            >{children}</a>
+            >
+                {children}
+                <span className="sr-only">(opens in a new tab)</span>
+            </a>
         );
     }
 

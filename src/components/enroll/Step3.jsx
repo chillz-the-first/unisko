@@ -90,9 +90,9 @@ const Step3 = ({ form, change, next, back }) => {
                     </Note>
                     <Note>
                         The R150 registration fee is due before the first session.{" "}
-                        <Link to="/payment-details" className="text-red underline">
+                        <a href="/payment-details" className="text-red underline" target="_blank" rel="noopener noreferrer">
                             See our payment details
-                        </Link>
+                        </a>
                     </Note>
                 </div>
 

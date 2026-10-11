@@ -17,7 +17,7 @@ const CopyBtn = ({text, label}) => {
     };
 
     useEffect(() => {
-        if (status === "copied") return;
+        if (status !== "copied") return;
 
         const timer = setTimeout(() => setStatus("idle"), 2000);
         return () => clearTimeout(timer);
@@ -27,7 +27,7 @@ const CopyBtn = ({text, label}) => {
         <div>
             <Button variant="copy" onClick={handleCopy}>
                 <span>{isCopied ? "Copied" : "Copy"}</span>
-                <span className="sr-only">{label}</span>
+                <span className="sr-only"> {label}</span>
             </Button>
 
             <div className="sr-only" role="status" aria-live="polite">
