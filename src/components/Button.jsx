@@ -5,6 +5,7 @@ const styles = {
     outline: "border border-navy text-navy hover:bg-navy hover:text-white",
     white: "bg-white text-navy hover:bg-cream",
     ink: "bg-navy hover:bg-body text-white",
+    copy: "bg-transparent hover:bg-body text-white border border-white rounded-full font-semibold",
 };
 
 const Button = ({variant = "filled", to, href, external = false, children, disabled = false ,onClick, type = "button"}) => {
