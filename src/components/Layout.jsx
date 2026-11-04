@@ -2,12 +2,15 @@ import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
+import { pageTitles, notFoundTitle } from "../lib/pageTitles.js";
+
 
 const Layout = ({children}) => {
     const {pathname} = useLocation(); //gives the current URL
 
     useEffect(() => {
         const heading = document.querySelector("h1")
+        document.title = pageTitles[pathname] ?? notFoundTitle;
 
         if (heading) heading.focus();
 

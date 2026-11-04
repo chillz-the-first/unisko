@@ -8,6 +8,7 @@ import Events from "./pages/Events.jsx";
 import Contact from "./pages/Contact.jsx";
 import Enrol from "./pages/Enrol.jsx";
 import PaymentDetails from "./pages/PaymentDetails.jsx";
+import NotFound from "./pages/Notfound.jsx";
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
                     <Route path="/contact" element={<Contact/>}/>
                     <Route path="/enroll" element={<Enrol/>}/>
                     <Route path="/payment-details" element={<PaymentDetails/>}/>
+                    <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </Layout>
         </BrowserRouter>
