@@ -4,6 +4,7 @@ import Button from "../components/Button.jsx";
 import Tile from "../components/Tile.jsx";
 import {getWhatsAppUrl} from "../lib/whatsapp.js";
 import {Link} from "react-router-dom";
+import {prices} from "../lib/prices.js";
 
 const afterSchoolIncludes = [
     "Drop-off from school",
@@ -16,19 +17,19 @@ const afterSchoolIncludes = [
 
 const centreServices = [
     {
-        title: "Group Classes",
+        title: "Group classes",
         when: "Tuesday and Thursday, 4:00 to 5:30 PM",
-        desc: "Small cohorts learning together, at a lower price than one-on-one time.",
-        includes: ["Cohorts of 4 to 6", "Peer learning", "Termly progress reports"],
-        price: "R250",
+        desc: "Learners work together in small groups, at a lower price than one-on-one tutoring.",
+        includes: ["Groups of 4 to 6", "Peer learning", "Progress report every term"],
+        price: prices.groupClasses,
         duration: "per month",
     },
     {
-        title: "Homework Help",
-        when: "Monday to Friday, 3:00 to 6:00 PM",
-        desc: "Drop-in support. Walk in and a tutor sits with your child until it's sorted.",
-        includes: ["No booking needed", "Any subject", "Snack and water"],
-        price: "R250",
+        title: "Homework help",
+        when: "Monday to Friday, 3:00 to 5:30 PM",
+        desc: "Walk-in support. A tutor works with your child until the homework is done.",
+        includes: ["No booking required", "Any subject", "Snack and water"],
+        price: prices.homeworkHelp,
         duration: "per visit",
     },
 ];
@@ -38,55 +39,68 @@ const plans = [
     {
         name: "Unisko Basic",
         shortName: "Basic",
-        price: "R149",
+        price: prices.basic,
         inherits: "Includes:",
         features: [
-            "English recorded lessons once a week",
+            "Recorded English lessons once a week",
             "Worksheets",
             "Study notes",
             "Past papers",
             "Monthly test",
         ],
-        msg: "Hi Unisko, I'd like to know more about Unisko Basic.",
+        msg: "Hello Unisko, I would like to know more about Unisko Basic.",
     },
     {
         name: "Unisko Plus",
         shortName: "Plus",
-        price: "R300",
+        price: prices.plus,
         inherits: "Everything in Basic, plus:",
         features: [
-            "Weekly recorded lessons in English and maths",
+            "Weekly recorded lessons in English and mathematics",
             "Teacher interaction",
             "Marked activities",
             "Monthly progress report",
         ],
-        msg: "Hi Unisko, I'd like to know more about Unisko Plus.",
-
+        msg: "Hello Unisko, I would like to know more about Unisko Plus.",
     },
     {
         name: "Unisko Premium",
         shortName: "Premium",
-        price: "R499",
+        price: prices.premium,
         inherits: "Everything in Plus, plus:",
         features: [
-            "Two weekly recorded lessons in English and maths",
+            "Two weekly recorded lessons in English and mathematics",
             "A live lesson once a week",
             "Exam preparation",
             "Personalised academic support",
             "Parent progress reports",
             "Priority tutoring and support",
         ],
-        msg: "Hi Unisko, I'd like to know more about Unisko Premium.",
+        msg: "Hello Unisko, I would like to know more about Unisko Premium.",
     },
 ];
 
 const comparison = {
-    columns: ["After-School Program", "Group Classes", "Homework Help", "Online packages"],
+    columns: ["After-school programme", "Group classes", "Homework help", "Online packages"],
     rows: [
-        { label: "Best for", values: ["Working parents", "Social learners", "Stuck on homework", "Learning from home"] },
-        { label: "Where", values: ["At the centre", "At the centre", "At the centre", "Online"] },
-        { label: "When", values: ["Mon to Fri, 3:00 to 5:30 PM", "Tue and Thu, 4:00 to 5:30 PM", "Mon to Fri, 3:00 to 6:00 PM", "Recorded lessons any time"] },
-        { label: "Price", values: ["R500 per month", "R250 per month", "R250 per visit", "From R149 per month"] },
+        {label: "Best for", values: [
+                "Working parents",
+                "Learners who enjoy working with others",
+                "Help with homework", "Learning from home"
+            ]},
+        {label: "Where", values: ["At the centre", "At the centre", "At the centre", "Online"]},
+        {label: "When", values: [
+                "Mon to Fri, 3:00 to 5:30 PM",
+                "Tue and Thu, 4:00 to 5:30 PM",
+                "Mon to Fri, 3:00 to 5:30 PM",
+                "Recorded lessons any time"
+            ]},
+        {label: "Price", values: [
+                `${prices.afterSchool} per month`,
+                `${prices.groupClasses} per month`,
+                `${prices.homeworkHelp} per visit`,
+                `From ${prices.basic} per month`,
+            ]},
     ],
 };
 
@@ -115,7 +129,7 @@ const Services = () => {
                 <div className="space-y-4">
                     <h1 className="text-display font-semibold text-navy" tabIndex={-1}>Four ways to learn at Unisko.</h1>
                     <p className="text-lede text-muted max-w-[46ch]">
-                        From weekday afternoons at the centre to lessons at home. Pick what fits your child.
+                        From weekday afternoons at the centre to lessons at home. Choose the option that suits your child.
                     </p>
                 </div>
             </Section>
@@ -125,21 +139,21 @@ const Services = () => {
                 <div className="grid grid-cols-1 ml:grid-cols-2 gap-10">
                     <div className="space-y-10">
                         <div className="space-y-4">
-                            <h2 className="text-headline text-white font-semibold">After-School Program.</h2>
+                            <h2 className="text-headline text-white font-semibold">After-school programme.</h2>
                             <p className="text-white/80 text-lede">
-                                Drop-off from school, supervised study, a snack, and dedicated tutor time.
-                                The full afternoon, sorted.
+                                Drop-off from school, supervised study, a snack and dedicated time with a tutor.
+                                The whole afternoon is taken care of.
                             </p>
                         </div>
 
                         <div className="space-y-2">
                             <p className="text-stat text-white tabular-nums font-semibold">
-                                R500 <span className="text-sm text-white/80">per month</span>
+                                {prices.afterSchool} <span className="text-sm text-white/80">per month</span>
                             </p>
                             <p className="text-sm text-white/80">Monday to Friday, 3:00 to 5:30 PM</p>
                         </div>
 
-                        <Button to="/enroll" variant="white">Enroll</Button>
+                        <Button to="/enroll" variant="white">Enrol</Button>
                     </div>
 
                     <div>
@@ -173,7 +187,7 @@ const Services = () => {
                             <ul className="list-none grid grid-cols-1 ml:grid-cols-2 gap-x-6">
                                 {item.includes.map((check) => (
                                     <li className={`flex items-start gap-2.5 py-3.5 border-t ${lightTone.divider} text-sm`} key={check}>
-                                        <CheckIcon color={"text-red"}/>
+                                        <CheckIcon color="text-red"/>
                                         {check}
                                     </li>
                                 ))}
@@ -183,7 +197,7 @@ const Services = () => {
                                 <p className="text-navy font-semibold text-title">
                                     {item.price} <span className="text-muted font-normal text-sm">{item.duration}</span>
                                 </p>
-                                <Button to="/enroll" variant="ink">Enroll</Button>
+                                <Button to="/enroll" variant="ink">Enrol</Button>
                             </div>
                         </Tile>
                     ))}
@@ -194,7 +208,7 @@ const Services = () => {
             <Section tone="cream">
                 <div className="space-y-4">
                     <h2 className="text-headline text-navy font-semibold">Online packages.</h2>
-                    <p className="text-lede text-muted">Keep learning from home, priced per month.</p>
+                    <p className="text-lede text-muted">Learning from home, priced per month.</p>
                 </div>
 
                 <div className="grid grid-cols-1 ml:grid-cols-3 mt-8">
@@ -232,8 +246,10 @@ const Services = () => {
                 <div className="mt-8">
                     <p className="text-muted text-sm">Billed monthly. Cancel with 30 days' notice.</p>
                     <p className="text-muted text-sm">
-                        The registration fee is R150,{" "}
-                        <Link className="text-red text-sm hover:underline" to="/payment-details">see our payment details</Link>
+                        The registration fee is {prices.registration}.{" "}
+                        <Link className="text-red text-sm underline hover:text-red-hover" to="/payment-details">
+                            See our payment details
+                        </Link>
                     </p>
                 </div>
             </Section>
@@ -281,11 +297,11 @@ const Services = () => {
 
                 <div className="flex flex-col md:flex-row items-center mt-8 gap-4">
                     <Button variant="ink" external={true}
-                        href={getWhatsAppUrl("Hi Unisko, could you explain the differences between your packages?")}
+                            href={getWhatsAppUrl("Hello Unisko, could you please explain the differences between your packages?")}
                     >
                         Ask us on WhatsApp
                     </Button>
-                    <p className="text-muted text-sm">Not sure which one fits? We'll help you pick.</p>
+                    <p className="text-muted text-sm">Not sure which option suits your child? We can help you choose.</p>
                 </div>
             </Section>
         </div>

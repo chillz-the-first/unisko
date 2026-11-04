@@ -5,6 +5,7 @@ import Tile from "../components/Tile.jsx";
 import CTA from "../components/CTA.jsx";
 import {toneStyles as tones} from "../lib/toneStyles.js";
 import Carousel from "../components/Carousel.jsx";
+import {prices} from "../lib/prices.js";
 
 const images = [
     {id: "h1", src: "/images/stu_group_pic_1.jpg", alt: "A group of Unisko learners at the centre", position: "object-center"},
@@ -25,7 +26,7 @@ const packages = [
         title: "After-school programme",
         details: "Monday to Friday, 3:00 to 5:30 PM",
         body: "Drop-off from school, supervised study, a snack and dedicated time with a tutor.",
-        price: "R399",
+        price: prices.afterSchool,
         duration: "per month",
         btnTo: "/services",
         btnText: "Learn more",
@@ -37,7 +38,7 @@ const packages = [
         title: "Group classes",
         details: "Tuesday and Thursday, 4:00 to 5:30 PM",
         body: "Small groups of 4 to 6 learners.",
-        price: "R249",
+        price: prices.groupClasses,
         duration: "per month",
         tone: "white",
         span: "ml:col-span-2",
@@ -46,7 +47,7 @@ const packages = [
         title: "Homework help",
         details: "Monday to Friday, 3:00 to 5:30 PM",
         body: "Walk-ins are welcome. No booking is required.",
-        price: "R249",
+        price: prices.homeworkHelp,
         duration: "per visit",
         tone: "white",
         span: "ml:col-span-2",
@@ -55,7 +56,7 @@ const packages = [
         title: "Online packages",
         details: "Learn from home",
         body: "Recorded lessons, worksheets and monthly tests, with live lessons on Premium.",
-        price: "From R149",
+        price: `From ${prices.basic}`,
         duration: "per month",
         btnTo: "/services",
         btnText: "Compare packages",
@@ -222,7 +223,7 @@ const Home = () => {
             {/*CTA section*/}
             <CTA
                 head="Enrol your child at Unisko."
-                lede="Enrolment takes four steps. The registration fee is R149."
+                lede={`Enrolment takes four steps. The registration fee is ${prices.registration}.`}
                 btns={ctaBtns}
             />
         </div>
