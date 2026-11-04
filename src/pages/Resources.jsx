@@ -1,6 +1,7 @@
 import Section from "../components/Section.jsx";
 import CTA from "../components/CTA.jsx";
 import {getWhatsAppUrl} from "../lib/whatsapp.js";
+import {prices} from "../lib/prices.js";
 
 const courses = [
     {
@@ -28,34 +29,20 @@ const courses = [
 ];
 
 const packs = [
-    {
-        pack: "Grade 8 Mathematics Pack", price: "R49",
-    },
-    {
-        pack: "Grade 9 Mathematics Pack", price: "R59",
-    },
-    {
-        pack: "Grade 10 Mathematics Pack", price: "R80",
-    },
-    {
-        pack: "Grade 11 Mathematics Pack", price: "R99",
-    },
-    {
-        pack: "Grade 12 Mathematics Pack", price: "R129",
-    },
-    {
-        pack: "Grade 12 English Pack", price: "R100",
-    },
-    {
-        pack: "Full Grade 12 Bundle", price: "R299", contains: "Mathematics and English",
-    },
+    {pack: "Grade 8 Mathematics Pack", price: prices.grade8MathsPack},
+    {pack: "Grade 9 Mathematics Pack", price: prices.grade9MathsPack},
+    {pack: "Grade 10 Mathematics Pack", price: prices.grade10MathsPack},
+    {pack: "Grade 11 Mathematics Pack", price: prices.grade11MathsPack},
+    {pack: "Grade 12 Mathematics Pack", price: prices.grade12MathsPack},
+    {pack: "Grade 12 English Pack", price: prices.grade12EnglishPack},
+    {pack: "Full Grade 12 Bundle", price: prices.grade12Bundle, contains: "Mathematics and English"},
 ];
 
 const ctaBtns = [
     {
         type: "href",
-        destination: getWhatsAppUrl("Hello Unisko, I'm interested in your courses/study packs. " +
-            "Can I please get more information about them?"),
+        destination: getWhatsAppUrl("Hello Unisko, I am interested in your courses and study packs. " +
+            "Could you please send me more information?"),
         text: "Message us on WhatsApp",
         external: true,
     },
@@ -78,9 +65,9 @@ const Resources = () => {
             {/*Courses Section*/}
             <Section tone="cream">
                 <div className="space-y-4 mb-8">
-                    <h2 className="text-headline text-navy font-semibold">Every course, R199.</h2>
+                    <h2 className="text-headline text-navy font-semibold">Each course costs {prices.course}.</h2>
                     <p className="text-lede text-muted max-w-[46ch]">
-                        Each one comes with 10 video lessons, 10 worksheets, 10 memorandums and a final test.
+                        Each course includes 10 video lessons, 10 worksheets, 10 memorandums and a final test.
                     </p>
                 </div>
 
@@ -113,8 +100,9 @@ const Resources = () => {
                     <ul className="list-none">
                         {packs.map((item) => (
                             <li key={item.pack}
-                                className={`flex items-start justify-between text-body ${item.contains ?
-                                "bg-navy text-white p-4 rounded-tile mt-3" : "py-3.5 border-t border-line"}`}
+                                className={`flex items-start justify-between gap-4 ${item.contains
+                                    ? "bg-navy text-white p-4 rounded-tile mt-3"
+                                    : "text-body py-3.5 border-t border-line"}`}
                             >
                                 <div>
                                     <p>{item.pack}</p>
@@ -127,13 +115,14 @@ const Resources = () => {
                             </li>
                         ))}
                     </ul>
+
                 </div>
             </Section>
 
             {/*CTA Section*/}
             <CTA head="How to buy."
-                 lede="Message us on WhatsApp or visit the centre at 43 Oil Avenue, Freedom Park.
-                 We'll sort out payment and get the material to you."
+                 lede="Send us a message on WhatsApp, or visit the centre at 43 Oil Avenue, Freedom Park.
+                 We will arrange payment and get the material to you."
                  btns={ctaBtns}
             />
         </div>
