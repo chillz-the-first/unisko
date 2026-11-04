@@ -3,6 +3,7 @@ import Button from "../Button.jsx";
 import { useRef, useState } from "react";
 import Icon from "../../lib/Icon.jsx";
 import { getWhatsAppUrl } from "../../lib/whatsapp.js";
+import {prices} from "../../lib/prices.js";
 
 const Step4 = ({ form, change, back, setStep, submit, status }) => {
     const groups = [
@@ -20,7 +21,7 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
         },
         {
             step: 2,
-            title: "Applicant",
+            title: "Learner",
             rows: [
                 ["Name", [form.studentName, form.studentSurname].filter(Boolean).join(" ")
                 + (form.studentInitials ? ` (${form.studentInitials})` : "")],
@@ -71,12 +72,12 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
 
     return (
         <div>
-            <div className="space-y-2 mb-8">
+            <div className="space-y-2 my-8">
                 <h2 className="text-navy text-title font-semibold" tabIndex={-1} data-step-heading>
                     Review and confirm.
                 </h2>
                 <p className="text-muted text-lede">
-                    Check that everything reads right, then accept the terms and submit.
+                    Check that all the details are correct, then accept the terms and submit.
                 </p>
             </div>
 
@@ -110,10 +111,13 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
             <div className="border border-line rounded-tile p-7 space-y-2">
                 <h3 className="text-navy font-semibold text-lede">Terms and conditions</h3>
                 <p className="text-muted">
-                    The R150 registration fee is non-refundable for new students. Monthly fees are due before
-                    the 10th of each month to avoid exclusion. The December fee covers January and must be paid
-                    to avoid deregistration. A zero-tolerance policy applies to bullying, and damage to property
-                    is repaid by the client. These terms are governed by South African law.
+                    The {prices.registration} registration fee is not refundable, and monthly fees are due before
+                    the 10th of each month.{" "}
+                    <a href="/terms" target="_blank" rel="noopener noreferrer"
+                       className="text-red underline hover:text-red-hover"
+                    >
+                        Read the full terms and conditions<span className="sr-only"> (opens in a new tab)</span>
+                    </a>
                 </p>
             </div>
 
@@ -154,13 +158,13 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
                         <div className="mb-4 flex items-start gap-3 rounded-xl border border-danger/40
                             bg-danger/5 px-5 py-4 text-body"
                         >
-                            <Icon name="alert" className="w-5 h-5 mt-0.5 text-danger" />
+                            <Icon name="alert" className="w-5 h-5 mt-0.5 text-danger"/>
                             <p>
-                                <span className="font-semibold text-navy">Your application didn't send.</span>{" "}
+                                <span className="font-semibold text-navy">Your application was not sent.</span>{" "}
                                 Your details are still here, so please try again. If it keeps failing,{" "}
                                 <a
-                                    href={getWhatsAppUrl("Hi Unisko, I tried to submit an enrolment application on " +
-                                        "the website but it didn't go through.")}
+                                    href={getWhatsAppUrl("Hello Unisko, I tried to submit an enrolment application on " +
+                                        "the website, but it did not go through.")}
                                     target="_blank" rel="noopener noreferrer"
                                     className="text-red underline hover:text-red-hover"
                                 >

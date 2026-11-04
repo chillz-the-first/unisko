@@ -28,7 +28,7 @@ const Step2 = ({ form, change, next, back }) => {
             newErrors.studentSurname = "Please enter your child's surname.";
         }
         if (!form.studentName.trim()) {
-            newErrors.studentName = "Please enter your child's name.";
+            newErrors.studentName = "Please enter your child's first name.";
         }
         if (!form.isSouthAfrican) {
             newErrors.isSouthAfrican = "Please choose yes or no."
@@ -65,9 +65,9 @@ const Step2 = ({ form, change, next, back }) => {
         <div>
             <div className="space-y-2 my-8">
                 <h2 className="text-title text-navy font-semibold" data-step-heading tabIndex={-1}>
-                    Tell us about your child.
+                    Learner details.
                 </h2>
-                <p className="text-muted text-lede">The learner who'll be tutored.</p>
+                <p className="text-muted text-lede">The learner who will attend tutoring.</p>
             </div>
 
             <form className="space-y-4" noValidate onSubmit={handleNext}>
@@ -126,16 +126,16 @@ const Step2 = ({ form, change, next, back }) => {
                         </label>
                         <input type="text" name="studentID" id="studentID" value={form.studentID} onChange={handleFieldChange}
                                className={fieldClass} autoComplete="off"
-                               placeholder={form.isSouthAfrican !== "No" ? "13-digit ID number" : "Passport number"}
+                               placeholder={usesPassport ? "Passport number" : "13-digit ID number"}
                                aria-required="true" aria-invalid={!!errors.studentID}
-                               ref={idRef} aria-describedby={errors.studentID ? "id-err" : undefined}
+                               ref={idRef} aria-describedby={errors.studentID ? "id-hint id-err" : "id-hint"}
                         />
                         {errors.studentID &&
                             <p className="text-sm text-danger" id="id-err" role="alert">{errors.studentID}</p>
                         }
                         <p id="id-hint" className="text-sm text-muted">
                             {usesPassport ? "As it appears on your child's passport."
-                                : "If your child doesn't have an ID card yet, the number is on their birth certificate."}
+                                : "If your child does not have an ID card yet, the number is on their birth certificate."}
                         </p>
                     </div>
 

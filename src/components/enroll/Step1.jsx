@@ -27,10 +27,10 @@ const Step1 = ({ form, change, next}) => {
             newErrors.surname = "Please enter your surname.";
         }
         if (!form.firstName.trim()) {
-            newErrors.firstName = "Please enter your name.";
+            newErrors.firstName = "Please enter your first name.";
         }
         if (!form.idNumber.trim()) {
-            newErrors.idNumber = "Please enter your ID or Passport number.";
+            newErrors.idNumber = "Please enter your ID or passport number.";
         }
         if (!form.address.trim()) {
             newErrors.address = "Please enter your address.";
@@ -71,9 +71,9 @@ const Step1 = ({ form, change, next}) => {
         <div>
             <div className="space-y-2 my-8">
                 <h2 data-step-heading tabIndex={-1} className="text-title text-navy font-semibold">
-                    Let's start with you.
+                    Parent or guardian details.
                 </h2>
-                <p className="text-muted text-lede">The parent or guardian responsible for enrollment.</p>
+                <p className="text-muted text-lede">The parent or guardian responsible for this enrolment.</p>
             </div>
 
             <form className="space-y-4" noValidate onSubmit={handleNext}>
@@ -109,7 +109,7 @@ const Step1 = ({ form, change, next}) => {
 
                     <div className="space-y-2 col-span-2 md:col-span-4">
                         <label htmlFor="firstName" className={labelClass}>
-                            First Name <span className="text-danger">*</span>
+                            First name <span className="text-danger">*</span>
                         </label>
                         <input type="text" className={fieldClass} name="firstName" id="firstName"
                                value={form.firstName} onChange={handleFieldChange} placeholder="Thabo" autoComplete="given-name"
@@ -130,10 +130,10 @@ const Step1 = ({ form, change, next}) => {
 
                     <div className="space-y-2 col-span-2 md:col-span-full">
                         <label htmlFor="idNumber" className={labelClass}>
-                            ID or Passport number <span className="text-danger">*</span>
+                            ID or passport number <span className="text-danger">*</span>
                         </label>
                         <input type="text" name="idNumber" id="idNumber" value={form.idNumber} onChange={handleFieldChange}
-                               placeholder="13-digit ID or Passport number" className={fieldClass}
+                               placeholder="13-digit ID or passport number" className={fieldClass}
                                autoComplete="off" aria-required="true" aria-invalid={!!errors.idNumber} ref={idRef}
                                aria-describedby={errors.idNumber ? "id-err" : undefined}
                         />
@@ -172,7 +172,7 @@ const Step1 = ({ form, change, next}) => {
                             City <span className="text-danger">*</span>
                         </label>
                         <input type="text" name="city" id="city" value={form.city} onChange={handleFieldChange}
-                               placeholder="Johannesburg" className={fieldClass} autoComplete="address-line2"
+                               placeholder="Johannesburg" className={fieldClass} autoComplete="address-level2"
                                aria-required="true" aria-invalid={!!errors.city} ref={cityRef}
                                aria-describedby={errors.city ? "city-err" : undefined}
                         />
@@ -207,12 +207,12 @@ const Step1 = ({ form, change, next}) => {
                         }
                     </div>
 
-                    <Note>These are your details. You'll add your child's details in the next step.</Note>
+                    <Note>These are your details. You will add your child's details in the next step.</Note>
 
                     <div className="border-t border-line my-4 col-span-full"/>
 
                     <div className="col-span-full flex justify-end">
-                        <Button variant="ink" type="submit">Next: Your child</Button>
+                        <Button variant="ink" type="submit">Next: Learner details</Button>
                     </div>
                 </div>
             </form>

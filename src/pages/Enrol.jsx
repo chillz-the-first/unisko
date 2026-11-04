@@ -7,7 +7,7 @@ import Step3 from "../components/enroll/Step3.jsx";
 import Step4 from "../components/enroll/Step4.jsx";
 import Button from "../components/Button.jsx";
 
-const LABELS = ["Parent", "Applicant", "Documents", "Review"];
+const LABELS = ["Parent", "Learner", "Documents", "Review"];
 
 const EMPTY_PARENT = {
     title: "", surname: "", firstName: "", initials: "", idNumber: "",
@@ -57,10 +57,10 @@ const Enrol = () => {
         setStep(n);
     }
     function next() {
-        if (step < 4) setStep(step + 1);
+        if (step < 4) goToStep(step + 1);
     }
     function prev() {
-        if (step > 1) setStep(step - 1);
+        if (step > 1) goToStep(step - 1);
     }
 
     function reset() {
@@ -159,7 +159,7 @@ const Enrol = () => {
                         Application submitted.
                     </h2>
                     <p className="mt-4 text-lede text-muted">
-                        We'll get back to you as soon as possible.
+                        We will contact you as soon as possible.
                     </p>
 
                     <div className="mt-8 rounded-tile bg-cream px-6 py-5">
@@ -184,7 +184,6 @@ const Enrol = () => {
                         <p aria-current="step" className="font-semibold text-navy">{LABELS[step - 1]}</p>
                     </div>
 
-                    {/* Decorative: "Step N of 4" above already says the same thing in words. */}
                     <div className="w-full h-2 bg-navy/10 rounded-full" aria-hidden="true">
                         <div className="h-full bg-navy rounded-full" style={{ width: `${step * 25}%` }} />
                     </div>

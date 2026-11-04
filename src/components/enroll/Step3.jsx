@@ -1,7 +1,7 @@
 import Note from "./Note.jsx";
-import {Link} from "react-router-dom";
 import Button from "../Button.jsx";
 import {useRef, useState} from "react";
+import {prices} from "../../lib/prices.js";
 
 const documents = [
     {
@@ -16,7 +16,7 @@ const documents = [
     },
     {
         name: "ackRegFee",
-        title: "Proof of the R150 registration fee",
+        title: `Proof of the ${prices.registration} registration fee`,
         desc: "A payment reference or receipt for the once-off fee.",
     },
 ];
@@ -61,7 +61,7 @@ const Step3 = ({ form, change, next, back }) => {
             </div>
 
             <form className="space-y-6" noValidate onSubmit={handleNext}>
-                <fieldset >
+                <fieldset>
                     <legend className="sr-only">Documents to bring.</legend>
 
                     {documents.map((doc) => (
@@ -74,14 +74,14 @@ const Step3 = ({ form, change, next, back }) => {
                             />
 
                             <label htmlFor={doc.name} className="block text-navy font-semibold cursor-pointer">
-                                {doc.name}
+                                {doc.title}
                                 <span className="block text-muted font-normal">{doc.desc}</span>
                             </label>
                         </div>
                     ))}
                 </fieldset>
 
-                {error.checks && <p id="docs-err" role="alert" className="text-sm text-danger">{error.checks}</p>}
+                {error && <p id="docs-err" role="alert" className="text-sm text-danger">{error}</p>}
 
                 <div className="space-y-4">
                     <Note>
@@ -89,16 +89,18 @@ const Step3 = ({ form, change, next, back }) => {
                         and we handle them in person.
                     </Note>
                     <Note>
-                        The R150 registration fee is due before the first session.{" "}
-                        <a href="/payment-details" className="text-red underline" target="_blank" rel="noopener noreferrer">
-                            See our payment details
+                        The {prices.registration} registration fee is due before the first session.{" "}
+                        <a href="/payment-details" target="_blank" rel="noopener noreferrer"
+                           className="text-red underline hover:text-red-hover"
+                        >
+                            See our payment details<span className="sr-only"> (opens in a new tab)</span>
                         </a>
                     </Note>
                 </div>
 
                 <div className="flex items-center justify-between border-t border-line pt-4">
                     <Button variant="outline" onClick={back}>Back</Button>
-                    <Button variant="ink" type="submit">Next: Documents</Button>
+                    <Button variant="ink" type="submit">Next: Review</Button>
                 </div>
             </form>
         </div>
