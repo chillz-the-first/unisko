@@ -5,14 +5,16 @@ import Icon from "../lib/Icon.jsx";
 import Button from "../components/Button.jsx";
 import ArrowLink from "../components/Arrowlink.jsx";
 import {useState} from "react";
+import {Link} from "react-router-dom";
 import ContactForm from "../components/ContactForm.jsx";
+import {prices} from "../lib/prices.js";
 
 const channels = [
     {
         icon: "chat",
         title: "WhatsApp",
         desc: "Chat with the Unisko Assistant for quick answers, any time.",
-        href: getWhatsAppUrl("Hello, Unisko"),
+        href: getWhatsAppUrl("Hello Unisko"),
         ctaText: "Start a chat",
         tone: "navy",
         external: true,
@@ -29,8 +31,8 @@ const channels = [
     {
         icon: "mail",
         title: "Email",
-        value: "Unisko.co@gmail.com",
-        href: "mailto:Unisko.co@gmail.com",
+        value: "unisko.co@gmail.com",
+        href: "mailto:unisko.co@gmail.com",
         ctaText: "Send an email",
         tone: "white",
         external: false,
@@ -38,25 +40,38 @@ const channels = [
 ];
 
 const hours = [
-    { days: "Monday to Friday", time: "12:00 PM to 5:30 PM" },
-    { days: "Saturday", time: "8:00 AM to 12:00 PM" },
-    { days: "Sunday", time: "Closed" },
+    {days: "Monday to Friday", time: "12:00 PM to 5:30 PM"},
+    {days: "Saturday", time: "8:00 AM to 1:30 PM"},
+    {days: "Sunday", time: "Closed"},
 ];
 
 const faqs = [
     {
         q: "What grades do you tutor?",
-        a: "Our tutors teach from Foundation Phase through to Grade 12. Tell us your child's grade and subjects when you enroll.",
+        a: <>Our tutors teach learners from Grade R to Grade 12. You can tell us your child's grade and subjects
+            when you enrol.</>,
     },
     {
         q: "How much does it cost?",
-        a: "The After-School Program is R500 a month, Group Classes are R250 a month, and Homework Help is R250 a visit. Online packages start at R149 a month. Registration is a once-off R150.",
+        a: <>The after-school programme is {prices.afterSchool} a month, group classes are {prices.groupClasses} a
+            month and homework help is {prices.homeworkHelp} a visit. Online packages start
+            at {prices.basic} a month. Registration is a once-off {prices.registration}.</>,
     },
     {
-        q: "Can I cancel anytime?",
-        a: "Online packages are billed monthly and need 30 days' notice to cancel. For programmes at the centre, monthly fees are due before the 10th of each month.",
+        q: "How do I pay?",
+        a: <>Pay by bank transfer, using your child's name and surname as the reference. Then send us your proof
+            of payment on WhatsApp, or bring it to the centre. Our bank details are on
+            the <Link to="/payment-details" className="text-red underline hover:text-red-hover">payment
+                details page</Link>.</>,
+    },
+    {
+        q: "Can I cancel at any time?",
+        a: <>Online packages are billed monthly and need 30 days' notice to cancel. For programmes at the centre,
+            monthly fees are due before the 10th of each month. The full details are in
+            our <Link to="/terms" className="text-red underline hover:text-red-hover">terms and conditions</Link>.</>,
     },
 ];
+
 
 const Contact = () => {
     const [openIndex, setOpenIndex] = useState(null);
@@ -67,7 +82,7 @@ const Contact = () => {
             <Section>
                 <div className="space-y-4">
                     <h1 className="text-display text-navy font-semibold" tabIndex={-1}>How can we help?</h1>
-                    <p className="text-lede text-muted max-w-[46ch]">Pick the channel that works for you.</p>
+                    <p className="text-lede text-muted max-w-[46ch]">Choose the way that suits you best.</p>
                 </div>
             </Section>
 
@@ -81,11 +96,12 @@ const Contact = () => {
                                       className={`w-7 h-7 ${channel.tone === "white" ? "text-red" : "text-white"}`}
                                 />
 
-                                <h2 className="font-semibold text-title">{channel.title}</h2>
+                                <h2 className={`font-semibold text-title ${channel.tone === "white" ? "text-navy" : ""}`}>
+                                    {channel.title}
+                                </h2>
                                 {channel.desc && (<p className="text-white/80">{channel.desc}</p>)}
                                 {channel.value && (<p className="font-semibold text-lede">{channel.value}</p>)}
                             </div>
-
 
                             <div className="mt-auto">
                                 <Button href={channel.href} external={channel.external}
@@ -137,12 +153,12 @@ const Contact = () => {
                         <div className="border-t border-line last:border-b" key={faq.q}>
                             <h3 className="font-semibold text-navy text-lede">
                                 <button type="button" aria-expanded={openIndex === i} aria-controls={`faq-${i}`}
-                                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                                    className="flex items-center justify-between w-full py-4 text-left min-h-[44px] gap-4"
+                                        onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                                        className="flex items-center justify-between w-full py-4 text-left min-h-[44px] gap-4"
                                 >
                                     {faq.q}
                                     <Icon name="plus"
-                                        className={`w-4 h-4 transition-transform ${openIndex === i ? "rotate-45" : ""}`}
+                                          className={`w-4 h-4 transition-transform motion-reduce:transition-none ${openIndex === i ? "rotate-45" : ""}`}
                                     />
                                 </button>
                             </h3>
@@ -158,11 +174,16 @@ const Contact = () => {
             <Section>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="space-y-4">
-                        <h2 className="text-headline text-navy font-semibold">Send us a note.</h2>
+                        <h2 className="text-headline text-navy font-semibold">Send us a message.</h2>
                         <p className="text-muted text-lede">
-                            Tell us what's going on with your child's schoolwork.
+                            Tell us about your child's schoolwork and how we can help.
                         </p>
-                        <p className="text-muted text-sm mt-4">We never share your information.</p>
+                        <p className="text-muted text-sm mt-4">
+                            We use your details only to reply to you.{" "}
+                            <Link to="/privacy" className="text-red underline hover:text-red-hover">
+                                Read our privacy policy
+                            </Link>
+                        </p>
                     </div>
 
                     <ContactForm/>
