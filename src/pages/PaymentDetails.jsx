@@ -5,6 +5,7 @@ import ArrowLink from "../components/Arrowlink.jsx";
 import Icon from "../lib/Icon.jsx";
 import {getWhatsAppUrl} from "../lib/whatsapp.js";
 import CTA from "../components/CTA.jsx";
+import {prices} from "../lib/prices.js";
 
 const bankDetails = [
     { label: "Bank", value: "Capitec", copy: false },
@@ -14,21 +15,22 @@ const bankDetails = [
     { label: "Reference", value: "Your child's name and surname", copy: false },
 ];
 
+
 const paymentProcess = [
     {
         step: 1,
         title: "Add us as a beneficiary",
-        desc: "Open your banking app and add Unisko using the banking details above.",
+        desc: "Open your banking app and add Unisko using the bank details above.",
     },
     {
         step: 2,
-        title: "Use your child's name as the reference",
-        desc: "So we can match the payment to the right learner. For example: Lerato Maselela",
+        title: "Use your child's name and surname as the reference",
+        desc: "This lets us match the payment to the right learner. For example: Lerato Maselela.",
     },
     {
         step: 3,
         title: "Send us your proof of payment",
-        desc: "Share it on WhatsApp, or bring a copy to your child's first session.",
+        desc: "Share it on WhatsApp, or bring a copy to the centre.",
     },
 ];
 
@@ -54,7 +56,7 @@ const PaymentDetails = () => {
                         Payment details.
                     </h1>
                     <p className="text-lede text-muted max-w-[46ch]">
-                        Pay the R150 registration fee before your child's first session.
+                        Pay the {prices.registration} registration fee before your child's first session.
                         Monthly fees go to the same account.
                     </p>
                 </div>
@@ -89,7 +91,7 @@ const PaymentDetails = () => {
 
                             <div className="flex items-center justify-between gap-4">
                                 <p className="text-white text-lede font-semibold tabular-nums">061 811 7116</p>
-                                <CopyBtn text="0618117116" label="Phone number" />
+                                <CopyBtn text="0618117116" label="PayShap number" />
                             </div>
                         </div>
                     </Tile>
@@ -100,7 +102,7 @@ const PaymentDetails = () => {
                         <div className="py-4 space-y-2 border-t border-line">
                             <div className="flex justify-between items-end gap-4">
                                 <p className="text-navy font-semibold">Registration fee</p>
-                                <p className="text-navy font-semibold text-stat tabular-nums">R150</p>
+                                <p className="text-navy font-semibold text-stat tabular-nums">{prices.registration}</p>
                             </div>
                             <p className="text-muted text-sm font-semibold">
                                 Once-off, before your child's first session.
@@ -109,7 +111,9 @@ const PaymentDetails = () => {
 
                         <div className="py-4 space-y-2 border-t border-line">
                             <p className="text-navy font-semibold">Monthly fee</p>
-                            <p className="text-muted text-sm font-semibold">Depends on the package you choose.</p>
+                            <p className="text-muted text-sm font-semibold">
+                                Due before the 10th of each month. The amount depends on your package.
+                            </p>
                             <ArrowLink to="/services">See packages</ArrowLink>
                         </div>
                     </Tile>
@@ -134,9 +138,9 @@ const PaymentDetails = () => {
                 <Tile tone="white" className="border border-line flex items-start gap-4">
                     <Icon name="warning" className="w-5 h-5 mt-0.5 text-danger" />
                     <p className="text-body">
-                        <span className="font-semibold">We'll never change these details by message.</span>{" "}
+                        <span className="font-semibold">We will never change these details by message.</span>{" "}
                         If you get a WhatsApp or SMS saying our bank details have changed, call us on{" "}
-                        <a href="tel:+27618117116" className="text-red underline">061 811 7116</a> before you pay.
+                        <a href="tel:+27618117116" className="text-red underline hover:text-red-hover">061 811 7116</a> before you pay.
                     </p>
                 </Tile>
             </Section>

@@ -9,6 +9,7 @@ const footerColumns = [
             {to: "/resources", label: "Resources"},
             {to: "/events", label: "Events"},
             {to: "/enroll", label: "Enrol"},
+            {to: "/payment-details", label: "Payment details"},
         ],
     },
     {
