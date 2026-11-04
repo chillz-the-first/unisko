@@ -128,7 +128,8 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
                             onChange={change} className="mt-1 w-5 h-5 flex-none rounded accent-navy"
                         />
                         <label htmlFor="mediaConsent" className="text-body cursor-pointer">
-                            Unisko may use photos of my child on its website and social media.{" "}
+                            Unisko may photograph and record my child during classes and events, and use the photos and
+                            videos in its marketing, including the website, social media and printed material.{" "}
                             <span className="text-sm text-muted">(Optional)</span>
                         </label>
                     </div>
