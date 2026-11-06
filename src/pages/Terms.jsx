@@ -100,15 +100,13 @@ const sections = [
                     labelled("Drop-off and collection:", "bring and collect your child at the session " +
                         "times we agree with you. Only you, or an adult you have named to us on WhatsApp, may " +
                         "collect your child, and tutors may ask to see that adult's ID."),
-                    // CHANGED: the client's answer 14 (from Grade 4)
                     labelled("Going home alone:", "learners in Grade 4 and above may leave on their " +
                         "own if you have given us written permission on WhatsApp. Learners in Grade R to Grade 3 must be collected."),
-                    // CHANGED: new, the client's answer 15
                     labelled("Late collection:", "if you are late, we wait with your child until you arrive. " +
                         "There is no fee for late collection."),
                     labelled("Absences:", "the monthly fee stays the same if your child misses sessions. " +
                         "Please tell us in advance when your child will be absent."),
-                    // CHANGED: new, the client's answer 17
+
                     labelled("Holidays:", "we are open during school holidays and closed on public holidays. " +
                         "The monthly fee stays the same in months with holidays."),
                     labelled("Emergencies:", "if your child is hurt or falls ill, we contact you " +

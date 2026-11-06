@@ -14,7 +14,7 @@ const channels = [
         icon: "chat",
         title: "WhatsApp",
         desc: "Chat with the Unisko Assistant for quick answers, any time.",
-        href: getWhatsAppUrl("Hello Uni", "27740795307"),
+        href: getWhatsAppUrl("Hello Unisko", "27740795307"),
         ctaText: "Start a chat",
         tone: "navy",
         external: true,
@@ -42,7 +42,7 @@ const channels = [
 const hours = [
     {days: "Monday to Friday", time: "12:00 PM to 5:30 PM"},
     {days: "Saturday", time: "8:00 AM to 1:30 PM"},
-    {days: "Sunday and Public holidays", time: "Closed"},
+    {days: "Sunday and public holidays", time: "Closed"},
 ];
 
 const faqs = [
@@ -67,8 +67,8 @@ const faqs = [
     {
         q: "Can I cancel at any time?",
         a: <>Yes. Give us one calendar month's notice on WhatsApp or by email, for any package. Monthly fees
-            are due before the 10th of each month. The full details are in our
-            <Link to="/terms" className="text-red underline hover:text-red-hover">terms and conditions</Link>.</>,
+            are due before the 10th of each month. The full details are in
+            our <Link to="/terms" className="text-red underline hover:text-red-hover">terms and conditions</Link>.</>,
     },
 ];
 

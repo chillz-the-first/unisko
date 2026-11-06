@@ -244,7 +244,7 @@ const Services = () => {
                 </div>
 
                 <div className="mt-8">
-                    <p className="text-muted text-sm">Billed monthly. Cancel with 30 days' notice.</p>
+                    <p className="text-muted text-sm">Billed monthly. Cancel with one calendar month's notice.</p>
                     <p className="text-muted text-sm">
                         The registration fee is {prices.registration}.{" "}
                         <Link className="text-red text-sm underline hover:text-red-hover" to="/payment-details">

@@ -527,8 +527,8 @@ const sections = [
                     "Google, which provides Unisko's email (Gmail) and the map on the Contact page; and",
                     "Meta, which provides WhatsApp.",
                 ]},
-            "When you message Unisko on WhatsApp, an automated assistant may reply. The assistant runs on Render, " +
-            "uses Google's Gemini to understand your message and prepare a reply, and takes its answers from Google Sheets.",
+            "If you message the Unisko Assistant on WhatsApp at 074 079 5307, an automated assistant replies. " +
+            "It runs on Render, uses Google's Gemini to understand your message and prepare a reply, and takes its answers from Google Sheets.",
             "Where a third party processes personal information on behalf of Unisko, Unisko will take reasonable " +
             "steps to ensure that appropriate confidentiality and security measures are maintained.",
             <p><strong>Unisko does not sell or rent learners' personal information to third parties.</strong></p>,
