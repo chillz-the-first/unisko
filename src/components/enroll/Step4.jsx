@@ -17,6 +17,7 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
                 ["Address", [form.address, form.town, form.city].filter(Boolean).join(", ")],
                 ["Cell phone", form.cellPhone],
                 ["Email", form.email],
+                ["Emergency contact", [form.emergencyName, form.emergencyPhone].filter(Boolean).join(", ")],
             ],
         },
         {
@@ -128,8 +129,8 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
                             onChange={change} className="mt-1 w-5 h-5 flex-none rounded accent-navy"
                         />
                         <label htmlFor="mediaConsent" className="text-body cursor-pointer">
-                            Unisko may photograph and record my child during classes and events, and use the photos and
-                            videos in its marketing, including the website, social media and printed material.{" "}
+                            Unisko may photograph and record my child during classes and events, and use the photos
+                            and videos in its marketing, including the website, social media and printed material.{" "}
                             <span className="text-sm text-muted">(Optional)</span>
                         </label>
                     </div>

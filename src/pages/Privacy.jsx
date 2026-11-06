@@ -4,13 +4,13 @@ import Section from "../components/Section.jsx";
 import Tile from "../components/Tile.jsx";
 
 const effectiveDate = "1 September 2026";
-const lastUpdated = "4 November 2026";
+const lastUpdated = "6 November 2026";
 
 const linkClass = "text-red underline hover:text-red-hover";
 
 const OfficerDetails = ({showWebsite = false}) => (
     <Tile tone="cream" className="space-y-2">
-        <p className="text-navy font-semibold">Unisko (Pty) Ltd</p>
+        <p className="text-navy font-semibold">K2026250908 (South Africa) (Pty) Ltd, trading as Unisko</p>
         <dl className="space-y-1">
             <div className="flex flex-col sm:flex-row sm:gap-2">
                 <dt className="font-semibold text-navy">Information Officer:</dt>
@@ -38,19 +38,28 @@ const OfficerDetails = ({showWebsite = false}) => (
     </Tile>
 );
 
+// Each section is a list of blocks:
+//   "text"              → a paragraph
+//   {heading: "..."}    → a sub-heading, e.g. 3.1
+//   {list: [...]}       → a bulleted list
+//   <p>...</p> (JSX)    → shown as written, for text with bold words or links
 const sections = [
     {
         id: "introduction",
         title: "1. Introduction",
         blocks: [
             <p>
-                Unisko (Pty) Ltd ("<strong>Unisko</strong>", "<strong>we</strong>", "<strong>us</strong>",
-                or "<strong>our</strong>") is committed to protecting the privacy and personal information of
-                our learners, parents and guardians, customers, employees, tutors, service providers and
-                website users.
+                K2026250908 (South Africa) (Pty) Ltd, trading as Unisko, registration number 2026/250908/07
+                ("<strong>Unisko</strong>", "<strong>we</strong>", "<strong>us</strong>", or "<strong>our</strong>")
+                is committed to protecting the privacy and personal information of our learners, parents and guardians,
+                customers, employees, tutors, service providers and website users.
             </p>,
-            "Unisko provides educational and academic support services, including tutoring, homework assistance, online classes, recorded lessons, study materials, holiday programmes, educational events, excursions and related services. In providing these services, we may collect and process personal information relating to learners and their parents or legal guardians.",
-            "This Privacy Policy explains how Unisko collects, uses, stores, protects and, where necessary, shares personal information.",
+            "Unisko provides educational and academic support services, including tutoring, homework assistance, " +
+            "online classes, recorded lessons, study materials, holiday programmes, educational events, excursions " +
+            "and related services. In providing these services, we may collect and process personal information " +
+            "relating to learners and their parents or legal guardians.",
+            "This Privacy Policy explains how Unisko collects, uses, stores, protects and, where necessary, " +
+            "shares personal information.",
             "This Privacy Policy applies to personal information collected through:",
             {list: [
                     "the Unisko website;",
@@ -518,8 +527,10 @@ const sections = [
                     "Google, which provides Unisko's email (Gmail); and",
                     "Meta, which provides WhatsApp.",
                 ]},
-            "When you message Unisko on WhatsApp, an automated assistant may reply. The assistant runs on Render, uses Google's Gemini to understand your message and prepare a reply, and takes its answers from Google Sheets.",
-            "Where a third party processes personal information on behalf of Unisko, Unisko will take reasonable steps to ensure that appropriate confidentiality and security measures are maintained.",
+            "When you message Unisko on WhatsApp, an automated assistant may reply. The assistant runs on Render, " +
+            "uses Google's Gemini to understand your message and prepare a reply, and takes its answers from Google Sheets.",
+            "Where a third party processes personal information on behalf of Unisko, Unisko will take reasonable " +
+            "steps to ensure that appropriate confidentiality and security measures are maintained.",
             <p><strong>Unisko does not sell or rent learners' personal information to third parties.</strong></p>,
         ],
     },
@@ -804,13 +815,16 @@ const sections = [
         id: "media-consent",
         title: "35. Media and marketing consent",
         blocks: [
-            "For learners under the age of 18, the parent or legal guardian should be presented with a separate media consent option during registration.",
-            "On the website, this is the optional photo and video checkbox on the last step of the enrolment form. It is only ticked if you tick it, and leaving it unticked does not affect your child's enrolment. On a paper registration form, it is the separate media consent section.",
+            "For learners under the age of 18, the parent or legal guardian should be presented with a " +
+            "separate media consent option during registration.",
+            "On the website, this is the optional photo and video checkbox on the last step of the enrolment form. " +
+            "It is only ticked if you tick it, and leaving it unticked does not affect your child's enrolment. " +
+            "On a paper registration form, it is the separate media consent section.",
             "The consent reads:",
             <Tile tone="cream" className="space-y-3">
                 <h3 className="text-navy font-semibold">Media, photography and video consent</h3>
                 <p>
-                    I, the parent/legal guardian, hereby provide consent for Unisko (Pty) Ltd to photograph and/or
+                    I, the parent/legal guardian, hereby provide consent for Unisko Ltd to photograph and/or
                     record my child during Unisko classes, educational activities, events, excursions and programmes.
                 </p>
                 <p>
@@ -833,8 +847,12 @@ const sections = [
         id: "final-statement",
         title: "36. Final statement",
         blocks: [
-            "Unisko is committed to protecting the privacy, dignity and safety of the learners, families and individuals who interact with our organisation.",
-            "We recognise that education involves a relationship of trust between learners, parents, guardians, educators and the organisation. We therefore aim to ensure that personal information is collected responsibly, used for legitimate purposes, protected appropriately and handled in accordance with applicable privacy legislation.",
+            "Unisko is committed to protecting the privacy, dignity and safety of the learners, " +
+            "families and individuals who interact with our organisation.",
+            "We recognise that education involves a relationship of trust between learners, parents," +
+            " guardians, educators and the organisation. We therefore aim to ensure that personal information" +
+            " is collected responsibly, used for legitimate purposes, protected appropriately and handled in" +
+            " accordance with applicable privacy legislation.",
         ],
     },
 ];
@@ -865,7 +883,7 @@ const Privacy = () => {
                         Privacy policy.
                     </h1>
                     <p className="text-lede text-muted">
-                        How Unisko (Pty) Ltd collects, uses, stores and protects personal information, in line with
+                        How Unisko Ltd collects, uses, stores and protects personal information, in line with
                         the Protection of Personal Information Act (POPIA).
                     </p>
                     <p className="text-sm text-muted">

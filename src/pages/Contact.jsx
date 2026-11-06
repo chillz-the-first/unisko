@@ -42,7 +42,7 @@ const channels = [
 const hours = [
     {days: "Monday to Friday", time: "12:00 PM to 5:30 PM"},
     {days: "Saturday", time: "8:00 AM to 1:30 PM"},
-    {days: "Sunday", time: "Closed"},
+    {days: "Sunday & Public holidays", time: "Closed"},
 ];
 
 const faqs = [

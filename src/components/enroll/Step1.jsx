@@ -13,6 +13,8 @@ const Step1 = ({ form, change, next}) => {
     const cityRef = useRef(null);
     const phoneRef = useRef(null);
     const emailRef = useRef(null);
+    const emergencyNameRef = useRef(null);
+    const emergencyPhoneRef = useRef(null);
 
     function handleFieldChange(e) {
         change(e);
@@ -47,6 +49,17 @@ const Step1 = ({ form, change, next}) => {
         const email = form.email.trim();
         if (email && !/^\S+@\S+\.\S+$/.test(email)) {
             newErrors.email = "Please check your email address, e.g. name@example.com.";
+        }
+        if (!form.emergencyName.trim()) {
+            newErrors.emergencyName = "Please enter your emergency contact's name.";
+        }
+        const emergencyDigits = form.emergencyPhone.replace(/\D/g, "");
+        if (!emergencyDigits) {
+            newErrors.emergencyPhone = "Please enter your emergency contact's cell phone number.";
+        } else if (emergencyDigits.length < 10) {
+            newErrors.emergencyPhone = "That number looks too short. Include the 0 at the start, e.g. 081 234 5678.";
+        } else if (emergencyDigits === phoneDigits) {
+            newErrors.emergencyPhone = "Please give a different number from your own.";
         }
 
         if (Object.keys(newErrors).length > 0) {
@@ -204,6 +217,43 @@ const Step1 = ({ form, change, next}) => {
                         />
                         {errors.email &&
                             <p className="text-sm text-danger" id="email-err" role="alert">{errors.email}</p>
+                        }
+                    </div>
+
+                    <div className="border-t border-line mt-8 mb-4 col-span-full"/>
+
+                    <div className="space-y-1 col-span-full">
+                        <h3 className="text-navy font-semibold text-lede">Emergency contact</h3>
+                        <p className="text-muted">Someone we can call if we cannot reach you.</p>
+                    </div>
+
+                    <div className="space-y-2 col-span-2 md:col-span-3">
+                        <label htmlFor="emergencyName" className={labelClass}>
+                            Emergency contact name <span className="text-danger">*</span>
+                        </label>
+                        <input type="text" name="emergencyName" id="emergencyName" value={form.emergencyName}
+                               onChange={handleFieldChange} placeholder="Nomsa Maselela" className={fieldClass}
+                               autoComplete="off" aria-required="true" aria-invalid={!!errors.emergencyName}
+                               ref={emergencyNameRef}
+                               aria-describedby={errors.emergencyName ? "emergency-name-err" : undefined}
+                        />
+                        {errors.emergencyName &&
+                            <p className="text-sm text-danger" id="emergency-name-err" role="alert">{errors.emergencyName}</p>
+                        }
+                    </div>
+
+                    <div className="space-y-2 col-span-2 md:col-span-3">
+                        <label htmlFor="emergencyPhone" className={labelClass}>
+                            Emergency contact cell phone <span className="text-danger">*</span>
+                        </label>
+                        <input type="tel" name="emergencyPhone" id="emergencyPhone" value={form.emergencyPhone}
+                               onChange={handleFieldChange} placeholder="082 345 6789" className={fieldClass}
+                               autoComplete="off" aria-required="true" aria-invalid={!!errors.emergencyPhone}
+                               ref={emergencyPhoneRef}
+                               aria-describedby={errors.emergencyPhone ? "emergency-phone-err" : undefined}
+                        />
+                        {errors.emergencyPhone &&
+                            <p className="text-sm text-danger" id="emergency-phone-err" role="alert">{errors.emergencyPhone}</p>
                         }
                     </div>
 

@@ -10,6 +10,7 @@ import Enrol from "./pages/Enrol.jsx";
 import PaymentDetails from "./pages/PaymentDetails.jsx";
 import NotFound from "./pages/Notfound.jsx";
 import Privacy from "./pages/Privacy.jsx";
+import Terms from "./pages/Terms.jsx";
 
 export default function App() {
     return (
@@ -25,6 +26,7 @@ export default function App() {
                     <Route path="/enroll" element={<Enrol/>}/>
                     <Route path="/payment-details" element={<PaymentDetails/>}/>
                     <Route path="/privacy" element={<Privacy />} />
+                    <Route path="/terms" element={<Terms />} />
                     <Route path="*" element={<NotFound/>}/>
                 </Routes>
             </Layout>

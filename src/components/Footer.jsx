@@ -88,7 +88,7 @@ const Footer = () => {
 
                 <div className="pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-x-6 gap-y-2">
                     <p className="text-muted text-sm">
-                        &copy; {new Date().getFullYear()} Unisko (Pty) Ltd. All rights reserved.
+                        &copy; {new Date().getFullYear()} K2026250908 (South Africa) (Pty) Ltd, trading as Unisko.
                     </p>
                     <div className="flex items-center gap-x-6">
                         <Link to="/privacy" className={linkClass}>Privacy policy</Link>

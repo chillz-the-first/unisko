@@ -12,6 +12,7 @@ const LABELS = ["Parent", "Learner", "Documents", "Review"];
 const EMPTY_PARENT = {
     title: "", surname: "", firstName: "", initials: "", idNumber: "",
     address: "", town: "", city: "", cellPhone: "", email: "",
+    emergencyName: "", emergencyPhone: "",
 };
 const EMPTY_CHILD = {
     studentSurname: "", studentName: "", studentInitials: "", studentID: "",
@@ -91,6 +92,8 @@ const Enrol = () => {
             cellPhone: form.cellPhone.trim(),
             email: email || undefined,
             _replyto: email || undefined,
+            emergencyName: cap(form.emergencyName),
+            emergencyPhone: form.emergencyPhone.trim(),
             studentSurname: cap(form.studentSurname),
             studentName: cap(form.studentName),
             studentInitials: form.studentInitials.trim().toUpperCase(),
