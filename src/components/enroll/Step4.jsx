@@ -32,6 +32,7 @@ const Step4 = ({ form, change, back, setStep, submit, status }) => {
                 ["Home language", form.homeLanguage],
                 ["School", form.schoolName],
                 ["Grade", form.grade],
+                ["Programme", form.programme],
             ],
         },
         {

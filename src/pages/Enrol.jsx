@@ -16,7 +16,7 @@ const EMPTY_PARENT = {
 };
 const EMPTY_CHILD = {
     studentSurname: "", studentName: "", studentInitials: "", studentID: "",
-    gender: "", homeLanguage: "", isSouthAfrican: "", schoolName: "", grade: "",
+    gender: "", homeLanguage: "", isSouthAfrican: "", schoolName: "", grade: "", programme: "",
     ackParentId: false, ackStudentId: false, ackRegFee: false,
     mediaConsent: false, agreeTerms: false,
 };
