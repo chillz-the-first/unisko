@@ -13,6 +13,19 @@ const events = [
         desc: "The new weekday learning plan, Saturday attendance, updated packages and December payments, "
             + "with one-on-one feedback from tutors and the launch of the Unisko website.",
     },
+    {
+        id: "e2",
+        date: "2026-11-07",
+        tag: "Parents' meeting",
+        title: "Last parents' meeting of the year and open day",
+        time: "11:00 AM to 12:00 PM",
+        place: "Unisko Centre, 43 Oil Avenue, White House, Freedom Park",
+        desc: "The new weekday learning plan, Saturday attendance, behaviour and suspensions, updated packages "
+            + "and December payments, with one-on-one feedback from tutors, the launch of the Unisko website "
+            + "and the new refer-and-earn programme.",
+        ctaText: "RSVP on WhatsApp",
+        msg: "Hello Unisko, I would like to attend the parents' meeting and open day on Saturday, 7 November.",
+    },
 ];
 
 const today = new Date().toLocaleDateString("en-CA");
