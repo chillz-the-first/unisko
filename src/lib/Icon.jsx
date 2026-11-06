@@ -42,6 +42,7 @@ const paths = {
         </>
     ),
     warning: <path d="M12 3 2 20h20L12 3zM12 10v4M12 17h.01" />,
+    info: <><circle cx="12" cy="12" r="9" /><path d="M12 11v5M12 8h.01" /></>,
 };
 
 const Icon = ({ name, className = "w-4 h-4", strokeWidth = 1.8 }) => (

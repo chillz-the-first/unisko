@@ -72,6 +72,8 @@ const Step1 = ({ form, change, next}) => {
             else if (newErrors.city) cityRef.current.focus();
             else if (newErrors.cellPhone) phoneRef.current.focus();
             else if (newErrors.email) emailRef.current.focus();
+            else if (newErrors.emergencyName) emergencyNameRef.current.focus();
+            else if (newErrors.emergencyPhone) emergencyPhoneRef.current.focus();
 
             return;
         }

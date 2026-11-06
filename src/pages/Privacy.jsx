@@ -524,7 +524,7 @@ const sections = [
             {list: [
                     "Cloudflare, which hosts the Unisko website;",
                     "Formspree, which receives the enrolment and contact forms on the website and sends them to Unisko by email;",
-                    "Google, which provides Unisko's email (Gmail); and",
+                    "Google, which provides Unisko's email (Gmail) and the map on the Contact page; and",
                     "Meta, which provides WhatsApp.",
                 ]},
             "When you message Unisko on WhatsApp, an automated assistant may reply. The assistant runs on Render, " +
@@ -824,7 +824,7 @@ const sections = [
             <Tile tone="cream" className="space-y-3">
                 <h3 className="text-navy font-semibold">Media, photography and video consent</h3>
                 <p>
-                    I, the parent/legal guardian, hereby provide consent for Unisko Ltd to photograph and/or
+                    I, the parent/legal guardian, hereby provide consent for Unisko to photograph and/or
                     record my child during Unisko classes, educational activities, events, excursions and programmes.
                 </p>
                 <p>
@@ -883,7 +883,7 @@ const Privacy = () => {
                         Privacy policy.
                     </h1>
                     <p className="text-lede text-muted">
-                        How Unisko Ltd collects, uses, stores and protects personal information, in line with
+                        How Unisko collects, uses, stores and protects personal information, in line with
                         the Protection of Personal Information Act (POPIA).
                     </p>
                     <p className="text-sm text-muted">

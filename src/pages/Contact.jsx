@@ -14,7 +14,7 @@ const channels = [
         icon: "chat",
         title: "WhatsApp",
         desc: "Chat with the Unisko Assistant for quick answers, any time.",
-        href: getWhatsAppUrl("Hello Unisko"),
+        href: getWhatsAppUrl("Hello Uni", "27740795307"),
         ctaText: "Start a chat",
         tone: "navy",
         external: true,
@@ -42,7 +42,7 @@ const channels = [
 const hours = [
     {days: "Monday to Friday", time: "12:00 PM to 5:30 PM"},
     {days: "Saturday", time: "8:00 AM to 1:30 PM"},
-    {days: "Sunday & Public holidays", time: "Closed"},
+    {days: "Sunday and Public holidays", time: "Closed"},
 ];
 
 const faqs = [
@@ -59,16 +59,16 @@ const faqs = [
     },
     {
         q: "How do I pay?",
-        a: <>Pay by bank transfer, using your child's name and surname as the reference. Then send us your proof
-            of payment on WhatsApp, or bring it to the centre. Our bank details are on
+        a: <>Pay by bank transfer or PayShap, using your child's name and surname as the reference.
+            Then send us your proof of payment on WhatsApp, or bring it to the centre. Our bank details are on
             the <Link to="/payment-details" className="text-red underline hover:text-red-hover">payment
                 details page</Link>.</>,
     },
     {
         q: "Can I cancel at any time?",
-        a: <>Online packages are billed monthly and need 30 days' notice to cancel. For programmes at the centre,
-            monthly fees are due before the 10th of each month. The full details are in
-            our <Link to="/terms" className="text-red underline hover:text-red-hover">terms and conditions</Link>.</>,
+        a: <>Yes. Give us one calendar month's notice on WhatsApp or by email, for any package. Monthly fees
+            are due before the 10th of each month. The full details are in our
+            <Link to="/terms" className="text-red underline hover:text-red-hover">terms and conditions</Link>.</>,
     },
 ];
 
@@ -139,7 +139,7 @@ const Contact = () => {
                                 </div>
                             ))}
                         </dl>
-                        <ArrowLink href="https://maps.app.goo.gl/p7qbEnEDy93Epscc8">Open in Maps</ArrowLink>
+                        <ArrowLink href="https://maps.app.goo.gl/srj88XnoX99w3nd79">Open in Maps</ArrowLink>
                     </div>
                 </div>
             </Section>
